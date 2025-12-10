@@ -2320,8 +2320,103 @@
       </tbody>
     </table>
 
+    <h3>6.5 Charte projet — Application mobile client</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Élément</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Nom du projet</td>
+          <td>Application mobile client Time’Eats</td>
+        </tr>
+        <tr>
+          <td>Objectif général</td>
+          <td>Proposer une expérience mobile simple et intuitive pour commander et suivre des prestations de restauration</td>
+        </tr>
+        <tr>
+          <td>Bénéfices attendus</td>
+          <td>+20 % nouveaux clients / +15 % fidélisation / Amélioration image de marque</td>
+        </tr>
+        <tr>
+          <td>Périmètre inclus</td>
+          <td>Recherche prestataires, commande, paiement, suivi en temps réel, notation</td>
+        </tr>
+        <tr>
+          <td>Périmètre exclu</td>
+          <td>Gestion de livraison physique, application fournisseur (projet séparé)</td>
+        </tr>
+        <tr>
+          <td>Livrables majeurs</td>
+          <td>App iOS, App Android, docs techniques, PV recette, formation support</td>
+        </tr>
+        <tr>
+          <td>Budget validé</td>
+          <td>150 k€ (dont 80 k€ prestataire, 40 k€ interne)</td>
+        </tr>
+        <tr>
+          <td>Durée & jalons</td>
+          <td>Mai → Décembre soit 8 mois (SCRUM — sprints 3 semaines)</td>
+        </tr>
+        <tr>
+          <td>Ressources</td>
+          <td>Chef projet, développeurs internes, ESN, UX, RSSI</td>
+        </tr>
+        <tr>
+          <td>Risques majeurs</td>
+          <td>UX non validée, dépendance ESN, sécurité des données</td>
+        </tr>
+        <tr>
+          <td>Parties prenantes clés</td>
+          <td>Direction commerciale, PMO, DSI, clients pilotes</td>
+        </tr>
+        <tr>
+          <td>Critères de succès</td>
+          <td>Satisfaction ≥ 80 %, 0 bug critique, budget ≤ 100 %, délais ≤ 8 mois</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">
+      Version 1.0 — Date : 12/2025 — Rédacteur : PMO Time’Eats. Cette charte sert de référence contractuelle
+      entre la DSI et la Direction, et engage l’ensemble des parties prenantes.
+    </p>
+
+    <h3>6.6 Backlog produit initial</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>US — En tant que…</th>
+          <th>Je veux…</th>
+          <th>Afin de…</th>
+          <th>Priorité</th>
+          <th>Critères d’acceptation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>US01</td><td>Client</td><td>Chercher un prestataire</td><td>Trouver rapidement une offre locale</td><td>M</td><td>Recherche &lt;1 sec, résultats géolocalisés</td></tr>
+        <tr><td>US02</td><td>Client</td><td>Filtrer résultats</td><td>Sélection par prix / note / catégorie</td><td>M</td><td>3 filtres minimum actifs</td></tr>
+        <tr><td>US03</td><td>Client</td><td>Passer commande</td><td>Réserver sans contact téléphonique</td><td>M</td><td>Paiement CB sécurisé + mail confirmation</td></tr>
+        <tr><td>US04</td><td>Client</td><td>Voir mon historique</td><td>Consulter mes anciens achats</td><td>M</td><td>Historique 12 mois</td></tr>
+        <tr><td>US05</td><td>Client</td><td>Noter la prestation</td><td>Améliorer la qualité globale</td><td>S</td><td>Note 1–5 + commentaire</td></tr>
+        <tr><td>US06</td><td>Client</td><td>Modifier commande</td><td>Corriger une erreur</td><td>C</td><td>Si statut = en préparation</td></tr>
+        <tr><td>US07</td><td>Client</td><td>Suivre ma livraison</td><td>Connaître heure d’arrivée</td><td>M</td><td>Taux actualisation &lt; 20 sec</td></tr>
+        <tr><td>US08</td><td>Admin DSI</td><td>Gérer incidents</td><td>Assurer la continuité de service</td><td>M</td><td>Dashboard erreurs, logs</td></tr>
+        <tr><td>US09</td><td>Sécurité</td><td>Authent utilisateur</td><td>Protéger données personnelles</td><td>M</td><td>MFA obligatoire</td></tr>
+        <tr><td>US10</td><td>Client</td><td>Ajouter favoris</td><td>Recommander rapidement</td><td>C</td><td>Liste min. 10 éléments</td></tr>
+        <tr><td>US11</td><td>Produit</td><td>Notifications push</td><td>Informer du statut</td><td>S</td><td>4 événements notifiés</td></tr>
+        <tr><td>US12</td><td>Support</td><td>Chat assistance</td><td>Conseiller client</td><td>C</td><td>Disponibilité 9h–22h</td></tr>
+        <tr><td>US13</td><td>Marketing</td><td>Collecter avis</td><td>Mesurer satisfaction</td><td>S</td><td>Formulaire post-commande</td></tr>
+        <tr><td>US14</td><td>Client</td><td>Voir menus illustrés</td><td>Faire un choix éclairé</td><td>S</td><td>Images HD, description complète</td></tr>
+        <tr><td>US15</td><td>Gestionnaire</td><td>Statistiques</td><td>Suivre activité app</td><td>S</td><td>Tableau hebdomadaire</td></tr>
+      </tbody>
+    </table>
+
     <!-- SWOT VISUEL -->
-    <h3>6.5 Analyse SWOT (visuel)</h3>
+    <h3>6.7 Analyse SWOT (visuel)</h3>
     <div class="swot-grid">
       <div class="swot-cell swot-forces">
         <div class="swot-title">Forces</div>
@@ -2357,7 +2452,7 @@
       </div>
     </div>
 
-    <h3>6.6 Matrice des risques</h3>
+    <h3>6.8 Matrice des risques</h3>
     <table>
       <thead>
         <tr>
@@ -2474,9 +2569,9 @@
       </tr>
     </table>
 
-    <h3>6.7 Plan de management du projet</h3>
+    <h3>6.9 Plan de management du projet</h3>
 
-    <h4>6.7.1 Planning prévisionnel</h4>
+    <h4>6.9.1 Planning prévisionnel</h4>
     <div class="timeline">
       <div class="timeline-item">
         <strong>Cadrage & recueil des besoins (Mai S1–S3)</strong> :
@@ -2503,7 +2598,7 @@
       </div>
     </div>
 
-    <h4>6.7.1 WBS synthétique (niveaux livrables)</h4>
+    <h4>6.9.1 WBS synthétique (niveaux livrables)</h4>
     <p>Décomposition du projet App mobile client en lots structurants avec charges et jalons exprimés.</p>
     <div class="wbs-grid">
       <div class="wbs-card">
@@ -2534,7 +2629,7 @@
     </div>
 
     <!-- GANTT VISUEL -->
-    <h4>6.7.1 bis – Gantt du projet (visuel simplifié)</h4>
+    <h4>6.9.1 bis – Gantt du projet (visuel simplifié)</h4>
     <table class="gantt-table">
       <thead>
         <tr>
@@ -2609,7 +2704,7 @@
     </table>
 
     <!-- BUDGET + GRAPHIQUES -->
-    <h4>6.7.2 Budget prévisionnel & visualisations</h4>
+    <h4>6.9.2 Budget prévisionnel & visualisations</h4>
     <table>
       <thead>
         <tr>
@@ -2668,13 +2763,13 @@
       </div>
     </div>
 
-    <h4>6.7.3 Plan de gestion des risques</h4>
+    <h4>6.9.3 Plan de gestion des risques</h4>
     <p>
       La matrice des risques est suivie en COPROJ et mise à jour à chaque sprint. Les risques
       les plus critiques (retard UX, défaillance ESN, sécurité) font l’objet d’actions priorisées.
     </p>
 
-    <h4>6.7.4 Plan de communication</h4>
+    <h4>6.9.4 Plan de communication</h4>
     <table>
       <thead>
         <tr>
@@ -2712,7 +2807,7 @@
       </tbody>
     </table>
 
-    <h4>6.7.5 Parallélisation des tâches et gestion multi-projets</h4>
+    <h4>6.9.5 Parallélisation des tâches et gestion multi-projets</h4>
     <p>
       Certains projets (par exemple le déploiement d’Office 365) peuvent être menés en parallèle
       de l’App mobile client, car ils mobilisent des ressources différentes (infrastructures VS dev
@@ -2720,7 +2815,7 @@
       (architectes, développeurs clés, DSI).
     </p>
 
-    <h4>6.7.6 Tableau de bord de suivi des indicateurs du projet</h4>
+    <h4>6.9.6 Tableau de bord de suivi des indicateurs du projet</h4>
     <div class="card">
       <div class="card-header">
         Dashboard projet – Application mobile client
@@ -2801,7 +2896,7 @@
       </table>
     </div>
 
-    <h4>6.7.7 Matrice RACI – Répartition des responsabilités</h4>
+    <h4>6.9.7 Matrice RACI – Répartition des responsabilités</h4>
     <table>
       <thead>
         <tr>
