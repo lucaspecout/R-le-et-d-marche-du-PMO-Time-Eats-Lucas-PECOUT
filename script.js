@@ -310,51 +310,6 @@ function renderRadarCharts() {
   });
 }
 
-function initSimulation() {
-  const simulateBtn = document.getElementById('simulateBtn');
-  const resetBtn = document.getElementById('resetBtn');
-  const deliveryProgress = document.getElementById('deliveryProgress');
-  const simulationValue = document.getElementById('simulationValue');
-  const focusLabel = document.getElementById('focusLabel');
-  const runwayLabel = document.getElementById('runwayLabel');
-  const peopleLabel = document.getElementById('peopleLabel');
-
-  if (!simulateBtn || !resetBtn) return;
-
-  simulateBtn.addEventListener('click', () => {
-    simulateBtn.disabled = true;
-    simulateBtn.textContent = 'Simulation en cours…';
-
-    const target = 50 + Math.random() * 45;
-    deliveryProgress.style.width = `${target}%`;
-    deliveryProgress.setAttribute('aria-valuenow', Math.round(target).toString());
-    deliveryProgress.setAttribute('aria-valuetext', `${Math.round(target)}%`);
-    simulationValue.textContent = `${Math.round(target)}% livrés`;
-
-    focusLabel.textContent = target > 75 ? 'Mode accéléré' : 'Flux stable';
-    runwayLabel.textContent = `${(8 + Math.random() * 5).toFixed(1)} mois`;
-    peopleLabel.textContent = target > 70 ? 'Escouades boostées' : 'Cadence nominale';
-
-    setTimeout(() => {
-      simulateBtn.disabled = false;
-      simulateBtn.textContent = 'Lancer la simulation';
-    }, 800);
-  });
-
-  resetBtn.addEventListener('click', () => {
-    deliveryProgress.style.width = '0%';
-    deliveryProgress.setAttribute('aria-valuenow', '0');
-    deliveryProgress.setAttribute('aria-valuetext', '0%');
-    simulationValue.textContent = 'Prêt';
-    focusLabel.textContent = 'Priorité mobile';
-    runwayLabel.textContent = '10,5 mois';
-    peopleLabel.textContent = 'Escouades prêtes';
-
-    simulateBtn.disabled = false;
-    simulateBtn.textContent = 'Lancer la simulation';
-  });
-}
-
 function initToc() {
   const toc = document.getElementById('toc');
   if (!toc) return;
@@ -457,11 +412,62 @@ function initProgressObserver() {
   });
 }
 
+function initScenarioDeck() {
+  const buttons = document.querySelectorAll('.scenario-toggle');
+  const nameEl = document.getElementById('scenarioName');
+  const descriptionEl = document.getElementById('scenarioDescription');
+  const moodEl = document.getElementById('scenarioMood');
+  const deliveryBar = document.getElementById('scenarioDeliveryBar');
+  const riskBar = document.getElementById('scenarioRiskBar');
+  const velocityBar = document.getElementById('scenarioVelocityBar');
+  const deliveryValue = document.getElementById('scenarioDeliveryValue');
+  const riskValue = document.getElementById('scenarioRiskValue');
+  const velocityValue = document.getElementById('scenarioVelocityValue');
+
+  if (!buttons.length || !nameEl || !deliveryBar) return;
+
+  const setBar = (bar, value, max, text) => {
+    const bounded = Math.max(0, Math.min(value, max));
+    const ratio = (bounded / max) * 100;
+    bar.style.width = `${ratio}%`;
+    bar.setAttribute('aria-valuenow', bounded.toString());
+    bar.setAttribute('aria-valuetext', text);
+  };
+
+  const update = (button) => {
+    buttons.forEach((btn) => btn.classList.remove('active'));
+    button.classList.add('active');
+
+    const delivery = Number(button.dataset.delivery || 0);
+    const risk = Number(button.dataset.risk || 0);
+    const velocity = Number(button.dataset.velocity || 0);
+
+    nameEl.textContent = button.dataset.name || 'Scénario';
+    descriptionEl.textContent = button.dataset.description || '';
+    moodEl.textContent = button.dataset.mood || '';
+
+    setBar(deliveryBar, delivery, 100, `${delivery}%`);
+    setBar(riskBar, risk, 100, `${risk}%`);
+    setBar(velocityBar, velocity, 120, `${velocity} pts`);
+
+    deliveryValue.textContent = `${delivery}%`;
+    riskValue.textContent = `${risk}%`;
+    velocityValue.textContent = `${velocity} pts`;
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => update(button));
+  });
+
+  const active = document.querySelector('.scenario-toggle.active') || buttons[0];
+  update(active);
+}
+
 function init() {
   initVelocityControl();
   initRiskLab();
   renderRadarCharts();
-  initSimulation();
+  initScenarioDeck();
   initToc();
   initInteractiveTables();
 
