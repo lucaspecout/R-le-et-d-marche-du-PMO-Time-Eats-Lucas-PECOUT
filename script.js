@@ -2,27 +2,45 @@ function animateCards() {
   const elements = document.querySelectorAll('.animate');
   const reveal = (el) => el.classList.add('visible');
 
-  if (!('IntersectionObserver' in window)) {
-    elements.forEach(reveal);
-    return;
-  }
+  // Fallback manuel basé sur le défilement pour garantir la compatibilité desktop/mobile
+  const items = Array.from(elements);
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        reveal(entry.target);
-        observer.unobserve(entry.target);
+  const checkVisibility = () => {
+    const viewportBottom = window.innerHeight * 0.92;
+
+    items.forEach((el) => {
+      if (el.classList.contains('visible')) return;
+
+      const rect = el.getBoundingClientRect();
+      const delay = Number(el.dataset.animDelay);
+      if (!Number.isNaN(delay)) {
+        el.style.setProperty('--delay', `${delay}s`);
+      }
+
+      if (rect.top <= viewportBottom && rect.bottom >= 0) {
+        reveal(el);
       }
     });
-  }, { threshold: 0.16 });
 
-  elements.forEach((el) => {
-    const delay = Number(el.dataset.animDelay);
-    if (!Number.isNaN(delay)) {
-      el.style.setProperty('--delay', `${delay}s`);
+    if (items.every((el) => el.classList.contains('visible'))) {
+      window.removeEventListener('scroll', scheduleCheck, { passive: true });
+      window.removeEventListener('resize', scheduleCheck);
     }
-    observer.observe(el);
-  });
+  };
+
+  let ticking = false;
+  const scheduleCheck = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      checkVisibility();
+      ticking = false;
+    });
+  };
+
+  window.addEventListener('scroll', scheduleCheck, { passive: true });
+  window.addEventListener('resize', scheduleCheck);
+  scheduleCheck();
 }
 
 function initTiltCards() {
