@@ -1,12 +1,61 @@
 function animateCards() {
-  document.querySelectorAll('.animate').forEach((el) => {
-    el.classList.add('visible');
-    el.style.removeProperty('--delay');
-  });
+  const cards = document.querySelectorAll('.animate');
+  if (!cards.length) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const showCard = (card) => {
+    const delay = card.dataset.animDelay || card.style.getPropertyValue('--delay') || '0s';
+    card.style.setProperty('--delay', delay);
+    card.classList.add('visible');
+  };
+
+  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    cards.forEach(showCard);
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        showCard(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.35 });
+
+  cards.forEach((card) => observer.observe(card));
 }
 
 function initTiltCards() {
-  // Animations désactivées : aucun effet de tilt appliqué
+  const cards = document.querySelectorAll('.tilt-card');
+  if (!cards.length) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) return;
+
+  cards.forEach((card) => {
+    let rafId;
+
+    const handleMove = (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 12;
+      const y = ((event.clientY - rect.top) / rect.height - 0.5) * -12;
+
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        card.style.transform = `rotateX(${y}deg) rotateY(${x}deg)`;
+      });
+    };
+
+    const reset = () => {
+      cancelAnimationFrame(rafId);
+      card.style.transform = '';
+    };
+
+    card.addEventListener('pointermove', handleMove);
+    card.addEventListener('pointerleave', reset);
+  });
 }
 
 function initNebula() {
@@ -384,15 +433,38 @@ function initInteractiveTables() {
 }
 
 function initProgressObserver() {
-  // Animations désactivées : les jauges conservent leur largeur initiale
+  if (!('IntersectionObserver' in window)) return;
+
+  const progressBars = Array.from(document.querySelectorAll('.bar-fill, .kpi-bar-fill, .gantt-bar-fill'))
+    .filter((el) => el.style.width);
+
+  if (!progressBars.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const target = entry.target;
+        target.style.width = target.dataset.targetWidth || target.style.width;
+        observer.unobserve(target);
+      }
+    });
+  }, { threshold: 0.25 });
+
+  progressBars.forEach((bar) => {
+    bar.dataset.targetWidth = bar.style.width;
+    bar.style.width = '0%';
+    observer.observe(bar);
+  });
 }
 
 function init() {
   animateCards();
+  initTiltCards();
   initVelocityControl();
   initRiskLab();
   renderRadarCharts();
   initSimulation();
+  initProgressObserver();
   initToc();
   initInteractiveTables();
 

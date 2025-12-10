@@ -152,6 +152,9 @@
 
     .tilt-card {
       transform-style: preserve-3d;
+      perspective: 1000px;
+      transition: transform 180ms ease;
+      will-change: transform;
     }
 
     .metric-value {
@@ -311,13 +314,17 @@
     }
 
     .animate {
-      opacity: 1;
-      transform: none;
-      transition: none;
-      transition-delay: 0s;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 450ms ease, transform 450ms ease;
+      transition-delay: var(--delay, 0s);
+      will-change: opacity, transform;
     }
 
-    .animate.visible { opacity: 1; }
+    .animate.visible {
+      opacity: 1;
+      transform: none;
+    }
 
     /* Animations cross-navigateurs */
     .motion-surface {
