@@ -125,6 +125,8 @@
       transition: transform 300ms ease, box-shadow 300ms ease;
     }
 
+    .neo-card > * { position: relative; z-index: 1; }
+
     .neo-card::after {
       content: "";
       position: absolute;
@@ -300,12 +302,127 @@
     .animate {
       opacity: 0;
       transform: translateY(16px);
-      transition: opacity 450ms ease, transform 450ms ease;
+      transition: opacity 500ms ease, transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: var(--delay, 0s);
     }
 
     .animate.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* Animations cross-navigateurs */
+    .motion-surface {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .motion-surface::before {
+      content: "";
+      position: absolute;
+      inset: -30% -10% auto auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,122,60,0.18), transparent 60%);
+      opacity: 0.7;
+      filter: blur(18px);
+      animation: drift 16s ease-in-out infinite alternate;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .motion-surface::after {
+      content: "";
+      position: absolute;
+      inset: auto -30% -40% auto;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,99,235,0.18), transparent 65%);
+      opacity: 0.55;
+      filter: blur(22px);
+      animation: drift 18s ease-in-out infinite reverse;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .motion-beam {
+      position: absolute;
+      inset: -20% auto -20% -70%;
+      width: 60%;
+      background: linear-gradient(120deg, rgba(255,255,255,0), rgba(255,255,255,0.4), rgba(255,255,255,0));
+      transform: rotate(10deg);
+      filter: blur(10px);
+      animation: sweep 9s linear infinite;
+      opacity: 0.7;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .motion-grid {
+      background-size: 22px 22px;
+      background-image: linear-gradient(rgba(17,24,39,0.05) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(17,24,39,0.05) 1px, transparent 1px);
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0));
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      animation: pan 28s linear infinite;
+      pointer-events: none;
+    }
+
+    .floating { animation: float 5s ease-in-out infinite; }
+    .micro-pulse { animation: glowPulse 3.2s ease-in-out infinite; }
+    .shimmer { position: relative; overflow: hidden; }
+    .shimmer::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.25), rgba(255,255,255,0));
+      transform: translateX(-100%);
+      animation: shimmer 2.6s infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-120%); }
+      100% { transform: translateX(120%); }
+    }
+
+    @keyframes drift {
+      0% { transform: translate3d(0,0,0) scale(1); }
+      50% { transform: translate3d(-12px, 10px,0) scale(1.05); }
+      100% { transform: translate3d(14px, -8px,0) scale(0.98); }
+    }
+
+    @keyframes sweep {
+      0% { transform: translateX(0) rotate(10deg); }
+      100% { transform: translateX(240%) rotate(10deg); }
+    }
+
+    @keyframes pan {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-22px); }
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+      50% { box-shadow: 0 0 0 12px rgba(34,197,94,0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0ms !important;
+      }
     }
 
     /* Sommaire interactif */
@@ -385,6 +502,8 @@
       border-bottom: 1px solid rgba(0,0,0,0.04);
       position: relative;
     }
+
+    header.hero > * { position: relative; z-index: 1; }
 
     .hero-title {
       font-size: 2.3rem;
@@ -657,6 +776,8 @@
       background: #ffffffdd;
     }
 
+    .kpi-card > * { position: relative; z-index: 1; }
+
     .kpi-donut {
       width: 52px;
       height: 52px;
@@ -856,14 +977,15 @@
 <div class="page">
 
   <!-- COUVERTURE -->
-  <header class="hero">
-    <div class="hero-badge"><span></span> Dossier PMO – Niveau professionnel</div>
-    <h1 class="hero-title">Rôle et démarche du PMO pour un pilotage stratégique efficace</h1>
+  <header class="hero motion-surface animate" data-anim-delay="0.02">
+    <div class="motion-grid" aria-hidden="true"></div>
+    <div class="hero-badge micro-pulse"><span></span> Dossier PMO – Niveau professionnel</div>
+    <h1 class="hero-title floating">Rôle et démarche du PMO pour un pilotage stratégique efficace</h1>
     <p class="hero-subtitle">Supervision du portefeuille projets de la DSI de Time’Eats & projet « Application mobile client »</p>
 
     <div class="hero-row">
       <div>
-        <div class="hero-meta">
+        <div class="hero-meta floating">
           <div class="chip"><span class="chip-dot"></span> Bloc INFMSIAL2V</div>
           <div class="chip">Étudiant : <strong>Lucas PECOUT</strong></div>
           <div class="chip">Promotion : MICSI24</div>
@@ -874,7 +996,8 @@
 
     <!-- Mini dashboard de couverture -->
     <div class="kpi-grid">
-      <div class="kpi-card">
+      <div class="kpi-card motion-surface animate" data-anim-delay="0.08">
+        <div class="motion-beam" aria-hidden="true"></div>
         <div class="kpi-donut" style="background: conic-gradient(#22c55e 0 92%, #e5e7eb 92% 100%);">
           <span>92%</span>
         </div>
@@ -883,7 +1006,8 @@
           <div class="kpi-text-sub">Projets DSI liés aux objectifs Time’Eats</div>
         </div>
       </div>
-      <div class="kpi-card">
+      <div class="kpi-card motion-surface animate shimmer" data-anim-delay="0.14">
+        <div class="motion-beam" aria-hidden="true"></div>
         <div class="kpi-donut" style="background: conic-gradient(#facc15 0 78%, #e5e7eb 78% 100%);">
           <span>78%</span>
         </div>
@@ -892,7 +1016,8 @@
           <div class="kpi-text-sub">Suivi macro du portefeuille</div>
         </div>
       </div>
-      <div class="kpi-card">
+      <div class="kpi-card motion-surface animate" data-anim-delay="0.18">
+        <div class="motion-beam" aria-hidden="true"></div>
         <div class="kpi-donut" style="background: conic-gradient(#38bdf8 0 94%, #e5e7eb 94% 100%);">
           <span>94%</span>
         </div>
@@ -906,7 +1031,8 @@
 
   <div class="immersive-wrapper">
     <canvas id="nebula" class="nebula-canvas" aria-hidden="true"></canvas>
-    <section class="immersive-section">
+    <section class="immersive-section motion-surface animate" data-anim-delay="0.26">
+      <div class="motion-grid" aria-hidden="true"></div>
       <div class="immersive-header">
         <div>
           <p class="chip">Lab interactif</p>
@@ -916,11 +1042,12 @@
             comment les équipes et les risques réagissent. Tout est interactif et animé pour faire vivre le dossier.
           </p>
         </div>
-        <div class="live-pill"><span class="live-dot"></span> Effets dynamiques activés</div>
+        <div class="live-pill shimmer"><span class="live-dot micro-pulse"></span> Effets dynamiques activés</div>
       </div>
 
       <div class="immersive-grid">
-        <div class="neo-card tilt-card animate" id="velocityCard">
+        <div class="neo-card tilt-card animate motion-surface" id="velocityCard" data-anim-delay="0.32">
+          <div class="motion-beam" aria-hidden="true"></div>
           <div class="glow-panel"></div>
           <div class="chip-ghost">Vélocité & alignement</div>
           <div class="metric-value" id="velocityValue">88%</div>
@@ -946,7 +1073,8 @@
           </div>
         </div>
 
-        <div class="neo-card animate" id="riskLab">
+        <div class="neo-card animate motion-surface" id="riskLab" data-anim-delay="0.38">
+          <div class="motion-beam" aria-hidden="true"></div>
           <div class="chip-ghost">Stress test risques</div>
           <div class="metric-value" id="riskScore">54</div>
           <div class="metric-sub">Indice de criticité agrégé (0-100)</div>
@@ -961,7 +1089,8 @@
           <div class="bar-track" aria-hidden="true"><div class="bar-fill" id="riskBar"></div></div>
         </div>
 
-        <div class="neo-card animate" id="simulationCard">
+        <div class="neo-card animate motion-surface" id="simulationCard" data-anim-delay="0.44">
+          <div class="motion-beam" aria-hidden="true"></div>
           <div class="chip-ghost">Simulation express</div>
           <div class="metric-value" id="simulationValue">Prêt</div>
           <div class="metric-sub">Lancez l’impact planning + capacity en 5 secondes</div>

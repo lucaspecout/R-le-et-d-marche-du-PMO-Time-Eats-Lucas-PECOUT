@@ -1,14 +1,28 @@
 function animateCards() {
+  const elements = document.querySelectorAll('.animate');
+  const reveal = (el) => el.classList.add('visible');
+
+  if (!('IntersectionObserver' in window)) {
+    elements.forEach(reveal);
+    return;
+  }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        reveal(entry.target);
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.16 });
 
-  document.querySelectorAll('.animate').forEach((el) => observer.observe(el));
+  elements.forEach((el) => {
+    const delay = Number(el.dataset.animDelay);
+    if (!Number.isNaN(delay)) {
+      el.style.setProperty('--delay', `${delay}s`);
+    }
+    observer.observe(el);
+  });
 }
 
 function initTiltCards() {
