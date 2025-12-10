@@ -153,6 +153,7 @@ function initSimulation() {
   simulateBtn.addEventListener('click', () => {
     const target = 50 + Math.random() * 45;
     deliveryProgress.style.width = `${target}%`;
+    deliveryProgress.setAttribute('aria-valuenow', Math.round(target).toString());
     simulationValue.textContent = 'Simulation calculée';
 
     focusLabel.textContent = target > 75 ? 'Mode accéléré' : 'Flux stable';
@@ -162,6 +163,7 @@ function initSimulation() {
 
   resetBtn.addEventListener('click', () => {
     deliveryProgress.style.width = '0%';
+    deliveryProgress.setAttribute('aria-valuenow', '0');
     simulationValue.textContent = 'Prêt';
     focusLabel.textContent = 'Priorité mobile';
     runwayLabel.textContent = '10,5 mois';
@@ -174,7 +176,51 @@ function initToc() {
   if (!toc) return;
 
   const headings = Array.from(document.querySelectorAll('main h2'))
-    .filter((heading) => heading.textContent.trim().toLowerCase() !== 'sommaire');
+    .filter((heading) => heading.textContent.trim().toLowerCase() !== 'sommaire')
+    .map((heading, index) => {
+      if (!heading.id) {
+        const slug = heading.textContent.toLowerCase()
+          .replace(/[^a-z0-9àâäéèêëîïôöùûüç\s-]/gi, '')
+          .trim()
+          .replace(/\s+/g, '-');
+        heading.id = `section-${index + 1}-${slug}`;
+      }
+      return heading;
+    });
+
+  if (!toc.childElementCount) {
+    headings.forEach((heading, index) => {
+      const item = document.createElement('li');
+      item.className = 'toc-item';
+
+      const pill = document.createElement('span');
+      pill.className = 'toc-pill';
+      pill.textContent = (index + 1).toString().padStart(2, '0');
+
+      const link = document.createElement('a');
+      link.className = 'toc-link';
+      link.href = `#${heading.id}`;
+      link.innerHTML = `${heading.textContent}<small>Défilement direct</small>`;
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        document.getElementById(heading.id)?.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      item.append(pill, link);
+      toc.appendChild(item);
+    });
+  }
+
+  const links = Array.from(toc.querySelectorAll('a.toc-link'));
+  links.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const targetId = link.getAttribute('href')?.replace('#', '') || '';
+      const targetHeading = document.getElementById(targetId);
+      if (!targetHeading) return;
+      event.preventDefault();
+      targetHeading.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -187,35 +233,7 @@ function initToc() {
     });
   }, { threshold: 0.4 });
 
-  headings.forEach((heading, index) => {
-    if (!heading.id) {
-      const slug = heading.textContent.toLowerCase()
-        .replace(/[^a-z0-9àâäéèêëîïôöùûüç\s-]/gi, '')
-        .trim()
-        .replace(/\s+/g, '-');
-      heading.id = `section-${index + 1}-${slug}`;
-    }
-
-    const item = document.createElement('li');
-    item.className = 'toc-item';
-
-    const pill = document.createElement('span');
-    pill.className = 'toc-pill';
-    pill.textContent = (index + 1).toString().padStart(2, '0');
-
-    const link = document.createElement('a');
-    link.className = 'toc-link';
-    link.href = `#${heading.id}`;
-    link.innerHTML = `${heading.textContent}<small>Défilement direct</small>`;
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      document.getElementById(heading.id)?.scrollIntoView({ behavior: 'smooth' });
-    });
-
-    item.append(pill, link);
-    toc.appendChild(item);
-    observer.observe(heading);
-  });
+  headings.forEach((heading) => observer.observe(heading));
 }
 
 function initInteractiveTables() {
