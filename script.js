@@ -1,4 +1,6 @@
 window.addEventListener("load", function () {
+  Chart.defaults.color = "#e2e8f0";
+  Chart.defaults.borderColor = "rgba(255,255,255,0.08)";
   const ctxRadarGlobal = document.getElementById("radarGlobal");
   if (ctxRadarGlobal) {
     new Chart(ctxRadarGlobal, {
@@ -41,13 +43,16 @@ window.addEventListener("load", function () {
       options: {
         responsive: true,
         plugins: {
-          legend: { position: "bottom" }
+          legend: { position: "bottom", labels: { color: "#e2e8f0" } }
         },
         scales: {
           r: {
             suggestedMin: 0,
             suggestedMax: 5,
-            ticks: { stepSize: 1 }
+            angleLines: { color: "rgba(255,255,255,0.12)" },
+            grid: { color: "rgba(255,255,255,0.12)" },
+            ticks: { stepSize: 1, backdropColor: "transparent" },
+            pointLabels: { color: "#cbd5e1" }
           }
         }
       }
@@ -96,13 +101,57 @@ window.addEventListener("load", function () {
       options: {
         responsive: true,
         plugins: {
-          legend: { position: "bottom" }
+          legend: { position: "bottom", labels: { color: "#e2e8f0" } }
         },
         scales: {
           r: {
             suggestedMin: 0,
             suggestedMax: 5,
-            ticks: { stepSize: 1 }
+            angleLines: { color: "rgba(255,255,255,0.12)" },
+            grid: { color: "rgba(255,255,255,0.12)" },
+            ticks: { stepSize: 1, backdropColor: "transparent" },
+            pointLabels: { color: "#cbd5e1" }
+          }
+        }
+      }
+    });
+  }
+
+  const velocityCtx = document.getElementById("trendVelocity");
+  if (velocityCtx) {
+    new Chart(velocityCtx, {
+      type: "line",
+      data: {
+        labels: ["S10", "S11", "S12", "S13", "S14"],
+        datasets: [
+          {
+            label: "Vélocité équipe produit",
+            data: [24, 26, 29, 28, 32],
+            borderColor: "#22c55e",
+            backgroundColor: "rgba(34,197,94,0.15)",
+            tension: 0.35,
+            fill: true,
+            pointRadius: 4,
+            pointBackgroundColor: "#22c55e"
+          },
+          {
+            label: "Capacité cible",
+            data: [26, 27, 28, 29, 30],
+            borderDash: [6, 4],
+            borderColor: "#38bdf8",
+            pointRadius: 0
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { color: "rgba(255,255,255,0.08)" } },
+          y: {
+            beginAtZero: true,
+            grid: { color: "rgba(255,255,255,0.08)" },
+            ticks: { stepSize: 5 }
           }
         }
       }
@@ -126,8 +175,8 @@ window.addEventListener("load", function () {
           {
             label: "Durée relative (en semaines)",
             data: [3, 3, 16, 4, 3, 1],
-            backgroundColor: "rgba(37,99,235,0.6)",
-            borderColor: "#1d4ed8",
+            backgroundColor: "rgba(59,130,246,0.6)",
+            borderColor: "#93c5fd",
             borderWidth: 1,
             borderRadius: 8
           }
