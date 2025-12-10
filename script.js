@@ -1,4 +1,135 @@
 window.addEventListener("load", function () {
+  const portfolioData = [
+    {
+      name: "Application mobile",
+      type: "Croissance",
+      owner: "PO Mobile",
+      status: "On track",
+      progress: 72,
+      milestone: "Recette T+3 semaines"
+    },
+    {
+      name: "CRM & fidélité",
+      type: "Croissance",
+      owner: "Product CRM",
+      status: "A surveiller",
+      progress: 58,
+      milestone: "Sprint 3 : scoring client"
+    },
+    {
+      name: "Cloud & sécu",
+      type: "Optimisation",
+      owner: "CTO",
+      status: "Critique",
+      progress: 36,
+      milestone: "Audit OAuth en cours"
+    },
+    {
+      name: "MAJ Paie",
+      type: "Réglementaire",
+      owner: "DSI",
+      status: "On track",
+      progress: 90,
+      milestone: "Livraison légale T3"
+    },
+    {
+      name: "App mobile fournisseur",
+      type: "Optimisation",
+      owner: "PO Supply",
+      status: "On track",
+      progress: 64,
+      milestone: "Pilote traiteurs Bretagne"
+    },
+    {
+      name: "Design system UI",
+      type: "Croissance",
+      owner: "Lead UX",
+      status: "A surveiller",
+      progress: 48,
+      milestone: "Tokens UI validés"
+    }
+  ];
+
+  const tableBody = document.querySelector("#portfolioTable tbody");
+  const searchInput = document.getElementById("portfolioSearch");
+  const statusSelect = document.getElementById("portfolioStatus");
+  const segPills = document.querySelectorAll(".seg-pill");
+  const resetBtn = document.getElementById("resetFilters");
+  const actionHint = document.getElementById("actionHint");
+  let activeType = "all";
+
+  function statusClass(status) {
+    if (status === "On track") return "status-green";
+    if (status === "A surveiller") return "status-amber";
+    return "status-red";
+  }
+
+  function barColor(value) {
+    if (value >= 75) return "linear-gradient(90deg,#22c55e,#16a34a)";
+    if (value >= 50) return "linear-gradient(90deg,#f59e0b,#facc15)";
+    return "linear-gradient(90deg,#ef4444,#f97316)";
+  }
+
+  function renderTable(rows) {
+    tableBody.innerHTML = "";
+    rows.forEach((row) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td><strong>${row.name}</strong><br><span class="muted">${row.type}</span></td>
+        <td>${row.type}</td>
+        <td>${row.owner}</td>
+        <td><span class="status-chip ${statusClass(row.status)}">${row.status}</span></td>
+        <td>
+          <div class="micro-progress"><span style="width:${row.progress}%; background:${barColor(row.progress)}"></span></div>
+        </td>
+        <td>${row.milestone}</td>
+      `;
+      tr.addEventListener("dblclick", () => {
+        tableBody.querySelectorAll("tr").forEach((r) => r.classList.remove("row-active"));
+        tr.classList.add("row-active");
+        actionHint.textContent = `Actions rapides • ${row.name} : ouvrir la fiche projet, envoyer un point d'alerte ou simuler un re-plan.`;
+      });
+      tableBody.appendChild(tr);
+    });
+  }
+
+  function filterRows() {
+    const search = searchInput.value.toLowerCase();
+    const statusFilter = statusSelect.value;
+    const filtered = portfolioData.filter((row) => {
+      const matchesSearch =
+        row.name.toLowerCase().includes(search) ||
+        row.owner.toLowerCase().includes(search) ||
+        row.type.toLowerCase().includes(search);
+      const matchesStatus = statusFilter === "all" || row.status === statusFilter;
+      const matchesType = activeType === "all" || row.type === activeType;
+      return matchesSearch && matchesStatus && matchesType;
+    });
+    renderTable(filtered);
+  }
+
+  if (tableBody) {
+    renderTable(portfolioData);
+    searchInput.addEventListener("input", filterRows);
+    statusSelect.addEventListener("change", filterRows);
+    segPills.forEach((pill) =>
+      pill.addEventListener("click", () => {
+        segPills.forEach((p) => p.classList.remove("active"));
+        pill.classList.add("active");
+        activeType = pill.dataset.type;
+        filterRows();
+      })
+    );
+    resetBtn.addEventListener("click", () => {
+      activeType = "all";
+      searchInput.value = "";
+      statusSelect.value = "all";
+      segPills.forEach((p) => p.classList.toggle("active", p.dataset.type === "all"));
+      actionHint.textContent = "Double-cliquez sur une ligne pour afficher les actions rapides.";
+      renderTable(portfolioData);
+    });
+  }
+
   Chart.defaults.color = "#e2e8f0";
   Chart.defaults.borderColor = "rgba(255,255,255,0.08)";
   const ctxRadarGlobal = document.getElementById("radarGlobal");
@@ -158,42 +289,44 @@ window.addEventListener("load", function () {
     });
   }
 
-  const ctxGantt = document.getElementById("ganttProjet");
-  if (ctxGantt) {
-    new Chart(ctxGantt, {
-      type: "bar",
-      data: {
-        labels: [
-          "Cadrage & besoins",
-          "Conception",
-          "Développement",
-          "Tests & débogage",
-          "Recette utilisateur",
-          "Mise en production"
-        ],
-        datasets: [
-          {
-            label: "Durée relative (en semaines)",
-            data: [3, 3, 16, 4, 3, 1],
-            backgroundColor: "rgba(59,130,246,0.6)",
-            borderColor: "#93c5fd",
-            borderWidth: 1,
-            borderRadius: 8
-          }
-        ]
-      },
-      options: {
-        indexAxis: "y",
-        responsive: true,
-        plugins: {
-          legend: { display: false },
-          title: { display: false }
+  ["ganttSynth", "ganttProjet"].forEach((id) => {
+    const canvas = document.getElementById(id);
+    if (canvas) {
+      new Chart(canvas, {
+        type: "bar",
+        data: {
+          labels: [
+            "Cadrage & besoins",
+            "Conception",
+            "Développement",
+            "Tests & débogage",
+            "Recette utilisateur",
+            "Mise en production"
+          ],
+          datasets: [
+            {
+              label: "Durée relative (en semaines)",
+              data: [3, 3, 16, 4, 3, 1],
+              backgroundColor: "rgba(59,130,246,0.6)",
+              borderColor: "#93c5fd",
+              borderWidth: 1,
+              borderRadius: 8
+            }
+          ]
         },
-        scales: {
-          x: { beginAtZero: true, ticks: { stepSize: 2 } },
-          y: { ticks: { autoSkip: false } }
+        options: {
+          indexAxis: "y",
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            title: { display: false }
+          },
+          scales: {
+            x: { beginAtZero: true, ticks: { stepSize: 2 } },
+            y: { ticks: { autoSkip: false } }
+          }
         }
-      }
-    });
-  }
+      });
+    }
+  });
 });
