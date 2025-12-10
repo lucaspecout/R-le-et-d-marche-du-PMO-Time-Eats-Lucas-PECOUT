@@ -816,41 +816,48 @@
 
     /* Radar */
     .radar {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #fff 20%, #eff6ff 55%, #dbeafe 100%);
-      border: 1px solid #bfdbfe;
       position: relative;
-      margin-top: 4px;
-      margin-bottom: 4px;
+      width: min(220px, 100%);
+      aspect-ratio: 1;
+      border-radius: 18px;
+      background: radial-gradient(circle at 45% 45%, #fff 25%, #eff6ff 55%, #dbeafe 100%);
+      border: 1px solid #bfdbfe;
+      box-shadow: inset 0 0 0 1px rgba(37,99,235,0.08);
+      padding: 12px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
     }
-    .radar-axis {
-      position: absolute;
-      width: 2px; height: 100%;
-      background: rgba(148,163,184,0.45);
-      left: 50%; top: 0;
-      transform-origin: center;
+    .radar canvas {
+      width: 100%;
+      height: 100%;
     }
-    .radar-axis:nth-child(1) { transform: translateX(-50%) rotate(0deg); }
-    .radar-axis:nth-child(2) { transform: translateX(-50%) rotate(72deg); }
-    .radar-axis:nth-child(3) { transform: translateX(-50%) rotate(144deg); }
-    .radar-axis:nth-child(4) { transform: translateX(-50%) rotate(216deg); }
-    .radar-axis:nth-child(5) { transform: translateX(-50%) rotate(288deg); }
-    .radar-ring {
-      position: absolute;
+    .radar-legend {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 8px 12px;
+      color: var(--secondary);
+    }
+    .radar-legend li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      padding: 6px 8px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #f9fafb;
+    }
+    .radar-swatch {
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
-      border: 1px solid rgba(148,163,184,0.35);
-    }
-    .radar-ring:nth-child(6) { width: 40px; height: 40px; top: 50px; left: 50px; }
-    .radar-ring:nth-child(7) { width: 80px; height: 80px; top: 30px; left: 30px; }
-    .radar-ring:nth-child(8) { width: 120px; height: 120px; top: 10px; left: 10px; }
-    .radar-fill {
-      position: absolute;
-      width: 100%; height: 100%;
-      background: radial-gradient(circle at 30% 20%, rgba(59,130,246,0.5), rgba(239,68,68,0.05));
-      mask-image: radial-gradient(circle at 50% 50%, black 0 60%, transparent 70%);
-      opacity: 0.85;
+      background: linear-gradient(135deg, #2563eb, #ff7a3c);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+      flex-shrink: 0;
     }
 
     .grid {
@@ -1746,17 +1753,11 @@
     <div class="schema-title">Diagramme radar – Comparaison globale</div>
     <div class="grid grid-2">
       <div>
-        <div class="radar">
-          <div class="radar-axis"></div>
-          <div class="radar-axis"></div>
-          <div class="radar-axis"></div>
-          <div class="radar-axis"></div>
-          <div class="radar-axis"></div>
-          <div class="radar-ring"></div>
-          <div class="radar-ring"></div>
-          <div class="radar-ring"></div>
-          <div class="radar-fill"></div>
-        </div>
+        <div
+          class="radar"
+          data-labels="Stratégie,Rentabilité,Risque,Charge (inverse),UX & image"
+          data-values="88,91,74,76,90"
+        ></div>
       </div>
       <div>
         <p>
@@ -1778,51 +1779,33 @@
           App mobile client
           <span class="badge">Radar projet</span>
         </div>
-        <div class="radar">
-          <div class="radar-axis"></div>
-          <div class="radar-axis"></div>
-          <div class="radar-axis"></div>
-          <div class="radar-axis"></div>
-          <div class="radar-axis"></div>
-          <div class="radar-ring"></div>
-          <div class="radar-ring"></div>
-          <div class="radar-ring"></div>
-          <div class="radar-fill"></div>
-        </div>
+        <div
+          class="radar"
+          data-labels="Stratégie,Rentabilité,Risque,Charge (inverse),UX & image"
+          data-values="95,92,68,78,96"
+        ></div>
         <p class="note">Profil très fort sur la stratégie, la rentabilité et l’UX.</p>
       </div>
       <div class="card">
         <div class="card-header">
           CRM
         </div>
-        <div class="radar">
-          <div class="radar-axis"></div>
-          <div class="radar-axis"></div>
-          <div class="radar-axis"></div>
-          <div class="radar-axis"></div>
-          <div class="radar-axis"></div>
-          <div class="radar-ring"></div>
-          <div class="radar-ring"></div>
-          <div class="radar-ring"></div>
-          <div class="radar-fill"></div>
-        </div>
+        <div
+          class="radar"
+          data-labels="Stratégie,Rentabilité,Risque,Charge (inverse),UX & image"
+          data-values="84,78,64,52,72"
+        ></div>
         <p class="note">Projet structurant, mais plus lourd en charge et en risques.</p>
       </div>
       <div class="card">
         <div class="card-header">
           Sauvegarde Cloud
         </div>
-        <div class="radar">
-          <div class="radar-axis"></div>
-          <div class="radar-axis"></div>
-          <div class="radar-axis"></div>
-          <div class="radar-axis"></div>
-          <div class="radar-axis"></div>
-          <div class="radar-ring"></div>
-          <div class="radar-ring"></div>
-          <div class="radar-ring"></div>
-          <div class="radar-fill"></div>
-        </div>
+        <div
+          class="radar"
+          data-labels="Stratégie,Rentabilité,Risque,Charge (inverse),UX & image"
+          data-values="90,88,72,80,84"
+        ></div>
         <p class="note">Projet très fort sur la maîtrise des risques et la conformité.</p>
       </div>
     </div>
