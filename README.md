@@ -13,3 +13,11 @@ docker run -p 8080:80 timeeats-pmo
 ```
 
 Ouvrez ensuite <http://localhost:8080> dans votre navigateur.
+
+### Avec Docker Compose
+
+```bash
+docker compose up --build
+```
+
+Le site est alors disponible sur <http://localhost:8080>. Pour arrêter les conteneurs, utilisez `docker compose down`.
