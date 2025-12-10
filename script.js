@@ -197,6 +197,91 @@ function initSimulation() {
   });
 }
 
+function initToc() {
+  const toc = document.getElementById('toc');
+  if (!toc) return;
+
+  const headings = Array.from(document.querySelectorAll('main h2'))
+    .filter((heading) => heading.textContent.trim().toLowerCase() !== 'sommaire');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const link = toc.querySelector(`a[href="#${entry.target.id}"]`);
+      if (!link) return;
+      if (entry.isIntersecting) {
+        toc.querySelectorAll('a.active').forEach((a) => a.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { threshold: 0.4 });
+
+  headings.forEach((heading, index) => {
+    if (!heading.id) {
+      const slug = heading.textContent.toLowerCase()
+        .replace(/[^a-z0-9àâäéèêëîïôöùûüç\s-]/gi, '')
+        .trim()
+        .replace(/\s+/g, '-');
+      heading.id = `section-${index + 1}-${slug}`;
+    }
+
+    const item = document.createElement('li');
+    item.className = 'toc-item';
+
+    const pill = document.createElement('span');
+    pill.className = 'toc-pill';
+    pill.textContent = (index + 1).toString().padStart(2, '0');
+
+    const link = document.createElement('a');
+    link.className = 'toc-link';
+    link.href = `#${heading.id}`;
+    link.innerHTML = `${heading.textContent}<small>Défilement animé</small>`;
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      document.getElementById(heading.id)?.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    item.append(pill, link);
+    toc.appendChild(item);
+    observer.observe(heading);
+  });
+}
+
+function initInteractiveTables() {
+  const tables = document.querySelectorAll('table');
+  tables.forEach((table) => {
+    table.classList.add('table-interactive');
+    table.querySelectorAll('tbody tr').forEach((row) => {
+      row.addEventListener('click', () => {
+        row.classList.toggle('row-highlight');
+      });
+    });
+  });
+}
+
+function initProgressObserver() {
+  const progressBars = document.querySelectorAll('.kpi-bar-fill, .gantt-bar-fill, .dash-progress-fill');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const target = entry.target.dataset.targetWidth;
+      if (target) {
+        entry.target.style.width = target;
+      }
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.2 });
+
+  progressBars.forEach((bar) => {
+    const width = bar.style.width;
+    if (width) {
+      bar.dataset.targetWidth = width;
+      bar.style.width = '0%';
+      observer.observe(bar);
+    }
+  });
+}
+
 function init() {
   animateCards();
   initTiltCards();
@@ -204,6 +289,9 @@ function init() {
   initVelocityControl();
   initRiskLab();
   initSimulation();
+  initToc();
+  initInteractiveTables();
+  initProgressObserver();
 }
 
 document.addEventListener('DOMContentLoaded', init);
