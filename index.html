@@ -3,405 +3,764 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Time'Eats PMO Portfolio</title>
+  <title>Rôle et démarche du PMO – Time’Eats – Lucas PECOUT</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
 </head>
 <body>
-  <header class="hero">
-    <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <p class="eyebrow">PMO – Portfolio Management</p>
-      <h1>Supervision du portefeuille projets de la DSI</h1>
-      <p class="lede">Vision globale, priorisation stratégique et pilotage opérationnel des initiatives Time’Eats, présenté sous forme de tableaux de bord interactifs.</p>
-      <div class="badges">
-        <span class="badge">Responsable : Lucas Pecout</span>
-        <span class="badge">Entreprise : Time'Eats</span>
-        <span class="badge">Méthode : Agile Scrum</span>
-      </div>
-    </div>
-  </header>
+  <div class="page">
+    <header class="hero">
+      <div class="hero-badge"><span></span> Dossier PMO – Niveau professionnel</div>
+      <h1 class="hero-title">Rôle et démarche du PMO pour un pilotage stratégique efficace</h1>
+      <p class="hero-subtitle">Supervision du portefeuille projets de la DSI de Time’Eats &amp; projet « Application mobile client »</p>
 
-  <main class="container">
-    <section class="grid metrics">
-      <article class="metric">
-        <p class="eyebrow">Vision stratégique</p>
-        <h3>Portefeuille DSI</h3>
-        <p class="muted">12 initiatives actives pilotées par la cellule PMO avec priorisation dynamique.</p>
-        <div class="metric__value">Top 3 : App mobile client, Sauvegarde cloud, App mobile fournisseur</div>
-      </article>
-      <article class="metric">
-        <p class="eyebrow">KPI phares</p>
-        <h3>Alignement &amp; performance</h3>
-        <ul class="inline-stats">
-          <li><strong>90%</strong><span>projets alignés stratégie</span></li>
-          <li><strong>95%</strong><span>risques critiques maîtrisés</span></li>
-          <li><strong>-10%</strong><span>Time-to-Value / an</span></li>
-        </ul>
-      </article>
-      <article class="metric metric--accent">
-        <p class="eyebrow">Projet phare</p>
-        <h3>Application mobile client</h3>
-        <p class="muted">Méthode Scrum – 8 mois – Budget 150 k€ – Livraison prévue en décembre.</p>
-        <div class="tags">
-          <span>UX/UI</span><span>CRM</span><span>Notifications</span><span>Sécurité MFA</span>
-        </div>
-      </article>
-    </section>
-
-    <section class="grid two-col">
-      <article class="card">
-        <h2>Présentation de Time’Eats</h2>
-        <p>Time’Eats s’appuie sur deux sites de production (Morlaix et Concarneau) et ambitionne de devenir la référence française de la restauration à domicile avec une plateforme web et mobile.</p>
-        <div class="chips">
-          <span>Production &amp; marketplace</span>
-          <span>Qualité &amp; proximité</span>
-          <span>Expansion nationale</span>
-        </div>
-      </article>
-      <article class="card">
-        <h2>Rôle du PMO</h2>
-        <ul class="checklist">
-          <li>Pilotage stratégique du portefeuille projets</li>
-          <li>Homogénéisation des pratiques de gestion</li>
-          <li>Contrôle et accompagnement opérationnel</li>
-        </ul>
-      </article>
-    </section>
-
-    <section class="card">
-      <div class="section-header">
+      <div class="hero-row">
         <div>
-          <p class="eyebrow">Objectifs SMART du portefeuille DSI</p>
-          <h2>Alignement, sécurité, performance</h2>
+          <div class="hero-meta">
+            <div class="chip"><span class="chip-dot"></span> Bloc INFMSIAL2V</div>
+            <div class="chip">Étudiant : <strong>Lucas PECOUT</strong></div>
+            <div class="chip">Promotion : MICSI24</div>
+            <div class="chip">Rôle : Responsable de la cellule PMO (cas pratique)</div>
+          </div>
         </div>
-        <span class="pill">Pilotage continu</span>
       </div>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>Objectif</th>
-              <th>KPI</th>
-              <th>Cible</th>
-              <th>Horizon</th>
-              <th>Responsable</th>
-            </tr>
-          </thead>
-          <tbody id="kpi-table"></tbody>
-        </table>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-donut" style="background: conic-gradient(#22c55e 0 92%, #e5e7eb 92% 100%);">
+            <span>92%</span>
+          </div>
+          <div>
+            <div class="kpi-text-title">Alignement stratégique</div>
+            <div class="kpi-text-sub">Projets DSI liés aux objectifs Time’Eats</div>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-donut" style="background: conic-gradient(#facc15 0 78%, #e5e7eb 78% 100%);">
+            <span>78%</span>
+          </div>
+          <div>
+            <div class="kpi-text-title">Projets dans les délais</div>
+            <div class="kpi-text-sub">Suivi macro du portefeuille</div>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-donut" style="background: conic-gradient(#38bdf8 0 94%, #e5e7eb 94% 100%);">
+            <span>94%</span>
+          </div>
+          <div>
+            <div class="kpi-text-title">Budget maîtrisé</div>
+            <div class="kpi-text-sub">Respect global des enveloppes</div>
+          </div>
+        </div>
       </div>
-    </section>
+    </header>
 
-    <section class="card">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow">Référentiel documentaire</p>
-          <h2>Documents clés pour sécuriser chaque projet</h2>
-        </div>
-        <span class="pill pill--blue">Standards PMO</span>
-      </div>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>Document</th>
-              <th>Moment</th>
-              <th>Objectif</th>
-              <th>Responsable</th>
-            </tr>
-          </thead>
-          <tbody id="docs-table"></tbody>
-        </table>
-      </div>
-    </section>
+    <main>
+      <h2>Sommaire</h2>
+      <p>
+        1. Introduction<br>
+        2. Time’Eats<br>
+        3. Rôle du PMO<br>
+        4. Objectif du rapport<br>
+        5. Définir, prioriser et faire vivre le portefeuille de projets<br>
+        6. Superviser et conduire un projet IT – « Application mobile client »<br>
+        7. Les principales méthodes de gestion de projet<br>
+        8. Clôturer le projet et capitaliser<br>
+        9. Conclusion<br>
+        10. Annexe – Glossaire<br>
+        11. Annexes – Modèles de documents PMO
+      </p>
 
-    <section class="grid two-col">
-      <article class="card">
-        <div class="section-header">
-          <div>
-            <p class="eyebrow">Grille stratégique</p>
-            <h2>Priorisation multicritères</h2>
-          </div>
-          <span class="pill pill--accent">Scores pondérés</span>
-        </div>
-        <canvas id="scoreChart" height="180"></canvas>
-      </article>
-      <article class="card">
-        <div class="section-header">
-          <div>
-            <p class="eyebrow">Radar comparatif</p>
-            <h2>Équilibre global du portefeuille</h2>
-          </div>
-          <span class="pill">Importance / ROI / Risques / Charge</span>
-        </div>
-        <canvas id="radarChart" height="180"></canvas>
-      </article>
-    </section>
+      <h2>1. Introduction</h2>
+      <p>
+        La transformation numérique de Time’Eats repose sur un nombre croissant de projets IT :
+        applications mobiles, modernisation de l’infrastructure, sécurité, CRM, outils collaboratifs…
+        Sans gouvernance structurée, ces projets peuvent rapidement perdre en cohérence, consommer
+        trop de ressources ou générer des risques non maîtrisés.
+      </p>
+      <p>
+        La mise en place d’un <strong>Project Management Office (PMO)</strong> au sein de la DSI répond à ce besoin.
+        Le PMO structure le portefeuille de projets, fournit un référentiel documentaire commun,
+        outille le pilotage par les KPI et accompagne les chefs de projet dans la réussite des initiatives.
+      </p>
 
-    <section class="grid two-col">
-      <article class="card">
-        <div class="section-header">
-          <div>
-            <p class="eyebrow">Macro-planning</p>
-            <h2>Roadmap 8 mois – App mobile client</h2>
-          </div>
-          <span class="pill pill--accent">Mai → Décembre</span>
-        </div>
-        <ul class="timeline" id="timeline"></ul>
-      </article>
-      <article class="card">
-        <div class="section-header">
-          <div>
-            <p class="eyebrow">Budget prévisionnel</p>
-            <h2>Répartition (150 k€)</h2>
-          </div>
-          <span class="pill pill--blue">Capex maîtrisé</span>
-        </div>
-        <div class="chart-box">
-          <canvas id="budgetChart" height="180"></canvas>
-        </div>
-        <ul class="legend" id="budget-legend"></ul>
-      </article>
-    </section>
-
-    <section class="card">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow">Tableau de bord portefeuille</p>
-          <h2>Planification, budget et priorités</h2>
-        </div>
-        <span class="pill pill--blue">Vue direction</span>
-      </div>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>Rang</th>
-              <th>Projet</th>
-              <th>Score</th>
-              <th>Début</th>
-              <th>Durée</th>
-              <th>Budget (k€)</th>
-            </tr>
-          </thead>
-          <tbody id="portfolio-table"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="grid two-col">
-      <article class="card">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow">Projet phare</p>
-          <h2>Application mobile client</h2>
-        </div>
-          <span class="pill pill--accent">Méthode Scrum</span>
-        </div>
-        <ul class="highlight-list">
-          <li>Objectif : expérience mobile intuitive pour commander, suivre et noter les prestations.</li>
-          <li>Périmètre : recherche, commande, paiement, suivi en temps réel, favoris, notation.</li>
-          <li>Jalons : Mai → Décembre (sprints de 3 semaines).</li>
-          <li>Budget : 150 k€ | Parties prenantes : PMO, DSI, Direction commerciale, ESN, utilisateurs pilotes.</li>
-        </ul>
-      </article>
-      <article class="card">
-        <div class="section-header">
-          <div>
-            <p class="eyebrow">Analyse SWOT</p>
-            <h2>Forces et vigilances</h2>
-          </div>
-          <span class="pill">Décider &amp; ajuster</span>
-        </div>
-        <div class="swot">
-          <div><h3>Forces</h3><p>Expertise technique interne, alignement stratégique, budget sécurisé.</p></div>
-          <div><h3>Faiblesses</h3><p>Dépendance prestataire, UX à valider, capacité limitée face aux retards.</p></div>
-          <div><h3>Opportunités</h3><p>Marché mobile en croissance, nouveaux partenariats possibles.</p></div>
-          <div><h3>Menaces</h3><p>Concurrence forte, risques sécurité, évolutions réglementaires.</p></div>
-        </div>
-      </article>
-    </section>
-
-    <section class="grid two-col">
-      <article class="card">
-        <div class="section-header">
-          <div>
-            <p class="eyebrow">Gestion des risques</p>
-            <h2>Matrice P × I</h2>
-          </div>
-          <span class="pill pill--blue">Surveillance active</span>
-        </div>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Risque</th>
-                <th>Prob.</th>
-                <th>Impact</th>
-                <th>Plan d’action</th>
-              </tr>
-            </thead>
-            <tbody id="risk-table"></tbody>
-          </table>
-        </div>
-      </article>
-      <article class="card">
-        <div class="section-header">
-          <div>
-            <p class="eyebrow">Plan de communication</p>
-            <h2>Rythme &amp; transparence</h2>
-          </div>
-          <span class="pill">Multi-publics</span>
-        </div>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Public</th>
-                <th>Canal</th>
-                <th>Fréquence</th>
-                <th>Responsable</th>
-              </tr>
-            </thead>
-            <tbody id="comms-table"></tbody>
-          </table>
-        </div>
-      </article>
-    </section>
-
-    <section class="grid two-col">
-      <article class="card">
-        <div class="section-header">
-          <div>
-            <p class="eyebrow">Pilotage opérationnel</p>
-            <h2>KPI du projet</h2>
-          </div>
-          <span class="pill pill--accent">Suivi hebdo</span>
-        </div>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Indicateur</th>
-                <th>Objectif</th>
-                <th>Fréquence</th>
-                <th>Seuil d’alerte</th>
-              </tr>
-            </thead>
-            <tbody id="project-kpi-table"></tbody>
-          </table>
-        </div>
-      </article>
-      <article class="card">
-        <div class="section-header">
-          <div>
-            <p class="eyebrow">RACI</p>
-            <h2>Rôles et responsabilités</h2>
-          </div>
-          <span class="pill">Clarté &amp; décision</span>
-        </div>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Livrable</th>
-                <th>PMO</th>
-                <th>Chef de projet</th>
-                <th>MOA</th>
-                <th>Tech/ESN</th>
-                <th>RSSI</th>
-              </tr>
-            </thead>
-            <tbody id="raci-table"></tbody>
-          </table>
-        </div>
-      </article>
-    </section>
-
-    <section class="card">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow">Backlog produit</p>
-          <h2>User stories prioritaires</h2>
-        </div>
-        <span class="pill">Sécuriser la valeur</span>
-      </div>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>En tant que…</th>
-              <th>Je veux…</th>
-              <th>Priorité</th>
-              <th>Critères d’acceptation</th>
-            </tr>
-          </thead>
-          <tbody id="backlog-table"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="grid two-col">
-      <article class="card">
-        <div class="section-header">
-          <div>
-            <p class="eyebrow">Classement alternatif</p>
-            <h2>Top rentabilité</h2>
-          </div>
-          <span class="pill pill--blue">ROI prioritaire</span>
-        </div>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Rang</th>
-                <th>Projet</th>
-                <th>Rentabilité</th>
-                <th>Budget</th>
-                <th>Durée</th>
-              </tr>
-            </thead>
-            <tbody id="roi-table"></tbody>
-          </table>
-        </div>
-      </article>
-      <article class="card">
-        <div class="section-header">
-          <div>
-            <p class="eyebrow">Cockpit hebdo</p>
-            <h2>Situation S4</h2>
-          </div>
-          <span class="pill pill--accent">Actions rapides</span>
-        </div>
-        <ul class="kpi-bars" id="weekly-kpis"></ul>
-      </article>
-    </section>
-
-    <section class="card">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow">Clôture &amp; capitalisation</p>
-          <h2>Recette, RETEX et amélioration continue</h2>
-        </div>
-        <span class="pill pill--blue">Boucle PDCA</span>
-      </div>
-      <ul class="highlight-list">
-        <li>Plan de tests exhaustif (fonctionnel, technique, intégration) avec PV de recette.</li>
-        <li>Réunion RETEX : enseignements, recommandations, base de connaissances partagée.</li>
-        <li>Plan d’amélioration continue versionné : UX, intégration, ergonomie.</li>
+      <h2>2. Time’Eats</h2>
+      <p>
+        Time’Eats est une entreprise innovante spécialisée dans la vente de plats préparés de qualité,
+        en partenariat avec des traiteurs, restaurateurs et chefs à domicile. Basée à Rennes, elle dispose
+        de deux sites de production (Morlaix et Concarneau) et de bureaux de représentation dans les
+        principales villes de Bretagne.
+      </p>
+      <p>
+        L’entreprise évolue vers un modèle hybride, combinant :
+      </p>
+      <ul>
+        <li>une activité de production de repas,</li>
+        <li>une mise en relation numérique entre clients et professionnels de la restauration à domicile.</li>
       </ul>
-    </section>
-  </main>
+      <p>
+        Dans cette optique, Time’Eats déploie une plateforme technologique web et mobile pour
+        faciliter la commande, la réservation, le suivi et la notation des prestations.
+      </p>
 
-  <footer class="footer">
-    <p>Time’Eats PMO — Portefeuille DSI &amp; Application mobile client — 2025</p>
-  </footer>
+      <div class="schema-title">Écosystème simplifié de Time’Eats</div>
+      <div class="schema-box">
+        <strong>Clients</strong> (web &amp; mobile)<br>
+        ↓<br>
+        <strong>Plateforme Time’Eats</strong> (CRM, apps, sécurité, infrastructure)<br>
+        ↓<br>
+        <strong>Traiteurs / Chefs / Partenaires logistiques</strong><br>
+        <span class="note">Les projets IT pilotés par la DSI et le PMO soutiennent cet écosystème.</span>
+      </div>
 
+      <h2>3. Rôle du PMO</h2>
+      <p>
+        Face à la multiplication des projets numériques, le PMO joue un rôle central pour garantir
+        la cohérence, la priorisation et la sécurisation des initiatives IT. Il agit comme un point de
+        convergence entre la stratégie de l’entreprise, la DSI et les métiers.
+      </p>
+      <ul>
+        <li><strong>Pilotage stratégique du portefeuille projets</strong> : alignement avec les objectifs business, arbitrages.</li>
+        <li><strong>Homogénéisation des pratiques de gestion de projet</strong> : référentiel, templates, méthodes.</li>
+        <li><strong>Accompagnement opérationnel</strong> : support aux chefs de projet, suivi des risques et des KPI.</li>
+      </ul>
+
+      <h2>4. Objectif du rapport</h2>
+      <p>
+        Ce rapport s’inscrit dans la montée en compétence de la cellule PMO au sein de la DSI de
+        Time’Eats. Il vise à :
+      </p>
+      <ul>
+        <li>structurer et prioriser le portefeuille projets de la DSI,</li>
+        <li>encadrer un projet IT stratégique (« Application mobile client »),</li>
+        <li>définir des outils de pilotage (tableaux de bord, KPI, risques),</li>
+        <li>mettre en place une démarche de capitalisation des retours d’expérience.</li>
+      </ul>
+
+      <div class="page-break"></div>
+      <h2>5. Définir, prioriser et faire vivre le portefeuille de projets</h2>
+
+      <h3>5.1 Objectifs stratégiques SMART du portefeuille DSI</h3>
+      <p>
+        Les objectifs du portefeuille sont formalisés selon la logique SMART (Spécifique, Mesurable,
+        Atteignable, Réaliste, Temporellement défini) pour répondre à la remarque « Portefeuille :
+        pas d’objectifs SMART ».
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Objectif SMART</th>
+            <th>Indicateur</th>
+            <th>Cible</th>
+            <th>Échéance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Porter à au moins 90 % la part des projets DSI explicitement reliés à un objectif stratégique Time’Eats (croissance, satisfaction client, conformité) d’ici fin d’année N.</td>
+            <td>% de projets reliés à un objectif stratégique documenté.</td>
+            <td>≥ 90 %</td>
+            <td>31/12/N</td>
+          </tr>
+          <tr>
+            <td>Réduire à moins de 5 % le taux moyen d’écart budget prévisionnel / réel sur le portefeuille d’ici 2 ans.</td>
+            <td>Écart moyen prévisionnel / réalisé.</td>
+            <td>≤ 5 %</td>
+            <td>31/12/N+1</td>
+          </tr>
+          <tr>
+            <td>Limiter la surcharge des ressources clés à moins de 20 % sur 90 % des semaines de l’année.</td>
+            <td>Taux de surcharge &gt; 100 % de capacité.</td>
+            <td>≤ 20 % des semaines</td>
+            <td>31/12/N</td>
+          </tr>
+          <tr>
+            <td>Augmenter de 10 % par an la rapidité de mise en marché (time-to-market) des projets orientés client final.</td>
+            <td>Délai entre validation et MEP.</td>
+            <td>-10 % / an</td>
+            <td>Révision annuelle</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>5.2 Référentiel documentaire des projets</h3>
+      <p>
+        Le PMO a établi un référentiel documentaire standardisé pour garantir la cohérence des
+        pratiques de gestion de projet et faciliter la capitalisation.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Document</th>
+            <th>Moment du cycle de vie</th>
+            <th>Objectifs principaux</th>
+            <th>Responsable</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Fiche projet</td><td>Avant lancement</td><td>Présenter la vision du projet, ses objectifs et sa valeur</td><td>Chef de projet</td></tr>
+          <tr><td>Charte projet</td><td>Lancement</td><td>Valider les engagements et le cadrage</td><td>PMO / Chef de projet</td></tr>
+          <tr><td>Cahier des charges / Backlog instancié</td><td>Initialisation</td><td>Formaliser les exigences, assurer la traçabilité exigences → tests → PV.</td><td>Chef de projet / Métier</td></tr>
+          <tr><td>Planning prévisionnel + WBS</td><td>Initialisation / Suivi</td><td>Planifier les tâches et jalons, structurer le travail.</td><td>Chef de projet</td></tr>
+          <tr><td>Plan de communication</td><td>Initialisation</td><td>Définir les flux d’information.</td><td>PMO</td></tr>
+          <tr><td>Plan de gestion des risques</td><td>Initialisation / Suivi</td><td>Identifier et piloter les risques.</td><td>PMO / Chef de projet</td></tr>
+          <tr><td>Procès-verbal de recette</td><td>Clôture</td><td>Valider la conformité des livrables.</td><td>Métier / Client</td></tr>
+          <tr><td>Rapport de clôture &amp; RETEX</td><td>Clôture</td><td>Capitaliser et mettre à jour les modèles.</td><td>PMO / Chef de projet</td></tr>
+        </tbody>
+      </table>
+
+      <h3>5.3 Grille de priorisation stratégique des projets</h3>
+      <p>
+        Pour répondre à la remarque « Manquent les hypothèses derrière les notes », le PMO a
+        formalisé les hypothèses de scoring et distingue les projets réglementaires obligatoires.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Critère</th>
+            <th>Description</th>
+            <th>Pondération</th>
+            <th>Hypothèses de notation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Importance stratégique</td>
+            <td>Contribution aux objectifs de croissance, d’innovation ou d’image.</td>
+            <td>40 %</td>
+            <td>
+              Note 5 : lié à un objectif stratégique majeur, ou projet réglementaire obligatoire.<br>
+              Note 3 : contribution indirecte / support.<br>
+              Note 1 : impact faible ou non démontré.
+            </td>
+          </tr>
+          <tr>
+            <td>Rentabilité attendue</td>
+            <td>Potentiel de retour sur investissement ou d’économies.</td>
+            <td>30 %</td>
+            <td>
+              Note basée sur un business case simplifié : gains estimés (k€/an) – charges projet.
+              Les hypothèses chiffrées sont documentées en annexe.
+            </td>
+          </tr>
+          <tr>
+            <td>Maîtrise des risques</td>
+            <td>Capacité à maîtriser les risques techniques, humains, délais.</td>
+            <td>20 %</td>
+            <td>
+              Note 5 : risques faibles et bien couverts.<br>
+              Note 3 : risques moyens avec plan de mitigation.<br>
+              Note 1 : risques élevés, dépendances fortes non sécurisées.
+            </td>
+          </tr>
+          <tr>
+            <td>Charge de travail (inverse)</td>
+            <td>Faisabilité au regard des ressources internes disponibles.</td>
+            <td>10 %</td>
+            <td>
+              Note dérivée des charges JH et des dépendances sur les ressources critiques
+              (architectes, lead dev). Faible charge = meilleure note.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        <strong>Formule :</strong> Score global = (Importance × 0,4) + (Rentabilité × 0,3) + (Risques × 0,2) + (Charge inversée × 0,1).<br>
+        <strong>Règle particulière :</strong> les projets <strong>réglementaires obligatoires</strong> (ex : MAJ Paie) sont classés
+        « Must » même si leur rentabilité financière est faible.
+      </p>
+
+      <h3>5.4 Calcul du score global et priorisation (avec hypothèses)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Projet</th>
+            <th>Type</th>
+            <th>Imp.</th>
+            <th>Rent.</th>
+            <th>Risq.</th>
+            <th>Charge (JH)</th>
+            <th>Note Charge*</th>
+            <th>Score global</th>
+            <th>Hypothèses principales</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>CRM</td><td>Croissance</td><td>5</td><td>3</td><td>4</td><td>300</td><td>2,5</td><td>4,0</td><td>Amélioration suivi client, ROI modéré, forte dépendance aux commerciaux.</td></tr>
+          <tr><td>App mobile client</td><td>Croissance</td><td>5</td><td>5</td><td>3</td><td>200</td><td>4,0</td><td>4,4</td><td>Hausse CA via canal mobile, image de marque, charges maîtrisées.</td></tr>
+          <tr><td>App mobile fournisseur</td><td>Optimisation</td><td>5</td><td>5</td><td>2</td><td>250</td><td>3,0</td><td>4,1</td><td>Gains de productivité côté traiteurs, dépendances moyennes.</td></tr>
+          <tr><td>MAJ paie</td><td><strong>Réglementaire</strong></td><td>5</td><td>1</td><td>4</td><td>50</td><td>5,0</td><td>3,9 (Must)</td><td>Obligation légale, faible coût, prioritaire malgré ROI limité.</td></tr>
+          <tr><td>Office 365</td><td>Support</td><td>4</td><td>2</td><td>3</td><td>220</td><td>3,8</td><td>3,7</td><td>Modernisation de l’environnement collaboratif, gains diffus.</td></tr>
+          <tr><td>Refonte application web</td><td>Croissance</td><td>5</td><td>5</td><td>2</td><td>400</td><td>1,5</td><td>4,0</td><td>Amélioration UX web, charges élevées, dépendances fortes.</td></tr>
+          <tr><td>Sauvegarde Cloud</td><td>Risque / Sécurité</td><td>5</td><td>3</td><td>5</td><td>100</td><td>4,3</td><td>4,2</td><td>Réduction du risque de perte de données, conformité.</td></tr>
+          <tr><td>Authentification forte</td><td>Risque / Sécurité</td><td>5</td><td>3</td><td>4</td><td>120</td><td>4,5</td><td>4,1</td><td>Renforce la sécurité d’accès, dépendances modérées.</td></tr>
+        </tbody>
+      </table>
+      <div class="note">*Note charge : plus la charge est faible, plus la note est élevée.</div>
+
+      <h3>5.5 Projets les plus prioritaires</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Rang</th>
+            <th>Projet</th>
+            <th>Score global</th>
+            <th>Commentaire</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Application mobile client</td><td>4,4</td><td>Projet de croissance à forte valeur, impact direct client.</td></tr>
+          <tr><td>2</td><td>Sauvegarde Cloud</td><td>4,2</td><td>Projet sécurité et continuité d’activité.</td></tr>
+          <tr><td>3 ex aequo</td><td>Application mobile fournisseur</td><td>4,1</td><td>Optimisation des opérations partenaires.</td></tr>
+          <tr><td>3 ex aequo</td><td>Authentification forte</td><td>4,1</td><td>Renforcement de la sécurité d’accès.</td></tr>
+          <tr><td>5 ex aequo</td><td>CRM</td><td>4,0</td><td>Projet structurant pour le suivi client.</td></tr>
+          <tr><td>5 ex aequo</td><td>Refonte application web</td><td>4,0</td><td>UX web améliorée, mais charge importante.</td></tr>
+          <tr><td>Must</td><td>MAJ paie (réglementaire)</td><td>3,9</td><td>Prioritaire indépendamment du score, pour conformité légale.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>5.6 Tableau de bord de gestion du portefeuille (type Excel)</h3>
+      <div class="card">
+        <div class="card-header">
+          Tableau de bord portefeuille DSI – Vue détaillée
+          <span class="badge">Suivi multi-projets</span>
+        </div>
+        <table class="dash-table">
+          <thead>
+            <tr>
+              <th>ID</th><th>Libellé du projet</th><th>Priorité</th><th>Type</th><th>Chef de projet</th><th>Statut</th><th class="dash-header-green">Avancement réel</th><th>Santé générale</th><th class="dash-header-green">Planning</th><th class="dash-header-orange">Budget</th><th class="dash-header-red">Périmètre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td><td>CRM</td><td>4</td><td>SI / CRM</td><td>Lucas</td><td>En cours</td>
+              <td class="dash-progress-cell">30 %<div class="dash-progress-track"><div class="dash-progress-fill" style="width:30%;"></div></div></td>
+              <td>Se déroule comme prévu</td><td>Respecté</td><td>Respecté</td><td>Respecté</td>
+            </tr>
+            <tr>
+              <td>2</td><td>App mobile client</td><td>5</td><td>Dev</td><td>Mathieu</td><td>En cours</td>
+              <td class="dash-progress-cell">80 %<div class="dash-progress-track"><div class="dash-progress-fill" style="width:80%;"></div></div></td>
+              <td style="color:#ea580c;">A subi des changements</td><td>Respecté</td><td style="color:#b91c1c;">En surconsommation</td><td style="color:#f59e0b;">Plus ou moins respecté</td>
+            </tr>
+            <tr>
+              <td>3</td><td>App mobile fournisseur</td><td>5</td><td>Dev</td><td>Paul</td><td>En cours</td>
+              <td class="dash-progress-cell">50 %<div class="dash-progress-track"><div class="dash-progress-fill" style="width:50%;"></div></div></td>
+              <td style="color:#b91c1c;">En dérive</td><td style="color:#b91c1c;">En retard</td><td style="color:#b91c1c;">En surconsommation</td><td>Respecté</td>
+            </tr>
+            <tr>
+              <td>4</td><td>MAJ Paie</td><td>Must</td><td>Réglementaire</td><td>Lucas</td><td>Annulé &amp; clôturé</td>
+              <td class="dash-progress-cell">40 %<div class="dash-progress-track"><div class="dash-progress-fill" style="width:40%;"></div></div></td>
+              <td style="color:#b91c1c;">En dérive</td><td>Respecté</td><td>Respecté</td><td>Respecté</td>
+            </tr>
+            <tr>
+              <td>5</td><td>Office 365</td><td>3</td><td>Infra</td><td>Mathieu</td><td>En cours</td>
+              <td class="dash-progress-cell">10 %<div class="dash-progress-track"><div class="dash-progress-fill" style="width:10%;"></div></div></td>
+              <td>Se déroule comme prévu</td><td style="color:#f59e0b;">Plus ou moins respecté</td><td style="color:#b91c1c;">En surconsommation</td><td style="color:#f59e0b;">Plus ou moins respecté</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>5.7 Diagrammes radar – Comparaison des projets (Chart.js)</h3>
+      <div class="grid grid-2">
+        <div>
+          <div class="schema-title">Radar global – 3 projets clés</div>
+          <div class="chart-container"><canvas id="radarGlobal"></canvas></div>
+          <p class="note">
+            Comparaison App mobile client, CRM et Sauvegarde Cloud sur 5 axes :
+            importance stratégique, rentabilité, maîtrise des risques, charge maîtrisée, impact UX / image.
+          </p>
+        </div>
+        <div>
+          <div class="schema-title">Radar sécurité / conformité</div>
+          <div class="chart-container"><canvas id="radarRisk"></canvas></div>
+          <p class="note">
+            Positionnement de Sauvegarde Cloud, Authentification forte et MAJ Paie sur
+            les axes risques, conformité et criticité.
+          </p>
+        </div>
+      </div>
+
+      <div class="page-break"></div>
+      <h2>6. Superviser et conduire un projet IT – « Application mobile client »</h2>
+
+      <h3>6.1 Contexte et cadrage du projet</h3>
+      <p>
+        Le projet « Application mobile client » vise à proposer une expérience de commande mobile
+        fluide et intuitive, permettant d’accéder facilement au réseau de traiteurs et chefs à domicile
+        partenaires de Time’Eats. Il s’agit d’un projet clé pour la croissance nationale et l’image de
+        marque de l’entreprise.
+      </p>
+
+      <h3>6.2 Périmètre du projet</h3>
+      <table>
+        <thead><tr><th>Inclus</th><th>Hors périmètre</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>
+              Développement natif iOS et Android, interface de commande client (recherche, historique,
+              favoris, notation), intégration avec la plateforme web et le CRM, connexion à la base
+              CRM et à l’authentification interne.
+            </td>
+            <td>
+              Application mobile fournisseur, gestion de l’ERP ou de la paie, livraison physique
+              (gérée par les partenaires), maintenance post-MEP (contrat séparé).
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>6.3 Parties prenantes clés</h3>
+      <table>
+        <thead><tr><th>Rôle</th><th>Acteur principal</th><th>Responsabilités</th></tr></thead>
+        <tbody>
+          <tr><td>Chef de projet</td><td>Cellule PMO – DSI</td><td>Coordination globale, suivi de planning, reporting.</td></tr>
+          <tr><td>Responsable produit (MOA)</td><td>Direction commerciale</td><td>Expression des besoins, arbitrage fonctionnel.</td></tr>
+          <tr><td>Développement technique</td><td>Dev internes + ESN</td><td>Conception et réalisation technique.</td></tr>
+          <tr><td>Recette fonctionnelle</td><td>Utilisateurs métiers + support client</td><td>Tests métier, validation de l’expérience utilisateur.</td></tr>
+          <tr><td>Sécurité</td><td>RSSI / DSI</td><td>Protection des données, conformité.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>6.4 Objectifs SMART du projet</h3>
+      <table>
+        <thead><tr><th>Objectif SMART</th><th>KPI associé</th><th>Cible</th><th>Échéance</th></tr></thead>
+        <tbody>
+          <tr><td>Atteindre ≥ 80 % de satisfaction utilisateur à 3 mois après la mise en production.</td><td>Score moyen de satisfaction (enquêtes in-app).</td><td>≥ 80 %</td><td>M+3 après MEP</td></tr>
+          <tr><td>Livrer la première version en 8 mois maximum après validation de la charte.</td><td>Taux de jalons respectés.</td><td>≥ 90 %</td><td>8 mois</td></tr>
+          <tr><td>Respecter un budget global de 150 k€ pour la version 1.</td><td>Taux de consommation budgétaire.</td><td>≤ 100 %</td><td>Fin du projet</td></tr>
+          <tr><td>Garantir 0 bug critique en production lors du premier mois.</td><td>Nombre d’incidents critiques.</td><td>0 incident critique</td><td>M+1 après MEP</td></tr>
+        </tbody>
+      </table>
+
+      <h3>6.5 Analyse SWOT (visuel)</h3>
+      <div class="swot-grid">
+        <div class="swot-cell swot-forces">
+          <div class="swot-title">Forces</div>
+          <ul><li>Forte expertise technique interne.</li><li>Prestataire ESN déjà connu.</li><li>Projet directement aligné avec la stratégie de croissance.</li></ul>
+        </div>
+        <div class="swot-cell swot-faiblesses">
+          <div class="swot-title">Faiblesses</div>
+          <ul><li>Dépendance à l’ESN sur des compétences clés.</li><li>UX/UI encore peu testée auprès de vrais clients.</li><li>Capacité limitée à absorber des retards.</li></ul>
+        </div>
+        <div class="swot-cell swot-opportunites">
+          <div class="swot-title">Opportunités</div>
+          <ul><li>Marché mobile de la restauration en pleine croissance.</li><li>Nouveaux partenariats possibles avec traiteurs et chefs.</li><li>Différenciation par une expérience utilisateur premium.</li></ul>
+        </div>
+        <div class="swot-cell swot-menaces">
+          <div class="swot-title">Menaces</div>
+          <ul><li>Concurrents déjà présents sur les stores.</li><li>Risques de sécurité et RGPD.</li><li>Évolutions rapides des usages et attentes clients.</li></ul>
+        </div>
+      </div>
+
+      <h3>6.6 Matrice des risques</h3>
+      <table>
+        <thead><tr><th>Risque</th><th>Prob. (1–5)</th><th>Impact (1–5)</th><th>Criticité</th><th>Niveau</th><th>Plan d’action</th></tr></thead>
+        <tbody>
+          <tr><td>Retard dans la livraison des maquettes UX</td><td>3</td><td>4</td><td>12</td><td>Élevé</td><td>Intégrer des sprints tampon, prototypage rapide.</td></tr>
+          <tr><td>Défaillance du prestataire externe</td><td>2</td><td>5</td><td>10</td><td>Élevé</td><td>Backup contractuel, suivi rapproché.</td></tr>
+          <tr><td>Rejet de l’expérience utilisateur</td><td>3</td><td>3</td><td>9</td><td>Moyen</td><td>Tests utilisateurs itératifs dès la conception.</td></tr>
+          <tr><td>Problèmes de sécurité (données)</td><td>2</td><td>4</td><td>8</td><td>Moyen</td><td>Audit sécurité, bonnes pratiques intégrées.</td></tr>
+          <tr><td>Manque de ressources internes</td><td>3</td><td>3</td><td>9</td><td>Moyen</td><td>Renfort ESN, arbitrage multi-projets.</td></tr>
+          <tr><td>Conflits entre parties prenantes</td><td>2</td><td>3</td><td>6</td><td>Faible</td><td>Matrice RACI, arbitrage PMO.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="schema-title">Matrice de risques visuelle (Probabilité × Impact)</div>
+      <table class="risk-matrix">
+        <tr>
+          <th rowspan="6" style="writing-mode:vertical-rl; transform:rotate(180deg);">Impact</th>
+          <th></th>
+          <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+        </tr>
+        <tr><th>5</th><td class="risk-med"></td><td class="risk-high">Défaillance ESN</td><td class="risk-veryhigh"></td><td class="risk-veryhigh"></td><td class="risk-veryhigh"></td></tr>
+        <tr><th>4</th><td class="risk-low"></td><td class="risk-med"></td><td class="risk-high">Retard UX</td><td class="risk-high"></td><td class="risk-veryhigh"></td></tr>
+        <tr><th>3</th><td class="risk-low"></td><td class="risk-low"></td><td class="risk-med">Rejet UX</td><td class="risk-med">Manque ressources</td><td class="risk-high"></td></tr>
+        <tr><th>2</th><td class="risk-low"></td><td class="risk-low">Conflits parties</td><td class="risk-low"></td><td class="risk-med">Sécurité</td><td class="risk-med"></td></tr>
+        <tr><th>1</th><td class="risk-low"></td><td class="risk-low"></td><td class="risk-low"></td><td class="risk-low"></td><td class="risk-low"></td></tr>
+        <tr><th colspan="2"></th><th colspan="5">Probabilité</th></tr>
+      </table>
+
+      <h3>6.7 Plan de management du projet</h3>
+
+      <h4>6.7.1 WBS du projet (Work Breakdown Structure)</h4>
+      <p>Le WBS ci-dessous structure le projet en grands lots et sous-activités. Il sert de base au planning détaillé et au Gantt.</p>
+      <div class="wbs-tree">
+        <ul>
+          <li><div class="wbs-node"><span>1</span> Cadrage &amp; Recueil des besoins</div>
+            <ul>
+              <li><div class="wbs-node"><span>1.1</span> Ateliers métiers</div></li>
+              <li><div class="wbs-node"><span>1.2</span> Formalisation des exigences</div></li>
+              <li><div class="wbs-node"><span>1.3</span> Validation de la charte projet</div></li>
+            </ul>
+          </li>
+          <li><div class="wbs-node"><span>2</span> Conception</div>
+            <ul>
+              <li><div class="wbs-node"><span>2.1</span> UX : parcours utilisateur</div></li>
+              <li><div class="wbs-node"><span>2.2</span> UI : maquettes graphiques</div></li>
+              <li><div class="wbs-node"><span>2.3</span> Architecture technique</div></li>
+            </ul>
+          </li>
+          <li><div class="wbs-node"><span>3</span> Développement</div>
+            <ul>
+              <li><div class="wbs-node"><span>3.1</span> Back-end API</div></li>
+              <li><div class="wbs-node"><span>3.2</span> App mobile iOS</div></li>
+              <li><div class="wbs-node"><span>3.3</span> App mobile Android</div></li>
+              <li><div class="wbs-node"><span>3.4</span> Intégration CRM &amp; Authentification</div></li>
+            </ul>
+          </li>
+          <li><div class="wbs-node"><span>4</span> Tests &amp; Recette</div>
+            <ul>
+              <li><div class="wbs-node"><span>4.1</span> Tests unitaires &amp; intégration</div></li>
+              <li><div class="wbs-node"><span>4.2</span> Tests fonctionnels</div></li>
+              <li><div class="wbs-node"><span>4.3</span> Recette utilisateur &amp; PV</div></li>
+            </ul>
+          </li>
+          <li><div class="wbs-node"><span>5</span> Mise en production &amp; Clôture</div>
+            <ul>
+              <li><div class="wbs-node"><span>5.1</span> Préparation MEP</div></li>
+              <li><div class="wbs-node"><span>5.2</span> Communication &amp; formation</div></li>
+              <li><div class="wbs-node"><span>5.3</span> RETEX &amp; capitalisation</div></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <h4>6.7.2 Planning prévisionnel</h4>
+      <div class="timeline">
+        <div class="timeline-item"><strong>Cadrage &amp; recueil des besoins (Mai S1–S3)</strong> : cahier des charges, user stories.</div>
+        <div class="timeline-item"><strong>Conception fonctionnelle (fin mai – début juin)</strong> : maquettes, architecture de navigation.</div>
+        <div class="timeline-item"><strong>Développement (Juin – Septembre)</strong> : sprints agiles, versions incrémentales.</div>
+        <div class="timeline-item"><strong>Tests internes &amp; débogage (Octobre)</strong>.</div>
+        <div class="timeline-item"><strong>Recette utilisateur (Novembre S1–S3)</strong> : PV de recette fonctionnelle et technique.</div>
+        <div class="timeline-item"><strong>Mise en production (Début décembre)</strong> : mise en ligne, documentation d’exploitation.</div>
+      </div>
+
+      <h4>6.7.2 bis – Gantt du projet (Chart.js)</h4>
+      <p class="note">Le Gantt ci-dessous utilise Chart.js (barres horizontales) pour visualiser la durée relative des phases.</p>
+      <div class="chart-container-wide"><canvas id="ganttProjet"></canvas></div>
+
+      <h4>6.7.3 Budget prévisionnel &amp; visualisations</h4>
+      <table>
+        <thead><tr><th>Poste de dépense</th><th>Montant (k€)</th></tr></thead>
+        <tbody>
+          <tr><td>Ressources internes</td><td>40</td></tr>
+          <tr><td>Prestataire ESN</td><td>80</td></tr>
+          <tr><td>UX / Design / Maquettage</td><td>10</td></tr>
+          <tr><td>Tests et recette</td><td>10</td></tr>
+          <tr><td>Infrastructure (hébergement)</td><td>5</td></tr>
+          <tr><td>Divers</td><td>5</td></tr>
+        </tbody>
+      </table>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-header">Répartition budgétaire (donut)<span class="badge">150 k€</span></div>
+          <div class="kpi-donut" style="width:120px;height:120px;font-size:0.9rem;background: conic-gradient(#0ea5e9 0 27%, #22c55e 27% 80%, #a855f7 80% 87%, #f97316 87% 94%, #facc15 94% 100%);"><span>100%</span></div>
+          <p class="note">Donut illustratif : ESN ≈ 53 %, internes ≈ 27 %, autres postes ≈ 20 %.</p>
+        </div>
+        <div class="card">
+          <div class="card-header">Barres de budget par poste</div>
+          <div class="kpi-bar"><div class="kpi-bar-label">Prestataire ESN (80 k€)</div><div class="kpi-bar-track"><div class="kpi-bar-fill" style="width:80%; background:linear-gradient(90deg,#22c55e,#16a34a);"></div></div><div class="kpi-bar-value">53%</div></div>
+          <div class="kpi-bar"><div class="kpi-bar-label">Ressources internes (40 k€)</div><div class="kpi-bar-track"><div class="kpi-bar-fill" style="width:40%; background:linear-gradient(90deg,#0ea5e9,#38bdf8);"></div></div><div class="kpi-bar-value">27%</div></div>
+          <div class="kpi-bar"><div class="kpi-bar-label">Autres postes (30 k€)</div><div class="kpi-bar-track"><div class="kpi-bar-fill" style="width:30%; background:linear-gradient(90deg,#f97316,#f59e0b);"></div></div><div class="kpi-bar-value">20%</div></div>
+        </div>
+      </div>
+
+      <h3>6.8 CdC / Backlog instancié &amp; traçabilité exigences → tests → PV</h3>
+      <p>Pour répondre à la remarque « Il manque un CdC/backlog instancié », le tableau suivant montre un extrait du backlog, avec la traçabilité complète jusqu’aux tests et au PV de recette.</p>
+      <table>
+        <thead><tr><th>ID exigence</th><th>User story / Exigence</th><th>Test(s) associé(s)</th><th>Critère d’acceptation</th><th>Référence PV</th></tr></thead>
+        <tbody>
+          <tr><td>US-01</td><td>En tant que client, je peux créer un compte via l’app mobile.</td><td>TC-01 : création compte avec email valide.<br>TC-02 : gestion d’un email déjà existant.</td><td>Compte créé, email de confirmation reçu, message clair si email déjà utilisé.</td><td>PV-APP-1 §2.1</td></tr>
+          <tr><td>US-02</td><td>En tant que client, je peux rechercher un traiteur par ville et par type de prestation.</td><td>TC-03 : recherche simple par ville.<br>TC-04 : filtre « type de prestation ».</td><td>Résultat affiché &lt; 3 secondes, filtres pris en compte, aucun crash.</td><td>PV-APP-1 §2.2</td></tr>
+          <tr><td>US-05</td><td>En tant que client, je peux noter une prestation après l’événement.</td><td>TC-10 : dépôt d’une note et d’un commentaire.<br>TC-11 : modification d’une note.</td><td>Note saisie visible dans l’historique, agrégée dans le score du traiteur.</td><td>PV-APP-1 §3.4</td></tr>
+          <tr><td>SEC-01</td><td>Les données de connexion sont transmises de façon chiffrée.</td><td>TC-SEC-01 : vérification HTTPS et certificats.</td><td>Aucune donnée de mot de passe en clair, SSL/TLS valide.</td><td>PV-SEC-1 §1.2</td></tr>
+        </tbody>
+      </table>
+
+      <div class="page-break"></div>
+      <h2>7. Les principales méthodes de gestion de projet</h2>
+
+      <h3>7.1 Le cycle en V</h3>
+      <p>Méthode séquentielle traditionnelle : chaque phase (besoins, conception, développement, tests, mise en production) est validée avant de passer à la suivante. Adaptée aux projets dont les besoins sont stables et bien connus.</p>
+
+      <h3>7.2 Les méthodes Agiles</h3>
+      <p>Approche itérative et incrémentale (Scrum, Kanban, XP) : le projet est découpé en sprints courts avec des livrables réguliers. Permet une forte flexibilité et une prise en compte des feedbacks utilisateurs tout au long du projet.</p>
+
+      <h3>7.3 La méthode hybride</h3>
+      <p>Combine des éléments du cycle en V et des méthodes Agiles : souvent utilisée lorsqu’une partie du projet est bien définie (cycle en V) et une autre plus incertaine (Agile).</p>
+
+      <h3>7.4 Méthode la plus adaptée pour le projet</h3>
+      <p>Pour l’Application mobile client, la méthode la plus adaptée est l’Agile Scrum :</p>
+      <ul>
+        <li>le projet comporte une part importante d’innovation et d’UX,</li>
+        <li>les fonctionnalités doivent être testées et ajustées progressivement,</li>
+        <li>les parties prenantes doivent collaborer étroitement.</li>
+      </ul>
+
+      <h3>7.5 Argumentation pour le choix de Scrum</h3>
+      <p>Scrum permet :</p>
+      <ul>
+        <li>une adaptabilité forte aux retours utilisateurs,</li>
+        <li>une visibilité continue sur l’avancement,</li>
+        <li>une détection précoce des problèmes grâce aux sprints et rétrospectives,</li>
+        <li>une collaboration renforcée entre MOA, MOE, ESN et utilisateurs pilotes.</li>
+      </ul>
+
+      <div class="page-break"></div>
+      <h2>8. Clôturer le projet et capitaliser</h2>
+
+      <h3>8.1 Processus de recette détaillé</h3>
+      <p>Pour répondre à la remarque « Processus de recette détaillé (étapes, critères d’acceptation) mais pas de liste de cas ni matrice exigences↔tests », la recette est décrite de façon exhaustive.</p>
+      <table>
+        <thead><tr><th>Étape</th><th>Description</th><th>Critères d’acceptation</th><th>Acteurs</th></tr></thead>
+        <tbody>
+          <tr><td>1. Préparation</td><td>Constitution du plan de tests à partir du CdC / backlog.</td><td>100 % des exigences critiques ont au moins un cas de test associé.</td><td>Chef de projet, utilisateurs clés.</td></tr>
+          <tr><td>2. Mise en place environnement</td><td>Création d’un environnement de recette dédié, données de test.</td><td>Environnement isolé, dataset de test validé.</td><td>Équipe technique.</td></tr>
+          <tr><td>3. Exécution des tests fonctionnels</td><td>Exécution des scénarios métiers (US-01, US-02, …).</td><td>≥ 95 % des cas de tests fonctionnels en succès, 0 anomalie bloquante.</td><td>Utilisateurs, support.</td></tr>
+          <tr><td>4. Tests techniques</td><td>Tests de performance, montée en charge, sécurité, intégration SI.</td><td>Temps de réponse &lt; seuil, aucun défaut critique de sécurité.</td><td>Équipe technique, RSSI.</td></tr>
+          <tr><td>5. Correction des anomalies</td><td>Traitement des anomalies selon leur criticité et re-tests.</td><td>100 % des anomalies bloquantes corrigées, majeures argumentées.</td><td>Développeurs, ESN.</td></tr>
+          <tr><td>6. Validation finale</td><td>Vérification de la couverture des exigences et des KPI de recette.</td><td>Traçabilité exigences → tests → PV démontrée.</td><td>MOA, PMO.</td></tr>
+          <tr><td>7. Signature du PV</td><td>Signature conjointe MOA / DSI autorisant la MEP.</td><td>PV de recette signé, réserves explicites si besoin.</td><td>MOA, DSI, PMO.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>8.2 Matrice exigences ↔ tests ↔ PV (complément)</h3>
+      <p>La matrice de traçabilité présentée au §6.8 complète le processus de recette et justifie l’exhaustivité des tests par rapport aux exigences.</p>
+
+      <h3>8.3 Document de clôture (PV de recette)</h3>
+      <div class="card">
+        <div class="card-header">Procès-Verbal de Recette – Application mobile client</div>
+        <p><strong>Projet :</strong> Application mobile client</p>
+        <p><strong>Date :</strong> 28 novembre</p>
+        <p><strong>Participants :</strong> Responsable MOA, Chef de projet, Équipe technique, Utilisateurs clés</p>
+        <p><strong>Résumé des tests :</strong></p>
+        <ul>
+          <li>20 scénarios fonctionnels testés (recherche, commande, suivi, notation),</li>
+          <li>tests techniques de performance et sécurité OK,</li>
+          <li>2 anomalies mineures identifiées, planifiées pour correction.</li>
+        </ul>
+        <p><strong>Décision :</strong> Accepté avec réserves mineures.</p>
+      </div>
+
+      <h3>8.4 Capitalisation de l’expérience</h3>
+      <p>
+        L’objectif de la capitalisation est de tirer des enseignements du projet pour améliorer les
+        pratiques futures : ce qui a bien fonctionné, ce qui doit être amélioré, comment ajuster les
+        processus et les modèles.
+      </p>
+      <table>
+        <thead><tr><th>Action</th><th>Description</th><th>Responsable</th><th>Support</th></tr></thead>
+        <tbody>
+          <tr><td>Réunion RETEX</td><td>Partage des points positifs et difficultés.</td><td>PMO</td><td>Modèle de compte-rendu.</td></tr>
+          <tr><td>Synthèse des enseignements</td><td>Document listant réussites, échecs, recommandations.</td><td>Chef de projet</td><td>Fiche « leçons apprises ».</td></tr>
+          <tr><td>Mise à jour du référentiel</td><td>Intégration des recommandations dans les templates.</td><td>PMO</td><td>Référentiel documentaire.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>8.5 Intégration de la boucle PDCA</h3>
+      <p>La démarche d’amélioration continue suit la logique PDCA :</p>
+      <ul>
+        <li><strong>Plan</strong> : planification du projet, définition des objectifs et des indicateurs.</li>
+        <li><strong>Do</strong> : exécution des sprints, développement, livraisons.</li>
+        <li><strong>Check</strong> : suivi des KPI, tests, rétrospectives.</li>
+        <li><strong>Act</strong> : ajustement du backlog, des processus internes, mise à jour des templates.</li>
+      </ul>
+
+      <div class="page-break"></div>
+      <h2>9. Conclusion</h2>
+      <p>
+        La création d’un PMO au sein de la DSI de Time’Eats constitue un levier majeur pour accompagner
+        la transformation numérique de l’entreprise. Le PMO contribue à structurer le portefeuille
+        projets, à homogénéiser les pratiques, à sécuriser les risques et à aligner le SI sur la stratégie
+        business.
+      </p>
+      <p>
+        Le projet « Application mobile client » illustre cette démarche : cadrage clair, objectifs SMART,
+        plan de management, pilotage par les KPI, processus de recette et capitalisation. Les méthodes
+        et outils décrits dans ce rapport sont réutilisables pour les futurs projets et renforcent la
+        maturité de la DSI.
+      </p>
+
+      <div class="page-break"></div>
+      <h2>10. Annexe – Glossaire</h2>
+      <table>
+        <thead><tr><th>Sigle / Terme</th><th>Signification</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>PMO</td><td>Project Management Office</td><td>Cellule dédiée à la supervision, la méthodologie et au pilotage des projets.</td></tr>
+          <tr><td>DSI</td><td>Direction des Systèmes d’Information</td><td>Service en charge des infrastructures, applications, sécurité et support.</td></tr>
+          <tr><td>CRM</td><td>Customer Relationship Management</td><td>Logiciel de gestion de la relation client.</td></tr>
+          <tr><td>ESN</td><td>Entreprise de Services du Numérique</td><td>Société spécialisée dans les services informatiques.</td></tr>
+          <tr><td>MOA</td><td>Maîtrise d’Ouvrage</td><td>Partie prenante définissant les besoins métier.</td></tr>
+          <tr><td>MOE</td><td>Maîtrise d’Œuvre</td><td>Partie prenante réalisant techniquement le projet.</td></tr>
+          <tr><td>RSSI</td><td>Responsable de la Sécurité des Systèmes d’Information</td><td>Responsable de la sécurité des SI.</td></tr>
+          <tr><td>CI/CD</td><td>Continuous Integration / Continuous Delivery</td><td>Pratiques DevOps d’automatisation des livraisons logicielles.</td></tr>
+          <tr><td>UX</td><td>User Experience</td><td>Expérience utilisateur : qualité de l’interaction avec le service.</td></tr>
+          <tr><td>RETEX</td><td>Retour d’Expérience</td><td>Analyse des enseignements d’un projet pour améliorer les suivants.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="page-break"></div>
+      <h2>11. Annexes – Modèles de documents PMO</h2>
+
+      <h3>Annexe 11.1 – Modèle de charte projet</h3>
+      <table>
+        <tbody>
+          <tr><th>Nom du projet</th><td>[Nom du projet]</td></tr>
+          <tr><th>Contexte</th><td>[Contexte et enjeux]</td></tr>
+          <tr><th>Objectifs</th><td>[Objectifs SMART]</td></tr>
+          <tr><th>Périmètre IN</th><td>[Liste des éléments inclus]</td></tr>
+          <tr><th>Périmètre OUT</th><td>[Liste des éléments exclus]</td></tr>
+          <tr><th>Parties prenantes</th><td>[MOA, MOE, PMO, etc.]</td></tr>
+          <tr><th>Budget prévisionnel</th><td>[Montant]</td></tr>
+          <tr><th>Planning macro</th><td>[Jalons principaux]</td></tr>
+          <tr><th>Risques majeurs</th><td>[Top 3 risques]</td></tr>
+          <tr><th>Critères de succès</th><td>[Indicateurs clés]</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Annexe 11.2 – Modèle d’analyse SWOT</h3>
+      <div class="swot-grid">
+        <div class="swot-cell swot-forces"><div class="swot-title">Forces</div><p>[Liste des forces]</p></div>
+        <div class="swot-cell swot-faiblesses"><div class="swot-title">Faiblesses</div><p>[Liste des faiblesses]</p></div>
+        <div class="swot-cell swot-opportunites"><div class="swot-title">Opportunités</div><p>[Liste des opportunités]</p></div>
+        <div class="swot-cell swot-menaces"><div class="swot-title">Menaces</div><p>[Liste des menaces]</p></div>
+      </div>
+
+      <h3>Annexe 11.3 – Modèle de matrice des risques</h3>
+      <table>
+        <thead><tr><th>ID</th><th>Description</th><th>Probabilité (1–5)</th><th>Impact (1–5)</th><th>Criticité</th><th>Stratégie</th><th>Propriétaire</th></tr></thead>
+        <tbody>
+          <tr><td>R-01</td><td>[Risque identifié]</td><td>[ ]</td><td>[ ]</td><td>[P×I]</td><td>[Éviter / Réduire / Transférer / Accepter]</td><td>[Nom]</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Annexe 11.4 – Modèle de Gantt projet (tableau)</h3>
+      <table class="gantt-table">
+        <thead><tr><th>Phase</th><th>Date début</th><th>Date fin</th><th>Durée</th><th>Barre Gantt</th></tr></thead>
+        <tbody>
+          <tr><td>[Nom phase]</td><td>[JJ/MM]</td><td>[JJ/MM]</td><td>[Nb jours]</td><td><div class="kpi-bar-track"><div class="kpi-bar-fill" style="width:60%;"></div></div></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Annexe 11.5 – Modèle de dashboard projet</h3>
+      <table>
+        <thead><tr><th>KPI</th><th>Objectif</th><th>Valeur actuelle</th><th>Seuil d’alerte</th><th>Commentaire</th></tr></thead>
+        <tbody>
+          <tr><td>Avancement (%)</td><td>[Cible]</td><td>[Valeur]</td><td>[Seuil]</td><td>[Analyse]</td></tr>
+          <tr><td>Budget consommé</td><td>[Cible]</td><td>[Valeur]</td><td>[Seuil]</td><td>[Analyse]</td></tr>
+          <tr><td>Bugs critiques</td><td>[Cible]</td><td>[Valeur]</td><td>[Seuil]</td><td>[Analyse]</td></tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
