@@ -66,6 +66,10 @@ function initNebula() {
   if (!canvas) return;
 
   const ctx = canvas.getContext('2d');
+  if (!ctx) {
+    canvas.classList.add('nebula-fallback');
+    return;
+  }
   const orbs = Array.from({ length: 16 }).map(() => ({
     x: Math.random(),
     y: Math.random(),
@@ -79,6 +83,8 @@ function initNebula() {
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
   }
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -106,7 +112,9 @@ function initNebula() {
       ctx.fill();
     });
 
-    requestAnimationFrame(draw);
+    if (!prefersReducedMotion) {
+      requestAnimationFrame(draw);
+    }
   }
 
   resize();

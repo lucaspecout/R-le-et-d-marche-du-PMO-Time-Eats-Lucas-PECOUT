@@ -45,6 +45,9 @@
       position: relative;
       overflow: hidden;
       border-bottom: 1px solid rgba(0,0,0,0.04);
+      background: radial-gradient(circle at 15% 20%, rgba(255,122,60,0.12), transparent 45%),
+                  radial-gradient(circle at 80% 0%, rgba(37,99,235,0.12), transparent 40%),
+                  linear-gradient(135deg, #fff7f2 0%, #f3f6fb 100%);
     }
 
     .nebula-canvas {
@@ -56,6 +59,12 @@
       mix-blend-mode: multiply;
       opacity: 0.35;
       pointer-events: none;
+    }
+
+    .nebula-canvas.nebula-fallback {
+      opacity: 0.45;
+      mix-blend-mode: normal;
+      background: linear-gradient(135deg, rgba(255,122,60,0.18), rgba(37,99,235,0.16));
     }
 
     .immersive-section {
