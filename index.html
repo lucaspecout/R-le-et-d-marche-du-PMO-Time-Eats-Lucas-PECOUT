@@ -26,6 +26,32 @@
   </header>
 
   <main class="container">
+    <section class="grid metrics">
+      <article class="metric">
+        <p class="eyebrow">Vision stratégique</p>
+        <h3>Portefeuille DSI</h3>
+        <p class="muted">12 initiatives actives pilotées par la cellule PMO avec priorisation dynamique.</p>
+        <div class="metric__value">Top 3 : App mobile client, Sauvegarde cloud, App mobile fournisseur</div>
+      </article>
+      <article class="metric">
+        <p class="eyebrow">KPI phares</p>
+        <h3>Alignement &amp; performance</h3>
+        <ul class="inline-stats">
+          <li><strong>90%</strong><span>projets alignés stratégie</span></li>
+          <li><strong>95%</strong><span>risques critiques maîtrisés</span></li>
+          <li><strong>-10%</strong><span>Time-to-Value / an</span></li>
+        </ul>
+      </article>
+      <article class="metric metric--accent">
+        <p class="eyebrow">Projet phare</p>
+        <h3>Application mobile client</h3>
+        <p class="muted">Méthode Scrum – 8 mois – Budget 150 k€ – Livraison prévue en décembre.</p>
+        <div class="tags">
+          <span>UX/UI</span><span>CRM</span><span>Notifications</span><span>Sécurité MFA</span>
+        </div>
+      </article>
+    </section>
+
     <section class="grid two-col">
       <article class="card">
         <h2>Présentation de Time’Eats</h2>
@@ -116,6 +142,32 @@
       </article>
     </section>
 
+    <section class="grid two-col">
+      <article class="card">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Macro-planning</p>
+            <h2>Roadmap 8 mois – App mobile client</h2>
+          </div>
+          <span class="pill pill--accent">Mai → Décembre</span>
+        </div>
+        <ul class="timeline" id="timeline"></ul>
+      </article>
+      <article class="card">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Budget prévisionnel</p>
+            <h2>Répartition (150 k€)</h2>
+          </div>
+          <span class="pill pill--blue">Capex maîtrisé</span>
+        </div>
+        <div class="chart-box">
+          <canvas id="budgetChart" height="180"></canvas>
+        </div>
+        <ul class="legend" id="budget-legend"></ul>
+      </article>
+    </section>
+
     <section class="card">
       <div class="section-header">
         <div>
@@ -143,11 +195,11 @@
 
     <section class="grid two-col">
       <article class="card">
-        <div class="section-header">
-          <div>
-            <p class="eyebrow">Projet phare</p>
-            <h2>Application mobile client</h2>
-          </div>
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Projet phare</p>
+          <h2>Application mobile client</h2>
+        </div>
           <span class="pill pill--accent">Méthode Scrum</span>
         </div>
         <ul class="highlight-list">
@@ -267,6 +319,66 @@
             <tbody id="raci-table"></tbody>
           </table>
         </div>
+      </article>
+    </section>
+
+    <section class="card">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Backlog produit</p>
+          <h2>User stories prioritaires</h2>
+        </div>
+        <span class="pill">Sécuriser la valeur</span>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>En tant que…</th>
+              <th>Je veux…</th>
+              <th>Priorité</th>
+              <th>Critères d’acceptation</th>
+            </tr>
+          </thead>
+          <tbody id="backlog-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid two-col">
+      <article class="card">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Classement alternatif</p>
+            <h2>Top rentabilité</h2>
+          </div>
+          <span class="pill pill--blue">ROI prioritaire</span>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Rang</th>
+                <th>Projet</th>
+                <th>Rentabilité</th>
+                <th>Budget</th>
+                <th>Durée</th>
+              </tr>
+            </thead>
+            <tbody id="roi-table"></tbody>
+          </table>
+        </div>
+      </article>
+      <article class="card">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Cockpit hebdo</p>
+            <h2>Situation S4</h2>
+          </div>
+          <span class="pill pill--accent">Actions rapides</span>
+        </div>
+        <ul class="kpi-bars" id="weekly-kpis"></ul>
       </article>
     </section>
 

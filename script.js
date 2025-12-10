@@ -31,6 +31,55 @@ const portfolio = [
   { rang: 10, nom: "Migration vers Azure", score: 3.1, debut: "Août", duree: "5", budget: 200 },
 ];
 
+const timeline = [
+  { phase: "Cadrage & recueil des besoins", duree: "3 semaines", periode: "Mai (S1–S3)", livrable: "Cahier des charges, user stories" },
+  { phase: "Conception fonctionnelle", duree: "2 semaines", periode: "Fin mai – début juin", livrable: "Maquettes, architecture navigation" },
+  { phase: "Développement (sprints)", duree: "4 mois", periode: "Juin – Septembre", livrable: "Versions incrémentales, doc technique" },
+  { phase: "Tests internes & débogage", duree: "1 mois", periode: "Octobre", livrable: "Rapport de test, corrections" },
+  { phase: "Recette utilisateur", duree: "3 semaines", periode: "Novembre (S1–S3)", livrable: "PV de recette fonctionnelle" },
+  { phase: "Mise en production", duree: "1 semaine", periode: "Début décembre", livrable: "Publication stores, doc exploitation" },
+];
+
+const budget = [
+  { poste: "Ressources internes", montant: 40, color: "#3ea6ff" },
+  { poste: "Prestataire ESN", montant: 80, color: "#ff6b4a" },
+  { poste: "UX / Design", montant: 10, color: "#9b51e0" },
+  { poste: "Tests & recette", montant: 10, color: "#7ee0a3" },
+  { poste: "Infrastructure", montant: 5, color: "#f2c94c" },
+  { poste: "Divers", montant: 5, color: "#8fa3c9" },
+];
+
+const backlog = [
+  { id: "US01", role: "Client", besoin: "Chercher un prestataire", priorite: "M", ca: "Recherche <1 sec, géolocalisée" },
+  { id: "US02", role: "Client", besoin: "Filtrer les résultats", priorite: "M", ca: "Prix / note / catégorie" },
+  { id: "US03", role: "Client", besoin: "Passer commande", priorite: "M", ca: "Paiement CB sécurisé + mail" },
+  { id: "US07", role: "Client", besoin: "Suivre ma livraison", priorite: "M", ca: "Actualisation < 20 sec" },
+  { id: "US09", role: "Sécurité", besoin: "Authentifier l’utilisateur", priorite: "M", ca: "MFA obligatoire" },
+  { id: "US11", role: "Produit", besoin: "Notifications push", priorite: "S", ca: "4 événements notifiés" },
+  { id: "US05", role: "Client", besoin: "Noter la prestation", priorite: "S", ca: "Note 1–5 + commentaire" },
+  { id: "US12", role: "Support", besoin: "Chat assistance", priorite: "C", ca: "Disponibilité 9h–22h" },
+];
+
+const roiRanking = [
+  { rang: 1, projet: "App mobile client", rent: 5, budget: 150, duree: 8 },
+  { rang: 1, projet: "App mobile fournisseur", rent: 5, budget: 200, duree: 8 },
+  { rang: 1, projet: "Refonte application web", rent: 5, budget: 300, duree: 6 },
+  { rang: 4, projet: "Migration vers Azure", rent: 4, budget: 200, duree: 5 },
+  { rang: 5, projet: "CRM", rent: 3, budget: 250, duree: 6 },
+  { rang: 5, projet: "Authentification forte", rent: 3, budget: 150, duree: 4 },
+  { rang: 5, projet: "Sauvegarde cloud", rent: 3, budget: 100, duree: 4 },
+  { rang: 5, projet: "Système de gestion fichiers", rent: 3, budget: 100, duree: 3 },
+  { rang: 9, projet: "Plateforme CI/CD", rent: 3, budget: 100, duree: 3 },
+  { rang: 10, projet: "Office 365", rent: 2, budget: 100, duree: 3 },
+  { rang: 11, projet: "MAJ paie", rent: 1, budget: 50, duree: 3 },
+];
+
+const weekly = [
+  { titre: "Avancement", valeur: 28, cible: 90, tendance: "▼", statut: "Renfort dev + priorisation backlog" },
+  { titre: "Budget consommé", valeur: 32, cible: 100, tendance: "=", statut: "Contrôle OK" },
+  { titre: "Satisfaction pilote", valeur: 82, cible: 80, tendance: "▲", statut: "Continuer feedback UX" },
+];
+
 const risks = [
   { nom: "Retard maquettes UX", prob: 3, impact: 4, action: "Sprints tampon, prototypage rapide" },
   { nom: "Défaillance prestataire", prob: 2, impact: 5, action: "Backup contractuel, suivi rapproché" },
@@ -77,6 +126,20 @@ fillTable("risk-table", risks, (r) => `<tr><td>${r.nom}</td><td>${r.prob}</td><t
 fillTable("comms-table", comms, (r) => `<tr><td>${r.public}</td><td>${r.canal}</td><td>${r.frequence}</td><td>${r.responsable}</td></tr>`);
 fillTable("project-kpi-table", projectKpi, (r) => `<tr><td>${r.indicateur}</td><td>${r.objectif}</td><td>${r.frequence}</td><td>${r.seuil}</td></tr>`);
 fillTable("raci-table", raci, (r) => `<tr><td>${r.livrable}</td><td>${r.pmo}</td><td>${r.cp}</td><td>${r.moa}</td><td>${r.tech}</td><td>${r.rssi}</td></tr>`);
+fillTable("backlog-table", backlog, (r) => `<tr><td>${r.id}</td><td>${r.role}</td><td>${r.besoin}</td><td>${r.priorite}</td><td>${r.ca}</td></tr>`);
+fillTable("roi-table", roiRanking, (r) => `<tr><td>${r.rang}</td><td>${r.projet}</td><td>${r.rent}</td><td>${r.budget} k€</td><td>${r.duree} mois</td></tr>`);
+
+const timelineEl = document.getElementById("timeline");
+timelineEl.innerHTML = timeline.map((t, idx) => `
+  <li>
+    <div class="bubble">${idx + 1}</div>
+    <div>
+      <h4>${t.phase}</h4>
+      <p>${t.periode} • ${t.duree}</p>
+      <small>${t.livrable}</small>
+    </div>
+  </li>
+`).join("");
 
 const colors = ["#ff6b4a", "#3ea6ff", "#7ee0a3", "#f2c94c", "#9b51e0", "#2d9cdb"];
 
@@ -128,3 +191,40 @@ new Chart(ctxRadar, {
     }
   }
 });
+
+const ctxBudget = document.getElementById("budgetChart");
+new Chart(ctxBudget, {
+  type: "doughnut",
+  data: {
+    labels: budget.map(b => b.poste),
+    datasets: [{
+      data: budget.map(b => b.montant),
+      backgroundColor: budget.map(b => b.color),
+      borderWidth: 0,
+      cutout: "60%"
+    }]
+  },
+  options: { plugins: { legend: { display: false } } }
+});
+
+const legend = document.getElementById("budget-legend");
+legend.innerHTML = budget.map(b => `<li><span style="background:${b.color}"></span>${b.poste} — ${b.montant} k€</li>`).join("");
+
+const weeklyEl = document.getElementById("weekly-kpis");
+weeklyEl.innerHTML = weekly.map(w => {
+  const pourcentage = Math.min((w.valeur / w.cible) * 100, 120);
+  const statusClass = w.valeur >= w.cible ? "ok" : "alert";
+  return `
+    <li>
+      <div class="kpi-bars__head">
+        <div>
+          <p class="eyebrow">${w.tendance}</p>
+          <h4>${w.titre}</h4>
+        </div>
+        <span>${w.valeur}%</span>
+      </div>
+      <div class="bar"><span class="${statusClass}" style="width:${pourcentage}%"></span></div>
+      <p class="muted">${w.statut} — Cible ${w.cible}%</p>
+    </li>
+  `;
+}).join("");
