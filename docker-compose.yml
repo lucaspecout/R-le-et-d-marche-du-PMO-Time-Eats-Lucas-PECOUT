@@ -4,5 +4,5 @@ services:
     build: .
     container_name: timeeats-pmo
     ports:
-      - "8080:80"
+      - "8066:80"
     restart: unless-stopped
