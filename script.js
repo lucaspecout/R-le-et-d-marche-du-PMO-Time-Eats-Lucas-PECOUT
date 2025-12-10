@@ -154,7 +154,8 @@ function initSimulation() {
     const target = 50 + Math.random() * 45;
     deliveryProgress.style.width = `${target}%`;
     deliveryProgress.setAttribute('aria-valuenow', Math.round(target).toString());
-    simulationValue.textContent = 'Simulation calculée';
+    deliveryProgress.setAttribute('aria-valuetext', `${Math.round(target)}%`);
+    simulationValue.textContent = `${Math.round(target)}% livrés`;
 
     focusLabel.textContent = target > 75 ? 'Mode accéléré' : 'Flux stable';
     runwayLabel.textContent = `${(8 + Math.random() * 5).toFixed(1)} mois`;
@@ -164,6 +165,7 @@ function initSimulation() {
   resetBtn.addEventListener('click', () => {
     deliveryProgress.style.width = '0%';
     deliveryProgress.setAttribute('aria-valuenow', '0');
+    deliveryProgress.setAttribute('aria-valuetext', '0%');
     simulationValue.textContent = 'Prêt';
     focusLabel.textContent = 'Priorité mobile';
     runwayLabel.textContent = '10,5 mois';
