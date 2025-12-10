@@ -209,7 +209,9 @@ function renderRadarCharts() {
     }
 
     const canvas = document.createElement('canvas');
-    const size = Math.min(220, radar.clientWidth || 220);
+    const rect = radar.getBoundingClientRect();
+    const baseSize = rect.width || radar.clientWidth || radar.offsetWidth || 220;
+    const size = Math.max(180, Math.min(240, baseSize));
     canvas.width = size;
     canvas.height = size;
 
@@ -221,7 +223,12 @@ function renderRadarCharts() {
 
     const center = size / 2;
     const radius = size / 2 - 18;
-    const axes = values.length;
+    const axes = Math.max(values.length, labels.length || values.length);
+    if (axes && values.length < axes) {
+      while (values.length < axes) {
+        values.push(values[values.length - 1] || 0);
+      }
+    }
     const angleStep = (Math.PI * 2) / axes;
 
     ctx.strokeStyle = 'rgba(148,163,184,0.45)';

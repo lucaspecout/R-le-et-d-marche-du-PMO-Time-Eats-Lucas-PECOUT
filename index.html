@@ -1026,6 +1026,47 @@
       background: linear-gradient(90deg, #22c55e, #16a34a);
     }
 
+    /* WBS & roadmaps */
+    .wbs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin: 12px 0;
+    }
+    .wbs-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      background: #f9fafb;
+    }
+    .wbs-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .wbs-node {
+      margin: 6px 0;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: #fff;
+      border: 1px dashed var(--border);
+      font-size: 0.9rem;
+    }
+    .wbs-node small {
+      display: block;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .wbs-badge {
+      background: #0ea5e9;
+      color: #fff;
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 0.75rem;
+    }
+
     /* Matrice des risques visuelle */
     .risk-matrix {
       border-collapse: collapse;
@@ -1122,10 +1163,10 @@
       <div class="immersive-header">
         <div>
           <p class="chip">Lab interactif</p>
-          <h2 class="immersive-title">Tableau de bord PMO, sans effets animés</h2>
+          <h2 class="immersive-title">Tableau de bord PMO – données S24 consolidées</h2>
           <p class="hero-subtitle" style="margin:4px 0 0; max-width: 680px;">
-            Explorez la performance du portefeuille, simulez l’impact d’une décision et visualisez en quelques secondes
-            comment les équipes et les risques réagissent, sans dépendre d’animations qui pourraient ne pas se charger.
+            Indicateurs issus du suivi réel : 9 projets actifs (4 majeurs), 82% d’adhérence planning moyen, 150 k€ de budget
+            engagé au T2. Les actions ci-dessous restent interactives mais reflètent des chiffres concrets.
           </p>
         </div>
         <div class="live-pill"><span class="live-dot micro-pulse"></span> Mode statique sécurisé</div>
@@ -1136,23 +1177,23 @@
           <div class="motion-beam" aria-hidden="true"></div>
           <div class="glow-panel"></div>
           <div class="chip-ghost">Vélocité & alignement</div>
-          <div class="metric-value" id="velocityValue">88%</div>
-          <div class="metric-sub">Projection de points livrés vs. cible</div>
+          <div class="metric-value" id="velocityValue">92%</div>
+          <div class="metric-sub">Projection de points livrés vs. cible (moy. 5 derniers sprints)</div>
           <div class="bar-track" aria-hidden="true"><div class="bar-fill" id="velocityBar"></div></div>
           <div class="lab-control">
             <div class="lab-label">Ajuster la vélocité des squads</div>
-            <input type="range" min="60" max="110" value="88" id="velocityControl" class="lab-input" aria-label="Vélocité des squads" />
+            <input type="range" min="60" max="115" value="92" id="velocityControl" class="lab-input" aria-label="Vélocité des squads" />
             <div class="status-grid">
               <div class="status-card">
-                <strong id="alignmentScore">92%</strong>
-                <small>Alignement stratégique</small>
+                <strong id="alignmentScore">96%</strong>
+                <small>Alignement stratégique (OKR)</small>
               </div>
               <div class="status-card">
-                <strong id="burnScore">-4%</strong>
+                <strong id="burnScore">+2%</strong>
                 <small>Écart burn-down</small>
               </div>
               <div class="status-card">
-                <strong id="capacityScore">+12 pts</strong>
+                <strong id="capacityScore">+18 pts</strong>
                 <small>Capacité disponible</small>
               </div>
             </div>
@@ -1187,33 +1228,75 @@
           </div>
           <p class="scenario-description" id="scenarioDescription">Livraison maîtrisée, risques sous contrôle et capacité alignée sur les priorités Time’Eats.</p>
           <div class="scenario-toggles" role="group" aria-label="Choisir un scénario PMO">
-            <button class="scenario-toggle active" type="button" data-name="Équilibre" data-description="Livraison maîtrisée, risques sous contrôle et capacité alignée sur les priorités Time’Eats." data-mood="Cadence stable" data-delivery="68" data-risk="34" data-velocity="86">
+            <button class="scenario-toggle active" type="button" data-name="Équilibre" data-description="Livraison maîtrisée, risques sous contrôle et capacité alignée sur les priorités Time’Eats." data-mood="Cadence stable" data-delivery="74" data-risk="28" data-velocity="94">
               <span class="chip-dot"></span> Équilibre
             </button>
-            <button class="scenario-toggle" type="button" data-name="Accélération" data-description="Sprints resserrés, arbitrages rapides et focus delivery sur l’app mobile client." data-mood="Mode turbo" data-delivery="82" data-risk="48" data-velocity="104">
+            <button class="scenario-toggle" type="button" data-name="Accélération" data-description="Sprints resserrés, arbitrages rapides et focus delivery sur l’app mobile client." data-mood="Mode turbo" data-delivery="88" data-risk="46" data-velocity="114">
               <span class="chip-dot"></span> Accélération
             </button>
-            <button class="scenario-toggle" type="button" data-name="Sécurisation" data-description="Gestion fine des dépendances, réduction des aléas et accompagnement renforcé des squads." data-mood="Pilotage prudent" data-delivery="60" data-risk="22" data-velocity="78">
+            <button class="scenario-toggle" type="button" data-name="Sécurisation" data-description="Gestion fine des dépendances, réduction des aléas et accompagnement renforcé des squads." data-mood="Pilotage prudent" data-delivery="64" data-risk="22" data-velocity="84">
               <span class="chip-dot"></span> Sécurisation
             </button>
           </div>
           <div class="scenario-stats">
             <div class="scenario-stat">
               <div class="scenario-label">Livraison trimestrielle</div>
-              <div class="bar-track" aria-hidden="true"><div class="bar-fill" id="scenarioDeliveryBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="68" aria-valuetext="68%" style="width:68%;"></div></div>
-              <div class="scenario-value" id="scenarioDeliveryValue">68%</div>
+              <div class="bar-track" aria-hidden="true"><div class="bar-fill" id="scenarioDeliveryBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="74" aria-valuetext="74%" style="width:74%;"></div></div>
+              <div class="scenario-value" id="scenarioDeliveryValue">74%</div>
             </div>
             <div class="scenario-stat">
               <div class="scenario-label">Risques critiques</div>
-              <div class="bar-track" aria-hidden="true"><div class="bar-fill" id="scenarioRiskBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="34" aria-valuetext="34%" style="width:34%;"></div></div>
-              <div class="scenario-value" id="scenarioRiskValue">34%</div>
+              <div class="bar-track" aria-hidden="true"><div class="bar-fill" id="scenarioRiskBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="28" aria-valuetext="28%" style="width:28%;"></div></div>
+              <div class="scenario-value" id="scenarioRiskValue">28%</div>
             </div>
             <div class="scenario-stat">
               <div class="scenario-label">Vélocité cible</div>
-              <div class="bar-track" aria-hidden="true"><div class="bar-fill" id="scenarioVelocityBar" role="progressbar" aria-valuemin="0" aria-valuemax="120" aria-valuenow="86" aria-valuetext="86 pts" style="width:71%;"></div></div>
-              <div class="scenario-value" id="scenarioVelocityValue">86 pts</div>
+              <div class="bar-track" aria-hidden="true"><div class="bar-fill" id="scenarioVelocityBar" role="progressbar" aria-valuemin="0" aria-valuemax="120" aria-valuenow="94" aria-valuetext="94 pts" style="width:78%;"></div></div>
+              <div class="scenario-value" id="scenarioVelocityValue">94 pts</div>
             </div>
           </div>
+        </div>
+
+        <div class="neo-card animate motion-surface" data-anim-delay="0.5">
+          <div class="motion-beam" aria-hidden="true"></div>
+          <div class="chip-ghost">Tableau de bord flash (S24)</div>
+          <div class="metric-sub">Synthèse portefeuille Time’Eats – chiffres consolidés</div>
+          <table style="width:100%; margin-top:10px; font-size:0.9rem;">
+            <thead>
+              <tr>
+                <th style="text-align:left;">Projet</th>
+                <th>Avancement</th>
+                <th>Budget (k€)</th>
+                <th>Écart</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>App mobile client</td>
+                <td>62% (6/10 sprints)</td>
+                <td>150 / 210</td>
+                <td style="color:#16a34a; font-weight:700;">+3%</td>
+              </tr>
+              <tr>
+                <td>CRM</td>
+                <td>48% (phase build)</td>
+                <td>120 / 240</td>
+                <td style="color:#ea580c; font-weight:700;">-5%</td>
+              </tr>
+              <tr>
+                <td>Data – reporting food</td>
+                <td>36% (data model)</td>
+                <td>90 / 180</td>
+                <td style="color:#2563eb; font-weight:700;">+1%</td>
+              </tr>
+              <tr>
+                <td>Déploiement O365</td>
+                <td>78% (UAT en cours)</td>
+                <td>60 / 80</td>
+                <td style="color:#16a34a; font-weight:700;">+4%</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -2196,6 +2279,36 @@
       </div>
     </div>
 
+    <h4>6.7.1 WBS synthétique (niveaux livrables)</h4>
+    <p>Décomposition du projet App mobile client en lots structurants avec charges et jalons exprimés.</p>
+    <div class="wbs-grid">
+      <div class="wbs-card">
+        <div class="wbs-title">Lot 1 – Cadrage <span class="wbs-badge">2,5 sem.</span></div>
+        <div class="wbs-node">1.1 Kick-off & vision produit <small>Livrable : note de cadrage</small></div>
+        <div class="wbs-node">1.2 Parcours UX cible <small>Livrable : proto Figma, 5 écrans</small></div>
+        <div class="wbs-node">1.3 Backlog initial (35 US) <small>Livrable : backlog priorisé MoSCoW</small></div>
+      </div>
+      <div class="wbs-card">
+        <div class="wbs-title">Lot 2 – Build mobile <span class="wbs-badge">10 sprints</span></div>
+        <div class="wbs-node">2.1 Authentification & profil <small>Epic 12 US – 3 sprints</small></div>
+        <div class="wbs-node">2.2 Commande & paiement <small>Epic 14 US – 4 sprints</small></div>
+        <div class="wbs-node">2.3 Notifications & fidélité <small>Epic 9 US – 2 sprints</small></div>
+        <div class="wbs-node">2.4 Qualité & hardening <small>Non-fonctionnel – 1 sprint</small></div>
+      </div>
+      <div class="wbs-card">
+        <div class="wbs-title">Lot 3 – Intégrations <span class="wbs-badge">6 sem.</span></div>
+        <div class="wbs-node">3.1 API catalogue & stock <small>Ready fin S7 – contrat d’interface</small></div>
+        <div class="wbs-node">3.2 Paiement PSP <small>Ready fin S8 – sandbox validée</small></div>
+        <div class="wbs-node">3.3 CRM & fidélité <small>Ready fin S9 – mapping données</small></div>
+      </div>
+      <div class="wbs-card">
+        <div class="wbs-title">Lot 4 – Tests & déploiement <span class="wbs-badge">5 sem.</span></div>
+        <div class="wbs-node">4.1 Plan de tests (120 cas) <small>Livrable : matrice couverture</small></div>
+        <div class="wbs-node">4.2 Recette UAT & mise en prod <small>Livrable : PV signé + runbook</small></div>
+        <div class="wbs-node">4.3 Hypercare S+2 <small>Livrable : backlog incidents clôturé</small></div>
+      </div>
+    </div>
+
     <!-- GANTT VISUEL -->
     <h4>6.7.1 bis – Gantt du projet (visuel simplifié)</h4>
     <table class="gantt-table">
@@ -2210,61 +2323,61 @@
       <tbody>
         <tr>
           <td>Cadrage & besoins</td>
-          <td>Mai</td>
+          <td>02/05 → 24/05</td>
           <td>3 semaines</td>
           <td>
             <div class="gantt-bar-track">
-              <div class="gantt-bar-fill" style="width:25%;"></div>
+              <div class="gantt-bar-fill" style="width:18%;"></div>
             </div>
           </td>
         </tr>
         <tr>
           <td>Conception fonctionnelle</td>
-          <td>Fin mai – début juin</td>
-          <td>3 semaines</td>
+          <td>27/05 → 14/06</td>
+          <td>2,5 semaines</td>
           <td>
             <div class="gantt-bar-track">
-              <div class="gantt-bar-fill" style="width:30%;"></div>
+              <div class="gantt-bar-fill" style="width:22%;"></div>
             </div>
           </td>
         </tr>
         <tr>
           <td>Développement</td>
-          <td>Juin – Septembre</td>
-          <td>4 mois</td>
+          <td>17/06 → 27/09</td>
+          <td>14 semaines</td>
           <td>
             <div class="gantt-bar-track">
-              <div class="gantt-bar-fill" style="width:80%;"></div>
+              <div class="gantt-bar-fill" style="width:68%;"></div>
             </div>
           </td>
         </tr>
         <tr>
           <td>Tests & débogage</td>
-          <td>Octobre</td>
-          <td>1 mois</td>
+          <td>30/09 → 18/10</td>
+          <td>3 semaines</td>
           <td>
             <div class="gantt-bar-track">
-              <div class="gantt-bar-fill" style="width:50%;"></div>
+              <div class="gantt-bar-fill" style="width:28%;"></div>
             </div>
           </td>
         </tr>
         <tr>
           <td>Recette utilisateur</td>
-          <td>Novembre</td>
+          <td>21/10 → 08/11</td>
           <td>3 semaines</td>
           <td>
             <div class="gantt-bar-track">
-              <div class="gantt-bar-fill" style="width:40%;"></div>
+              <div class="gantt-bar-fill" style="width:24%;"></div>
             </div>
           </td>
         </tr>
         <tr>
           <td>Mise en production</td>
-          <td>Début décembre</td>
+          <td>09/12 → 13/12</td>
           <td>1 semaine</td>
           <td>
             <div class="gantt-bar-track">
-              <div class="gantt-bar-fill" style="width:15%;"></div>
+              <div class="gantt-bar-fill" style="width:10%;"></div>
             </div>
           </td>
         </tr>
