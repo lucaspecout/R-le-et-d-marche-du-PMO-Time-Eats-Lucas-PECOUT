@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time'Eats PMO Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="eyebrow">PMO – Portfolio Management</p>
+      <h1>Supervision du portefeuille projets de la DSI</h1>
+      <p class="lede">Vision globale, priorisation stratégique et pilotage opérationnel des initiatives Time’Eats, présenté sous forme de tableaux de bord interactifs.</p>
+      <div class="badges">
+        <span class="badge">Responsable : Lucas Pecout</span>
+        <span class="badge">Entreprise : Time'Eats</span>
+        <span class="badge">Méthode : Agile Scrum</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="grid two-col">
+      <article class="card">
+        <h2>Présentation de Time’Eats</h2>
+        <p>Time’Eats s’appuie sur deux sites de production (Morlaix et Concarneau) et ambitionne de devenir la référence française de la restauration à domicile avec une plateforme web et mobile.</p>
+        <div class="chips">
+          <span>Production &amp; marketplace</span>
+          <span>Qualité &amp; proximité</span>
+          <span>Expansion nationale</span>
+        </div>
+      </article>
+      <article class="card">
+        <h2>Rôle du PMO</h2>
+        <ul class="checklist">
+          <li>Pilotage stratégique du portefeuille projets</li>
+          <li>Homogénéisation des pratiques de gestion</li>
+          <li>Contrôle et accompagnement opérationnel</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="card">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Objectifs SMART du portefeuille DSI</p>
+          <h2>Alignement, sécurité, performance</h2>
+        </div>
+        <span class="pill">Pilotage continu</span>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Objectif</th>
+              <th>KPI</th>
+              <th>Cible</th>
+              <th>Horizon</th>
+              <th>Responsable</th>
+            </tr>
+          </thead>
+          <tbody id="kpi-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Référentiel documentaire</p>
+          <h2>Documents clés pour sécuriser chaque projet</h2>
+        </div>
+        <span class="pill pill--blue">Standards PMO</span>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Document</th>
+              <th>Moment</th>
+              <th>Objectif</th>
+              <th>Responsable</th>
+            </tr>
+          </thead>
+          <tbody id="docs-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid two-col">
+      <article class="card">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Grille stratégique</p>
+            <h2>Priorisation multicritères</h2>
+          </div>
+          <span class="pill pill--accent">Scores pondérés</span>
+        </div>
+        <canvas id="scoreChart" height="180"></canvas>
+      </article>
+      <article class="card">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Radar comparatif</p>
+            <h2>Équilibre global du portefeuille</h2>
+          </div>
+          <span class="pill">Importance / ROI / Risques / Charge</span>
+        </div>
+        <canvas id="radarChart" height="180"></canvas>
+      </article>
+    </section>
+
+    <section class="card">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Tableau de bord portefeuille</p>
+          <h2>Planification, budget et priorités</h2>
+        </div>
+        <span class="pill pill--blue">Vue direction</span>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Rang</th>
+              <th>Projet</th>
+              <th>Score</th>
+              <th>Début</th>
+              <th>Durée</th>
+              <th>Budget (k€)</th>
+            </tr>
+          </thead>
+          <tbody id="portfolio-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid two-col">
+      <article class="card">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Projet phare</p>
+            <h2>Application mobile client</h2>
+          </div>
+          <span class="pill pill--accent">Méthode Scrum</span>
+        </div>
+        <ul class="highlight-list">
+          <li>Objectif : expérience mobile intuitive pour commander, suivre et noter les prestations.</li>
+          <li>Périmètre : recherche, commande, paiement, suivi en temps réel, favoris, notation.</li>
+          <li>Jalons : Mai → Décembre (sprints de 3 semaines).</li>
+          <li>Budget : 150 k€ | Parties prenantes : PMO, DSI, Direction commerciale, ESN, utilisateurs pilotes.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Analyse SWOT</p>
+            <h2>Forces et vigilances</h2>
+          </div>
+          <span class="pill">Décider &amp; ajuster</span>
+        </div>
+        <div class="swot">
+          <div><h3>Forces</h3><p>Expertise technique interne, alignement stratégique, budget sécurisé.</p></div>
+          <div><h3>Faiblesses</h3><p>Dépendance prestataire, UX à valider, capacité limitée face aux retards.</p></div>
+          <div><h3>Opportunités</h3><p>Marché mobile en croissance, nouveaux partenariats possibles.</p></div>
+          <div><h3>Menaces</h3><p>Concurrence forte, risques sécurité, évolutions réglementaires.</p></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="grid two-col">
+      <article class="card">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Gestion des risques</p>
+            <h2>Matrice P × I</h2>
+          </div>
+          <span class="pill pill--blue">Surveillance active</span>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Risque</th>
+                <th>Prob.</th>
+                <th>Impact</th>
+                <th>Plan d’action</th>
+              </tr>
+            </thead>
+            <tbody id="risk-table"></tbody>
+          </table>
+        </div>
+      </article>
+      <article class="card">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Plan de communication</p>
+            <h2>Rythme &amp; transparence</h2>
+          </div>
+          <span class="pill">Multi-publics</span>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Public</th>
+                <th>Canal</th>
+                <th>Fréquence</th>
+                <th>Responsable</th>
+              </tr>
+            </thead>
+            <tbody id="comms-table"></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <section class="grid two-col">
+      <article class="card">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Pilotage opérationnel</p>
+            <h2>KPI du projet</h2>
+          </div>
+          <span class="pill pill--accent">Suivi hebdo</span>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Indicateur</th>
+                <th>Objectif</th>
+                <th>Fréquence</th>
+                <th>Seuil d’alerte</th>
+              </tr>
+            </thead>
+            <tbody id="project-kpi-table"></tbody>
+          </table>
+        </div>
+      </article>
+      <article class="card">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">RACI</p>
+            <h2>Rôles et responsabilités</h2>
+          </div>
+          <span class="pill">Clarté &amp; décision</span>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Livrable</th>
+                <th>PMO</th>
+                <th>Chef de projet</th>
+                <th>MOA</th>
+                <th>Tech/ESN</th>
+                <th>RSSI</th>
+              </tr>
+            </thead>
+            <tbody id="raci-table"></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <section class="card">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Clôture &amp; capitalisation</p>
+          <h2>Recette, RETEX et amélioration continue</h2>
+        </div>
+        <span class="pill pill--blue">Boucle PDCA</span>
+      </div>
+      <ul class="highlight-list">
+        <li>Plan de tests exhaustif (fonctionnel, technique, intégration) avec PV de recette.</li>
+        <li>Réunion RETEX : enseignements, recommandations, base de connaissances partagée.</li>
+        <li>Plan d’amélioration continue versionné : UX, intégration, ergonomie.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Time’Eats PMO — Portefeuille DSI &amp; Application mobile client — 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
