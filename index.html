@@ -12,55 +12,267 @@
   <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
 </head>
 <body>
+  <div class="background-rings">
+    <span></span><span></span><span></span>
+  </div>
+  <nav class="top-nav">
+    <div class="brand">
+      <div class="brand-mark">PMO</div>
+      <div>
+        <div class="brand-title">Time’Eats – Cockpit stratégique</div>
+        <div class="brand-sub">Pilotage portefeuille &amp; projet mobile</div>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <a href="#dashboard" class="ghost-btn">Tableau de bord</a>
+      <a href="#rapport" class="primary-btn">Accéder au rapport</a>
+    </div>
+  </nav>
   <div class="page">
-    <header class="hero">
-      <div class="hero-badge"><span></span> Dossier PMO – Niveau professionnel</div>
-      <h1 class="hero-title">Rôle et démarche du PMO pour un pilotage stratégique efficace</h1>
-      <p class="hero-subtitle">Supervision du portefeuille projets de la DSI de Time’Eats &amp; projet « Application mobile client »</p>
-
-      <div class="hero-row">
-        <div>
-          <div class="hero-meta">
-            <div class="chip"><span class="chip-dot"></span> Bloc INFMSIAL2V</div>
-            <div class="chip">Étudiant : <strong>Lucas PECOUT</strong></div>
-            <div class="chip">Promotion : MICSI24</div>
-            <div class="chip">Rôle : Responsable de la cellule PMO (cas pratique)</div>
+    <header class="hero hero-grid" id="synthese">
+      <div class="hero-intro">
+        <div class="hero-badge"><span></span> Dossier PMO – Niveau professionnel</div>
+        <p class="eyebrow">Synthèse exécutive</p>
+        <h1 class="hero-title">Pilotage stratégique et opérationnel du PMO Time’Eats</h1>
+        <p class="hero-subtitle">Supervision du portefeuille projets de la DSI &amp; projet « Application mobile client » avec une approche data-driven.</p>
+        <div class="hero-meta">
+          <div class="chip"><span class="chip-dot"></span> Bloc INFMSIAL2V</div>
+          <div class="chip">Étudiant : <strong>Lucas PECOUT</strong></div>
+          <div class="chip">Promotion : MICSI24</div>
+          <div class="chip">Rôle : Responsable de la cellule PMO (cas pratique)</div>
+        </div>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#dashboard">Voir le cockpit live</a>
+          <a class="ghost-btn" href="#rapport">Parcourir le rapport</a>
+        </div>
+        <div class="hero-highlight">
+          <div>
+            <p class="muted">Capacité PMO</p>
+            <div class="big-number">+18 projets</div>
+            <p class="muted">alignés sur la feuille de route Time’Eats</p>
+          </div>
+          <div class="sparkline">
+            <div class="sparkline-label">Charge maîtrisée</div>
+            <div class="sparkline-track"><span style="width:82%"></span></div>
+            <div class="sparkline-value">82% de capacité utilisée</div>
           </div>
         </div>
       </div>
-
-      <div class="kpi-grid">
-        <div class="kpi-card">
-          <div class="kpi-donut" style="background: conic-gradient(#22c55e 0 92%, #e5e7eb 92% 100%);">
+      <div class="hero-panels">
+        <div class="kpi-card neo">
+          <div class="kpi-donut" style="background: conic-gradient(#22c55e 0 92%, #0f172a 92% 100%);">
             <span>92%</span>
           </div>
           <div>
             <div class="kpi-text-title">Alignement stratégique</div>
-            <div class="kpi-text-sub">Projets DSI liés aux objectifs Time’Eats</div>
+            <div class="kpi-text-sub">Projets DSI reliés aux OKR Time’Eats</div>
           </div>
         </div>
-        <div class="kpi-card">
-          <div class="kpi-donut" style="background: conic-gradient(#facc15 0 78%, #e5e7eb 78% 100%);">
+        <div class="kpi-card neo">
+          <div class="kpi-donut" style="background: conic-gradient(#facc15 0 78%, #0f172a 78% 100%);">
             <span>78%</span>
           </div>
           <div>
-            <div class="kpi-text-title">Projets dans les délais</div>
-            <div class="kpi-text-sub">Suivi macro du portefeuille</div>
+            <div class="kpi-text-title">Respect planning</div>
+            <div class="kpi-text-sub">Macro-suivi portefeuille trimestriel</div>
           </div>
         </div>
-        <div class="kpi-card">
-          <div class="kpi-donut" style="background: conic-gradient(#38bdf8 0 94%, #e5e7eb 94% 100%);">
+        <div class="kpi-card neo">
+          <div class="kpi-donut" style="background: conic-gradient(#38bdf8 0 94%, #0f172a 94% 100%);">
             <span>94%</span>
           </div>
           <div>
-            <div class="kpi-text-title">Budget maîtrisé</div>
-            <div class="kpi-text-sub">Respect global des enveloppes</div>
+            <div class="kpi-text-title">Budget contrôlé</div>
+            <div class="kpi-text-sub">Prévisionnel vs réel consolidé</div>
+          </div>
+        </div>
+        <div class="timeline-panel">
+          <div class="panel-header">
+            <span>Focus Application mobile</span>
+            <span class="badge">PI courante</span>
+          </div>
+          <div class="timeline-grid">
+            <div>
+              <p class="muted">Étape</p>
+              <div class="status-chip status-green">Dév. sprint 4/6</div>
+            </div>
+            <div>
+              <p class="muted">Livraison</p>
+              <div class="status-chip status-amber">Recette T+3 semaines</div>
+            </div>
+            <div>
+              <p class="muted">Risque majeur</p>
+              <div class="status-chip status-red">OAuth mobile</div>
+            </div>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-label">Roadmap PI</div>
+            <div class="progress-track"><span style="width:68%"></span></div>
+            <div class="progress-legend">68% d’achèvement – jalon UX validé</div>
           </div>
         </div>
       </div>
     </header>
 
-    <main>
+    <section class="dashboard" id="dashboard">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Tableau de bord visuel</p>
+          <h2>Cockpit PMO &amp; projet mobile</h2>
+          <p class="muted">Visualisation en un clin d’œil : santé du portefeuille, risques, et capacité d’absorption des équipes produit/IT.</p>
+        </div>
+        <div class="pill-group">
+          <span class="pill">Temps réel</span>
+          <span class="pill">Données consolidées</span>
+          <span class="pill">Mode print-ready</span>
+        </div>
+      </div>
+
+      <div class="board-grid">
+        <div class="panel glass">
+          <div class="panel-header">
+            <span>Capacité &amp; vélocité</span>
+            <span class="badge">Sprint 14</span>
+          </div>
+          <div class="trend-row">
+            <div>
+              <p class="muted">Vélocité moyenne</p>
+              <div class="big-number">32 pts</div>
+              <div class="sparkline-track"><span style="width:76%"></span></div>
+              <p class="muted">+12% vs sprint précédent</p>
+            </div>
+            <canvas id="trendVelocity" height="120"></canvas>
+          </div>
+        </div>
+        <div class="panel glass">
+          <div class="panel-header">
+            <span>État du portefeuille</span>
+            <span class="badge">12 actifs</span>
+          </div>
+          <div class="health-grid">
+            <div class="health-item">
+              <div class="health-label">On track</div>
+              <div class="health-bar"><span style="width:64%"></span></div>
+              <div class="health-value">8 projets</div>
+            </div>
+            <div class="health-item">
+              <div class="health-label">Sous surveillance</div>
+              <div class="health-bar amber"><span style="width:22%"></span></div>
+              <div class="health-value">3 projets</div>
+            </div>
+            <div class="health-item">
+              <div class="health-label">Critiques</div>
+              <div class="health-bar red"><span style="width:14%"></span></div>
+              <div class="health-value">1 projet</div>
+            </div>
+          </div>
+          <div class="mini-table">
+            <div class="mini-row"><span>Application mobile</span><span class="status-chip status-green">OK</span><div class="micro-progress" style="--value:72%"></div></div>
+            <div class="mini-row"><span>CRM &amp; fidélité</span><span class="status-chip status-amber">À surveiller</span><div class="micro-progress" style="--value:58%"></div></div>
+            <div class="mini-row"><span>Cloud &amp; sécu</span><span class="status-chip status-red">Critique</span><div class="micro-progress" style="--value:36%"></div></div>
+          </div>
+        </div>
+        <div class="panel glass">
+          <div class="panel-header">
+            <span>Risques &amp; dépendances</span>
+            <span class="badge">Radar</span>
+          </div>
+          <div class="chart-stack">
+            <canvas id="radarRisk"></canvas>
+          </div>
+          <div class="pill-group">
+            <span class="pill">Auth forte</span>
+            <span class="pill">Sauvegarde Cloud</span>
+            <span class="pill">MAJ Paie</span>
+          </div>
+        </div>
+        <div class="panel glass">
+          <div class="panel-header">
+            <span>Score stratégique</span>
+            <span class="badge">Radar</span>
+          </div>
+          <div class="chart-stack">
+            <canvas id="radarGlobal"></canvas>
+          </div>
+          <p class="muted">Comparaison multi-projets selon importance, ROI, risques et impact UX.</p>
+        </div>
+      </div>
+
+      <div class="board-grid grid-2">
+        <div class="panel glass">
+          <div class="panel-header">
+            <span>Backlog priorisé</span>
+            <span class="badge">Glisser-déposer</span>
+          </div>
+          <div class="kanban-grid">
+            <div class="kanban-col">
+              <div class="kanban-title">À faire</div>
+              <div class="kanban-card">
+                <div>Refonte tunnel de paiement</div>
+                <div class="status-chip status-amber">+ UX</div>
+              </div>
+              <div class="kanban-card">
+                <div>Monitoring API traiteur</div>
+                <div class="status-chip status-green">Stabilité</div>
+              </div>
+            </div>
+            <div class="kanban-col">
+              <div class="kanban-title">En cours</div>
+              <div class="kanban-card active">
+                <div>OAuth mobile &amp; SSO</div>
+                <div class="status-chip status-red">Bloquant</div>
+              </div>
+              <div class="kanban-card">
+                <div>Design system UI</div>
+                <div class="status-chip status-amber">Design</div>
+              </div>
+            </div>
+            <div class="kanban-col">
+              <div class="kanban-title">Livré</div>
+              <div class="kanban-card done">
+                <div>CRM &amp; scoring fidélité</div>
+                <div class="status-chip status-green">Livré</div>
+              </div>
+              <div class="kanban-card done">
+                <div>Automatisation facturation</div>
+                <div class="status-chip status-green">Livré</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel glass">
+          <div class="panel-header">
+            <span>Suivi Gantt express</span>
+            <span class="badge">Vue synthèse</span>
+          </div>
+          <div class="gantt-mini">
+            <div class="gantt-row">
+              <span>Cadrage</span>
+              <div class="micro-progress" style="--value:100%"></div>
+              <span class="muted">Terminé</span>
+            </div>
+            <div class="gantt-row">
+              <span>Conception</span>
+              <div class="micro-progress" style="--value:74%"></div>
+              <span class="muted">En cours</span>
+            </div>
+            <div class="gantt-row">
+              <span>Dév &amp; QA</span>
+              <div class="micro-progress" style="--value:58%"></div>
+              <span class="muted">Sprint 4/6</span>
+            </div>
+            <div class="gantt-row">
+              <span>Mise en prod</span>
+              <div class="micro-progress" style="--value:22%"></div>
+              <span class="muted">Prépa run</span>
+            </div>
+          </div>
+          <canvas id="ganttProjet" height="130"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <main class="report-body" id="rapport">
       <h2>Sommaire</h2>
       <p>
         1. Introduction<br>
