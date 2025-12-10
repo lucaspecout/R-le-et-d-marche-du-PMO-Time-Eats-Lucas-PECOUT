@@ -10,7 +10,64 @@ function initTiltCards() {
 }
 
 function initNebula() {
-  // Animations désactivées : la toile dynamique n'est plus initialisée
+  const canvas = document.getElementById('nebula');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) {
+    canvas.classList.add('nebula-fallback');
+    return;
+  }
+  const orbs = Array.from({ length: 16 }).map(() => ({
+    x: Math.random(),
+    y: Math.random(),
+    r: 80 + Math.random() * 80,
+    dx: (Math.random() - 0.5) * 0.0014,
+    dy: (Math.random() - 0.5) * 0.0014,
+    color: `hsla(${Math.random() * 60 + 20}, 80%, 60%, 0.4)`,
+  }));
+
+  function resize() {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+  }
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    orbs.forEach((orb) => {
+      orb.x += orb.dx;
+      orb.y += orb.dy;
+
+      if (orb.x < 0 || orb.x > 1) orb.dx *= -1;
+      if (orb.y < 0 || orb.y > 1) orb.dy *= -1;
+
+      const gradient = ctx.createRadialGradient(
+        orb.x * canvas.width,
+        orb.y * canvas.height,
+        0,
+        orb.x * canvas.width,
+        orb.y * canvas.height,
+        orb.r
+      );
+
+      gradient.addColorStop(0, orb.color);
+      gradient.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(orb.x * canvas.width, orb.y * canvas.height, orb.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    if (!prefersReducedMotion) {
+      requestAnimationFrame(draw);
+    }
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+  draw();
 }
 
 function initVelocityControl() {
