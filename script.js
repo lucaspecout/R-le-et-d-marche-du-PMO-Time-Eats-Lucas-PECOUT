@@ -458,13 +458,10 @@ function initProgressObserver() {
 }
 
 function init() {
-  animateCards();
-  initTiltCards();
   initVelocityControl();
   initRiskLab();
   renderRadarCharts();
   initSimulation();
-  initProgressObserver();
   initToc();
   initInteractiveTables();
 
