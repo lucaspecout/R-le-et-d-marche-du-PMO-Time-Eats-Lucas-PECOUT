@@ -1026,6 +1026,77 @@
       background: linear-gradient(90deg, #22c55e, #16a34a);
     }
 
+    /* Tableau de bord général */
+    .project-dashboard { margin: 16px 0 26px; }
+    .project-dash-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .project-dash-title { margin: 0; color: var(--secondary); }
+    .project-dash-sub { color: var(--muted); margin: 0; }
+    .proj-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #ffedd5, #e0ecff);
+      color: var(--secondary);
+      font-weight: 700;
+      border: 1px solid rgba(17,24,39,0.06);
+      box-shadow: 0 10px 22px rgba(15,23,42,0.08);
+    }
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 10px 0 16px;
+    }
+    .proj-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      background: #fff;
+      box-shadow: 0 12px 28px rgba(15,23,42,0.08);
+    }
+    .proj-card h4 {
+      margin: 0;
+      color: var(--secondary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+    }
+    .proj-value {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin: 6px 0 2px;
+      color: #111827;
+    }
+    .proj-trend { color: var(--success); font-weight: 700; font-size: 0.9rem; }
+    .proj-trend.down { color: var(--danger); }
+    .proj-meta { color: var(--muted); font-size: 0.9rem; margin: 0; }
+    .proj-progress { margin: 8px 0 6px; height: 10px; border-radius: 999px; background: #eef2f7; overflow: hidden; }
+    .proj-progress span { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, #ff7a3c, #2563eb); }
+    .proj-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-top: 10px; }
+    .proj-list { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 6px; }
+    .proj-list li { display: flex; justify-content: space-between; align-items: center; background: #f9fafb; border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px; }
+    .proj-pill { padding: 4px 8px; border-radius: 999px; font-weight: 700; font-size: 0.85rem; }
+    .proj-green { background: rgba(22,163,74,0.14); color: var(--success); }
+    .proj-amber { background: rgba(234,179,8,0.16); color: #b45309; }
+    .proj-red { background: rgba(239,68,68,0.16); color: #b91c1c; }
+    .proj-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.9rem; }
+    .proj-table th, .proj-table td { padding: 6px 8px; border: 1px solid var(--border); }
+    .proj-table th { background: #f9fafb; color: var(--secondary); }
+    @media (max-width: 640px) {
+      .project-dash-header { flex-direction: column; align-items: flex-start; }
+    }
+
     /* WBS & roadmaps */
     .wbs-grid {
       display: grid;
@@ -2967,41 +3038,91 @@
       </tbody>
     </table>
 
-    <h3>Annexe 11.5 – Modèle de dashboard projet</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>KPI</th>
-          <th>Objectif</th>
-          <th>Valeur actuelle</th>
-          <th>Seuil d’alerte</th>
-          <th>Commentaire</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Avancement (%)</td>
-          <td>[Cible]</td>
-          <td>[Valeur]</td>
-          <td>[Seuil]</td>
-          <td>[Analyse]</td>
-        </tr>
-        <tr>
-          <td>Budget consommé</td>
-          <td>[Cible]</td>
-          <td>[Valeur]</td>
-          <td>[Seuil]</td>
-          <td>[Analyse]</td>
-        </tr>
-        <tr>
-          <td>Bugs critiques</td>
-          <td>[Cible]</td>
-          <td>[Valeur]</td>
-          <td>[Seuil]</td>
-          <td>[Analyse]</td>
-        </tr>
-      </tbody>
-    </table>
+    <h3>Annexe 11.5 – Tableau de bord général du projet</h3>
+    <div class="project-dashboard">
+      <div class="project-dash-header">
+        <div>
+          <h4 class="project-dash-title">Vue synthèse – Application mobile client</h4>
+          <p class="project-dash-sub">Mise à jour semaine 24 · Sprint 8/12 · fenêtre de pilotage T2</p>
+        </div>
+        <div class="proj-chip"><span class="status-dot status-green"></span> Trajectoire maîtrisée</div>
+      </div>
+
+      <div class="proj-grid">
+        <div class="proj-card">
+          <h4>Avancement global <span class="proj-trend">+3 pts</span></h4>
+          <div class="proj-value">82%</div>
+          <div class="proj-progress"><span style="width:82%"></span></div>
+          <p class="proj-meta">Cible T2 : 100% · Story points livrés : 164/200</p>
+        </div>
+        <div class="proj-card">
+          <h4>Budget consommé <span class="proj-trend">58%</span></h4>
+          <div class="proj-value">87 k€ / 150 k€</div>
+          <div class="proj-progress"><span style="width:58%"></span></div>
+          <p class="proj-meta">Gain vs prévision : +2,5 k€ · Burn rate stable</p>
+        </div>
+        <div class="proj-card">
+          <h4>Qualité produit <span class="proj-trend down">-0,3</span></h4>
+          <div class="proj-value">1,8 bug / 1 000 sessions</div>
+          <div class="proj-progress"><span style="width:36%"></span></div>
+          <p class="proj-meta">Seuil d’alerte : 3,0 · 2 correctifs critiques ouverts</p>
+        </div>
+        <div class="proj-card">
+          <h4>Satisfaction client <span class="proj-trend">↑</span></h4>
+          <div class="proj-value">4,6 / 5</div>
+          <div class="proj-progress"><span style="width:92%"></span></div>
+          <p class="proj-meta">CSAT beta interne · NPS cible : 45 (actuel 48)</p>
+        </div>
+        <div class="proj-card">
+          <h4>Charge & vélocité</h4>
+          <div class="proj-value">26 j.h disponibles</div>
+          <div class="proj-progress"><span style="width:74%"></span></div>
+          <p class="proj-meta">Vélocité moyenne : 32 pts / sprint · Capacité couverte 74%</p>
+        </div>
+        <div class="proj-card">
+          <h4>Risques & alertes</h4>
+          <div class="proj-value">3 ouverts</div>
+          <div class="proj-progress"><span style="width:45%"></span></div>
+          <p class="proj-meta">Couverture plans d’actions : 55% · revue hebdo vendredi</p>
+        </div>
+      </div>
+
+      <div class="proj-row">
+        <div class="proj-card">
+          <h4>Jalons majeurs</h4>
+          <ul class="proj-list">
+            <li><span>Beta publique – S26</span><span class="proj-pill proj-green">Livré</span></li>
+            <li><span>Go/No-Go sécurité – 25/06</span><span class="proj-pill proj-amber">En cours</span></li>
+            <li><span>Mise en prod pilotée – 04/07</span><span class="proj-pill proj-amber">À sécuriser</span></li>
+            <li><span>Déploiement complet – 15/07</span><span class="proj-pill proj-red">Sous risque</span></li>
+          </ul>
+        </div>
+
+        <div class="proj-card">
+          <h4>Risques prioritaires</h4>
+          <ul class="proj-list">
+            <li><span>Charge QA sous-estimée</span><span class="proj-pill proj-red">P2 / I3</span></li>
+            <li><span>Dependencies API partenaires</span><span class="proj-pill proj-amber">P3 / I2</span></li>
+            <li><span>Onboarding support client</span><span class="proj-pill proj-amber">P2 / I2</span></li>
+          </ul>
+        </div>
+
+        <div class="proj-card">
+          <h4>Actions clés (S24)</h4>
+          <table class="proj-table">
+            <thead>
+              <tr><th>Action</th><th>Responsable</th><th>Échéance</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Renforcer QA ( +1 testeur )</td><td>PMO</td><td>21/06</td></tr>
+              <tr><td>Stabiliser API paiement</td><td>Tech lead</td><td>26/06</td></tr>
+              <tr><td>Former support Niveau 1</td><td>PO</td><td>28/06</td></tr>
+              <tr><td>Valider plan de déploiement</td><td>Comité prod</td><td>01/07</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
   </main>
 </div>
