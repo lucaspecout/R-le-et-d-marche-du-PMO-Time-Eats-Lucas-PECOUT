@@ -45,6 +45,9 @@
       position: relative;
       overflow: hidden;
       border-bottom: 1px solid rgba(0,0,0,0.04);
+      background: radial-gradient(circle at 15% 20%, rgba(255,122,60,0.12), transparent 45%),
+                  radial-gradient(circle at 80% 0%, rgba(37,99,235,0.12), transparent 40%),
+                  linear-gradient(135deg, #fff7f2 0%, #f3f6fb 100%);
     }
 
     .nebula-canvas {
@@ -56,6 +59,12 @@
       mix-blend-mode: multiply;
       opacity: 0.35;
       pointer-events: none;
+    }
+
+    .nebula-canvas.nebula-fallback {
+      opacity: 0.45;
+      mix-blend-mode: normal;
+      background: linear-gradient(135deg, rgba(255,122,60,0.18), rgba(37,99,235,0.16));
     }
 
     .immersive-section {
@@ -98,7 +107,7 @@
       border-radius: 999px;
       background: #22c55e;
       box-shadow: 0 0 0 0 rgba(34,197,94,0.45);
-      animation: pulse 2.6s infinite;
+      animation: none;
     }
 
     @keyframes pulse {
@@ -300,16 +309,13 @@
     }
 
     .animate {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 500ms ease, transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
-      transition-delay: var(--delay, 0s);
+      opacity: 1;
+      transform: none;
+      transition: none;
+      transition-delay: 0s;
     }
 
-    .animate.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .animate.visible { opacity: 1; }
 
     /* Animations cross-navigateurs */
     .motion-surface {
@@ -328,7 +334,7 @@
       background: radial-gradient(circle, rgba(255,122,60,0.18), transparent 60%);
       opacity: 0.7;
       filter: blur(18px);
-      animation: drift 16s ease-in-out infinite alternate;
+      animation: none;
       z-index: 0;
       pointer-events: none;
     }
@@ -343,7 +349,7 @@
       background: radial-gradient(circle, rgba(37,99,235,0.18), transparent 65%);
       opacity: 0.55;
       filter: blur(22px);
-      animation: drift 18s ease-in-out infinite reverse;
+      animation: none;
       z-index: 0;
       pointer-events: none;
     }
@@ -355,7 +361,7 @@
       background: linear-gradient(120deg, rgba(255,255,255,0), rgba(255,255,255,0.4), rgba(255,255,255,0));
       transform: rotate(10deg);
       filter: blur(10px);
-      animation: sweep 9s linear infinite;
+      animation: none;
       opacity: 0.7;
       z-index: 0;
       pointer-events: none;
@@ -369,21 +375,14 @@
       position: absolute;
       inset: 0;
       z-index: 0;
-      animation: pan 28s linear infinite;
+      animation: none;
       pointer-events: none;
     }
 
-    .floating { animation: float 5s ease-in-out infinite; }
-    .micro-pulse { animation: glowPulse 3.2s ease-in-out infinite; }
+    .floating { animation: none; }
+    .micro-pulse { animation: none; }
     .shimmer { position: relative; overflow: hidden; }
-    .shimmer::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.25), rgba(255,255,255,0));
-      transform: translateX(-100%);
-      animation: shimmer 2.6s infinite;
-    }
+    .shimmer::after { display: none; }
 
     @keyframes float {
       0% { transform: translateY(0); }
@@ -979,13 +978,13 @@
   <!-- COUVERTURE -->
   <header class="hero motion-surface animate" data-anim-delay="0.02">
     <div class="motion-grid" aria-hidden="true"></div>
-    <div class="hero-badge micro-pulse"><span></span> Dossier PMO – Niveau professionnel</div>
-    <h1 class="hero-title floating">Rôle et démarche du PMO pour un pilotage stratégique efficace</h1>
+    <div class="hero-badge"><span></span> Dossier PMO – Niveau professionnel</div>
+    <h1 class="hero-title">Rôle et démarche du PMO pour un pilotage stratégique efficace</h1>
     <p class="hero-subtitle">Supervision du portefeuille projets de la DSI de Time’Eats & projet « Application mobile client »</p>
 
     <div class="hero-row">
       <div>
-        <div class="hero-meta floating">
+        <div class="hero-meta">
           <div class="chip"><span class="chip-dot"></span> Bloc INFMSIAL2V</div>
           <div class="chip">Étudiant : <strong>Lucas PECOUT</strong></div>
           <div class="chip">Promotion : MICSI24</div>
@@ -1006,7 +1005,7 @@
           <div class="kpi-text-sub">Projets DSI liés aux objectifs Time’Eats</div>
         </div>
       </div>
-      <div class="kpi-card motion-surface animate shimmer" data-anim-delay="0.14">
+      <div class="kpi-card motion-surface animate" data-anim-delay="0.14">
         <div class="motion-beam" aria-hidden="true"></div>
         <div class="kpi-donut" style="background: conic-gradient(#facc15 0 78%, #e5e7eb 78% 100%);">
           <span>78%</span>
@@ -1030,19 +1029,18 @@
   </header>
 
   <div class="immersive-wrapper">
-    <canvas id="nebula" class="nebula-canvas" aria-hidden="true"></canvas>
     <section class="immersive-section motion-surface animate" data-anim-delay="0.26">
       <div class="motion-grid" aria-hidden="true"></div>
       <div class="immersive-header">
         <div>
           <p class="chip">Lab interactif</p>
-          <h2 class="immersive-title">Animations en direct pour le pilotage PMO</h2>
+          <h2 class="immersive-title">Tableau de bord PMO, sans effets animés</h2>
           <p class="hero-subtitle" style="margin:4px 0 0; max-width: 680px;">
             Explorez la performance du portefeuille, simulez l’impact d’une décision et visualisez en quelques secondes
-            comment les équipes et les risques réagissent. Tout est interactif et animé pour faire vivre le dossier.
+            comment les équipes et les risques réagissent, sans dépendre d’animations qui pourraient ne pas se charger.
           </p>
         </div>
-        <div class="live-pill shimmer"><span class="live-dot micro-pulse"></span> Effets dynamiques activés</div>
+        <div class="live-pill"><span class="live-dot micro-pulse"></span> Mode statique sécurisé</div>
       </div>
 
       <div class="immersive-grid">
