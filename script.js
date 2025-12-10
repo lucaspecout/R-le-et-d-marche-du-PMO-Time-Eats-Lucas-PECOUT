@@ -1,64 +1,12 @@
 function animateCards() {
-  const elements = document.querySelectorAll('.animate');
-  const reveal = (el) => el.classList.add('visible');
-
-  // Fallback manuel basé sur le défilement pour garantir la compatibilité desktop/mobile
-  const items = Array.from(elements);
-
-  const checkVisibility = () => {
-    const viewportBottom = window.innerHeight * 0.92;
-
-    items.forEach((el) => {
-      if (el.classList.contains('visible')) return;
-
-      const rect = el.getBoundingClientRect();
-      const delay = Number(el.dataset.animDelay);
-      if (!Number.isNaN(delay)) {
-        el.style.setProperty('--delay', `${delay}s`);
-      }
-
-      if (rect.top <= viewportBottom && rect.bottom >= 0) {
-        reveal(el);
-      }
-    });
-
-    if (items.every((el) => el.classList.contains('visible'))) {
-      window.removeEventListener('scroll', scheduleCheck, { passive: true });
-      window.removeEventListener('resize', scheduleCheck);
-    }
-  };
-
-  let ticking = false;
-  const scheduleCheck = () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      checkVisibility();
-      ticking = false;
-    });
-  };
-
-  window.addEventListener('scroll', scheduleCheck, { passive: true });
-  window.addEventListener('resize', scheduleCheck);
-  scheduleCheck();
+  document.querySelectorAll('.animate').forEach((el) => {
+    el.classList.add('visible');
+    el.style.removeProperty('--delay');
+  });
 }
 
 function initTiltCards() {
-  document.querySelectorAll('.tilt-card').forEach((card) => {
-    const maxTilt = 8;
-    card.addEventListener('mousemove', (event) => {
-      const rect = card.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
-      const rotateY = ((x / rect.width) - 0.5) * (maxTilt * 2);
-      const rotateX = ((y / rect.height) - 0.5) * -(maxTilt * 2);
-      card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
-    });
-  });
+  // Animations désactivées : aucun effet de tilt appliqué
 }
 
 function initNebula() {
@@ -202,25 +150,10 @@ function initSimulation() {
 
   if (!simulateBtn || !resetBtn) return;
 
-  let timer;
-
-  const animateTo = (target) => {
-    const step = () => {
-      const current = parseFloat(deliveryProgress.style.width || '0');
-      const next = Math.min(target, current + Math.random() * 18 + 6);
-      deliveryProgress.style.width = `${next}%`;
-      if (next >= target) return;
-      timer = requestAnimationFrame(step);
-    };
-    timer = requestAnimationFrame(step);
-  };
-
   simulateBtn.addEventListener('click', () => {
-    cancelAnimationFrame(timer);
     const target = 50 + Math.random() * 45;
-    deliveryProgress.style.width = '0%';
-    simulationValue.textContent = 'Simulation en cours…';
-    animateTo(target);
+    deliveryProgress.style.width = `${target}%`;
+    simulationValue.textContent = 'Simulation calculée';
 
     focusLabel.textContent = target > 75 ? 'Mode accéléré' : 'Flux stable';
     runwayLabel.textContent = `${(8 + Math.random() * 5).toFixed(1)} mois`;
@@ -228,7 +161,6 @@ function initSimulation() {
   });
 
   resetBtn.addEventListener('click', () => {
-    cancelAnimationFrame(timer);
     deliveryProgress.style.width = '0%';
     simulationValue.textContent = 'Prêt';
     focusLabel.textContent = 'Priorité mobile';
@@ -274,7 +206,7 @@ function initToc() {
     const link = document.createElement('a');
     link.className = 'toc-link';
     link.href = `#${heading.id}`;
-    link.innerHTML = `${heading.textContent}<small>Défilement animé</small>`;
+    link.innerHTML = `${heading.textContent}<small>Défilement direct</small>`;
     link.addEventListener('click', (event) => {
       event.preventDefault();
       document.getElementById(heading.id)?.scrollIntoView({ behavior: 'smooth' });
@@ -299,39 +231,16 @@ function initInteractiveTables() {
 }
 
 function initProgressObserver() {
-  const progressBars = document.querySelectorAll('.kpi-bar-fill, .gantt-bar-fill, .dash-progress-fill');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const target = entry.target.dataset.targetWidth;
-      if (target) {
-        entry.target.style.width = target;
-      }
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.2 });
-
-  progressBars.forEach((bar) => {
-    const width = bar.style.width;
-    if (width) {
-      bar.dataset.targetWidth = width;
-      bar.style.width = '0%';
-      observer.observe(bar);
-    }
-  });
+  // Animations désactivées : les jauges conservent leur largeur initiale
 }
 
 function init() {
   animateCards();
-  initTiltCards();
-  initNebula();
   initVelocityControl();
   initRiskLab();
   initSimulation();
   initToc();
   initInteractiveTables();
-  initProgressObserver();
 }
 
 document.addEventListener('DOMContentLoaded', init);
