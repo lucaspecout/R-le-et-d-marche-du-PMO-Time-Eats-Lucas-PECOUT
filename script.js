@@ -139,6 +139,128 @@ function initRiskLab() {
   update();
 }
 
+function renderRadarCharts() {
+  const radars = document.querySelectorAll('.radar[data-values]');
+
+  radars.forEach((radar) => {
+    const labels = (radar.dataset.labels || '')
+      .split(',')
+      .map((label) => label.trim())
+      .filter(Boolean);
+    const values = (radar.dataset.values || '')
+      .split(',')
+      .map((value) => Number(value.trim()))
+      .filter((value) => !Number.isNaN(value));
+    const max = Number(radar.dataset.max || 100) || 100;
+
+    if (!values.length) return;
+
+    if (radar.nextElementSibling?.classList.contains('radar-legend')) {
+      radar.nextElementSibling.remove();
+    }
+
+    const canvas = document.createElement('canvas');
+    const size = Math.min(220, radar.clientWidth || 220);
+    canvas.width = size;
+    canvas.height = size;
+
+    radar.innerHTML = '';
+    radar.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const center = size / 2;
+    const radius = size / 2 - 18;
+    const axes = values.length;
+    const angleStep = (Math.PI * 2) / axes;
+
+    ctx.strokeStyle = 'rgba(148,163,184,0.45)';
+    ctx.lineWidth = 1;
+    const rings = 4;
+    for (let i = 1; i <= rings; i += 1) {
+      const ringRadius = (radius / rings) * i;
+      ctx.beginPath();
+      ctx.arc(center, center, ringRadius, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    ctx.save();
+    ctx.translate(center, center);
+    for (let i = 0; i < axes; i += 1) {
+      const angle = -Math.PI / 2 + i * angleStep;
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(Math.cos(angle) * radius, Math.sin(angle) * radius);
+      ctx.stroke();
+    }
+    ctx.restore();
+
+    const points = values.map((value, index) => {
+      const bounded = Math.max(0, Math.min(value, max));
+      const ratio = bounded / max;
+      const angle = -Math.PI / 2 + index * angleStep;
+      return {
+        x: center + Math.cos(angle) * radius * ratio,
+        y: center + Math.sin(angle) * radius * ratio,
+        value: bounded,
+        label: labels[index] || `Axe ${index + 1}`,
+      };
+    });
+
+    ctx.beginPath();
+    points.forEach((point, index) => {
+      if (index === 0) ctx.moveTo(point.x, point.y);
+      else ctx.lineTo(point.x, point.y);
+    });
+    ctx.closePath();
+
+    const gradient = ctx.createLinearGradient(0, 0, size, size);
+    gradient.addColorStop(0, 'rgba(37,99,235,0.32)');
+    gradient.addColorStop(1, 'rgba(255,122,60,0.32)');
+
+    ctx.fillStyle = gradient;
+    ctx.strokeStyle = 'rgba(37,99,235,0.75)';
+    ctx.lineWidth = 2;
+    ctx.fill();
+    ctx.stroke();
+
+    points.forEach((point) => {
+      ctx.beginPath();
+      ctx.fillStyle = '#fff';
+      ctx.arc(point.x, point.y, 6, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.fillStyle = '#2563eb';
+      ctx.arc(point.x, point.y, 3.5, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    const ariaLabel = labels.length ? labels.join(', ') : 'profil projet';
+    radar.setAttribute('role', 'img');
+    radar.setAttribute('aria-label', `Radar multi-axes : ${ariaLabel}`);
+
+    if (labels.length) {
+      const legend = document.createElement('ul');
+      legend.className = 'radar-legend';
+
+      labels.forEach((label, index) => {
+        const item = document.createElement('li');
+        const swatch = document.createElement('span');
+        swatch.className = 'radar-swatch';
+        const text = document.createElement('span');
+        const value = Math.round(values[index] ?? 0);
+        text.textContent = `${label}: ${value} / ${max}`;
+        item.append(swatch, text);
+        legend.appendChild(item);
+      });
+
+      radar.insertAdjacentElement('afterend', legend);
+    }
+  });
+}
+
 function initSimulation() {
   const simulateBtn = document.getElementById('simulateBtn');
   const resetBtn = document.getElementById('resetBtn');
@@ -151,6 +273,9 @@ function initSimulation() {
   if (!simulateBtn || !resetBtn) return;
 
   simulateBtn.addEventListener('click', () => {
+    simulateBtn.disabled = true;
+    simulateBtn.textContent = 'Simulation en cours…';
+
     const target = 50 + Math.random() * 45;
     deliveryProgress.style.width = `${target}%`;
     deliveryProgress.setAttribute('aria-valuenow', Math.round(target).toString());
@@ -160,6 +285,11 @@ function initSimulation() {
     focusLabel.textContent = target > 75 ? 'Mode accéléré' : 'Flux stable';
     runwayLabel.textContent = `${(8 + Math.random() * 5).toFixed(1)} mois`;
     peopleLabel.textContent = target > 70 ? 'Escouades boostées' : 'Cadence nominale';
+
+    setTimeout(() => {
+      simulateBtn.disabled = false;
+      simulateBtn.textContent = 'Lancer la simulation';
+    }, 800);
   });
 
   resetBtn.addEventListener('click', () => {
@@ -170,6 +300,9 @@ function initSimulation() {
     focusLabel.textContent = 'Priorité mobile';
     runwayLabel.textContent = '10,5 mois';
     peopleLabel.textContent = 'Escouades prêtes';
+
+    simulateBtn.disabled = false;
+    simulateBtn.textContent = 'Lancer la simulation';
   });
 }
 
@@ -258,9 +391,14 @@ function init() {
   animateCards();
   initVelocityControl();
   initRiskLab();
+  renderRadarCharts();
   initSimulation();
   initToc();
   initInteractiveTables();
+
+  window.addEventListener('resize', () => {
+    renderRadarCharts();
+  });
 }
 
 document.addEventListener('DOMContentLoaded', init);
