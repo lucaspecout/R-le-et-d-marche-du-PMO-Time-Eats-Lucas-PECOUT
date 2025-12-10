@@ -307,6 +307,77 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* Sommaire interactif */
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .toc-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #f9fafb;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .toc-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(15,23,42,0.08);
+    }
+
+    .toc-pill {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #ffedd5, #e0ecff);
+      font-weight: 700;
+      color: var(--secondary);
+      flex-shrink: 0;
+      border: 1px solid rgba(17,24,39,0.06);
+    }
+
+    .toc-link {
+      color: var(--secondary);
+      font-weight: 700;
+      text-decoration: none;
+      flex: 1;
+    }
+
+    .toc-link small {
+      display: block;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .toc-link.active {
+      color: var(--accent);
+    }
+
+    /* Tables interactives */
+    .table-interactive tbody tr {
+      transition: background 160ms ease, transform 160ms ease;
+      cursor: pointer;
+    }
+
+    .table-interactive tbody tr:hover {
+      background: #f3f6fb;
+      transform: translateX(2px);
+    }
+
+    .table-interactive tbody tr.row-highlight {
+      background: #e0ecff;
+      box-shadow: inset 3px 0 0 #2563eb;
+    }
   
     header.hero {
       padding: 32px 40px 26px;
@@ -921,19 +992,7 @@
   <main>
     <!-- SOMMAIRE -->
     <h2>Sommaire</h2>
-    <p>
-      1. Introduction<br/>
-      2. Time’Eats<br/>
-      3. Rôle du PMO<br/>
-      4. Objectif du rapport<br/>
-      5. Définir, prioriser et faire vivre le portefeuille de projets<br/>
-      6. Superviser et conduire un projet IT – « Application mobile client »<br/>
-      7. Les principales méthodes de gestion de projet<br/>
-      8. Clôturer le projet et capitaliser<br/>
-      9. Conclusion<br/>
-      10. Annexe – Glossaire<br/>
-      11. Annexes – Modèles de documents PMO
-    </p>
+    <ol id="toc" class="toc-list" aria-label="Navigation rapide des sections"></ol>
 
     <!-- 1. INTRO -->
     <h2>1. Introduction</h2>
