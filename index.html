@@ -3722,62 +3722,135 @@
     <h2 id="section-11-modeles">11. Annexes – Modèles de documents PMO</h2>
 
     <h3>Annexe 11.1 – Modèle de charte projet</h3>
-    <table>
-      <tbody>
-        <tr><th colspan="2">Identité et finalité</th></tr>
-        <tr><td>Nom du projet</td><td>Application mobile client Time’Eats</td></tr>
-        <tr><td>Commanditaire</td><td>Direction commerciale (sponsor : CCO) – aligné sur la stratégie 2025 « fidélisation & récurrence ».</td></tr>
-        <tr>
-          <td>Finalité</td>
-          <td>Digitaliser la relation client pour fluidifier la prise de commande, réduire la charge du support et renforcer l’image premium.</td>
-        </tr>
+    <div class="charter">
+      <div class="charter-header">
+        <div>
+          <p class="eyebrow">Modèle prêt-à-cloner</p>
+          <h3>Charte projet – Format aligné sur la section 6.5</h3>
+          <p class="charter-lead">
+            Gabarit visuel reprenant la charte projet détaillée du paragraphe 6.5, pour être réutilisé en annexe et rempli
+            rapidement par les chefs de projet Time’Eats.
+          </p>
+          <div class="charter-meta">
+            <span class="meta-chip">Version 1.0</span>
+            <span class="meta-chip">Usage : modèle</span>
+            <span class="meta-chip accent">Référence : section 6.5</span>
+          </div>
+        </div>
+        <div class="charter-scorecard">
+          <div class="score-item">
+            <div class="score-label">Nom du projet</div>
+            <div class="score-value">Application mobile client</div>
+            <div class="score-sub">Time’Eats — iOS & Android</div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">Budget cible</div>
+            <div class="score-value">150 k€</div>
+            <div class="score-sub">ESN 80 k€ / Interne 40 k€ / Réserve 30 k€</div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">Horizon</div>
+            <div class="score-value">8 mois</div>
+            <div class="score-sub">Mai → Décembre, sprints de 3 semaines</div>
+          </div>
+        </div>
+      </div>
 
-        <tr><th colspan="2">Objectifs SMART et KPI</th></tr>
-        <tr>
-          <td>Objectifs</td>
-          <td>
-            <ul>
-              <li>Livrer une version MVP en 8 mois avec ≥ 90 % des jalons respectés.</li>
-              <li>Atteindre 80 % de satisfaction utilisateur (CSAT) à 3 mois post-lancement.</li>
-              <li>Limiter les tickets critiques à 0 en production sur les 30 premiers jours.</li>
-              <li>Respecter un budget cible de 150 k€ (dont 20 % de réserve de risque).</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td>Indicateurs de suivi</td>
-          <td>Burndown des sprints, taux d’adoption (comptes actifs / téléchargements), NPS, vélocité moyenne, consommation budget vs. baseline.</td>
-        </tr>
+      <div class="charter-grid">
+        <div class="charter-card">
+          <div class="charter-label">Objectif général</div>
+          <p>Digitaliser la relation client et simplifier la prise de commande pour renforcer l’image premium.</p>
+          <div class="charter-pill">Expérience mobile premium</div>
+        </div>
 
-        <tr><th colspan="2">Périmètre et livrables</th></tr>
-        <tr><td>Périmètre IN</td><td>Catalogue, commande, paiement sécurisé, suivi en temps réel, historique, notation, notifications push, support in-app.</td></tr>
-        <tr><td>Périmètre OUT</td><td>Logistique physique, application fournisseurs/partenaires, data science avancée (phase ultérieure).</td></tr>
-        <tr><td>Livrables</td><td>Backlog priorisé, maquettes validées, appli mobile iOS/Android, APIs sécurisées, documentation d’exploitation, kit de communication de lancement.</td></tr>
+        <div class="charter-card">
+          <div class="charter-label">Objectifs SMART & KPI</div>
+          <ul class="charter-list">
+            <li>MVP livré en 8 mois avec ≥ 90 % de jalons respectés.</li>
+            <li>CSAT ≥ 80 % à 3 mois post-lancement, NPS suivi mensuellement.</li>
+            <li>0 ticket critique en production durant les 30 premiers jours.</li>
+            <li>Budget tenu à 150 k€ (incluant 20 % de réserve de risque).</li>
+          </ul>
+        </div>
 
-        <tr><th colspan="2">Gouvernance et rôles</th></tr>
-        <tr><td>RACI</td><td>MOA (Responsable), PMO (Support), MOE/ESN (Exécution), RSSI (Consulté), Marketing & Support (Consultés/Informés).</td></tr>
-        <tr><td>Instances</td><td>Daily dev, comité projet hebdo (PMO/PO/ESN), comité de pilotage mensuel (sponsor, PMO, DSI), comité sécurité à chaque release majeure.</td></tr>
+        <div class="charter-card">
+          <div class="charter-label">Périmètre fonctionnel</div>
+          <div class="charter-split">
+            <div>
+              <div class="charter-pill">Inclus</div>
+              <ul class="charter-list">
+                <li>Catalogue, commande, paiement sécurisé, suivi en temps réel.</li>
+                <li>Historique, notation, notifications push, support in-app.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="charter-pill">Exclus</div>
+              <ul class="charter-list">
+                <li>Logistique physique et application fournisseurs/partenaires.</li>
+                <li>Data science avancée (phase ultérieure).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-        <tr><th colspan="2">Planning macro</th></tr>
-        <tr>
-          <td>Jalons clés</td>
-          <td>Cadrage & business case (mai), design & architecture (juin), MVP (septembre), sécurisation & perf (octobre), pilotes (novembre), GoLive (décembre).</td>
-        </tr>
-        <tr><td>Mode de delivery</td><td>Sprints de 3 semaines, revues systématiques, mise en production progressive (feature flags) et rétro à chaque incrément.</td></tr>
+        <div class="charter-card">
+          <div class="charter-label">Livrables majeurs</div>
+          <ul class="charter-list">
+            <li>Backlog priorisé et maquettes validées.</li>
+            <li>Applications iOS/Android prêtes store avec APIs sécurisées.</li>
+            <li>Documentation d’exploitation et kit de communication de lancement.</li>
+          </ul>
+        </div>
 
-        <tr><th colspan="2">Budget, risques et hypothèses</th></tr>
-        <tr><td>Budget</td><td>150 k€ : 80 k€ ESN, 40 k€ internes, 30 k€ licences & réserve (20 % buffer sur risques critiques).</td></tr>
-        <tr>
-          <td>Risques majeurs</td>
-          <td>Validation UX tardive, dépendance ESN sur composants critiques, conformité RGPD (données de paiement), intégration paiement 3-D Secure.</td>
-        </tr>
-        <tr><td>Hypothèses</td><td>Disponibilité sponsor 2 h/semaine, ressources UX internes, environnement de pré-production stable, données de test anonymisées.</td></tr>
+        <div class="charter-card">
+          <div class="charter-label">Gouvernance & rôles</div>
+          <ul class="charter-list">
+            <li>RACI : MOA (Responsable), PMO (Support), MOE/ESN (Exécution), RSSI (Consulté), Marketing & Support (Consultés).</li>
+            <li>Instances : daily dev, comité projet hebdo, COPIL mensuel, comité sécurité à chaque release majeure.</li>
+          </ul>
+        </div>
 
-        <tr><th colspan="2">Critères de succès et validation</th></tr>
-        <tr><td>Critères d’acceptation</td><td>CSAT ≥ 80 %, MTTR &lt; 1 h, taux de crash &lt; 0,5 %, budget ≤ baseline, SLA support respecté, documentation à jour (100 % livrables versionnées).</td></tr>
-        <tr><td>Clôture</td><td>PV de recette signé, transfert RUN/Support (checklist d’exploitation validée), bilan projet et RETEX partagés au CoDir.</td></tr>
-      </tbody>
-    </table>
+        <div class="charter-card">
+          <div class="charter-label">Planning & delivery</div>
+          <ul class="charter-list">
+            <li>Jalons : cadrage (mai), design & architecture (juin), MVP (septembre), perf/sécurité (octobre), pilotes (novembre), GoLive (décembre).</li>
+            <li>Delivery en sprints de 3 semaines, mises en production progressives via feature flags.</li>
+          </ul>
+        </div>
+
+        <div class="charter-card">
+          <div class="charter-label">Budget & hypothèses</div>
+          <ul class="charter-list">
+            <li>150 k€ dont 20 % de buffer sur risques critiques.</li>
+            <li>Disponibilité sponsor 2 h/semaine et ressources UX internes.</li>
+            <li>Environnement de pré-production stable et données de test anonymisées.</li>
+          </ul>
+        </div>
+
+        <div class="charter-card">
+          <div class="charter-label">Risques majeurs</div>
+          <ul class="charter-list">
+            <li>Validation UX tardive → prototypes testés auprès d’un panel pilote.</li>
+            <li>Dépendance ESN sur composants critiques → jalons de transfert de compétences.</li>
+            <li>Conformité RGPD et paiement 3-D Secure → validation RSSI et audits sécurité.</li>
+          </ul>
+        </div>
+
+        <div class="charter-card">
+          <div class="charter-label">Critères de succès & validation</div>
+          <ul class="charter-list">
+            <li>CSAT ≥ 80 %, taux de crash &lt; 0,5 %, MTTR &lt; 1 h.</li>
+            <li>Budget ≤ baseline, SLA support respecté, couverture documentaire à 100 %.</li>
+            <li>PV de recette signé, transfert RUN/Support validé et RETEX partagé au CoDir.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="charter-footer">
+        Ce modèle reprend la charte visuelle du paragraphe 6.5 : il peut être dupliqué tel quel pour tout projet Time’Eats en
+        remplaçant les données génériques par les informations spécifiques du dossier.
+      </div>
+    </div>
 
     <h3>Annexe 11.2 – Modèle d’analyse SWOT</h3>
     <div class="swot-grid">
