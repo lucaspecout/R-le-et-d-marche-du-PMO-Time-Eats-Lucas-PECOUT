@@ -1443,6 +1443,121 @@
     .risk-high { background: #fee2e2; }
     .risk-veryhigh { background: #fecaca; font-weight: 600; }
 
+    /* Diagramme PDCA */
+    .pdca-visual {
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(17, 24, 39, 0.06);
+      background: linear-gradient(135deg, rgba(255,122,60,0.08), rgba(37,99,235,0.08));
+      box-shadow: 0 14px 32px rgba(15,23,42,0.12);
+    }
+    .pdca-loop {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .pdca-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #111827;
+      color: #f9fafb;
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(17,24,39,0.16);
+    }
+    .pdca-loop-text {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      flex: 1;
+      min-width: 220px;
+    }
+    .pdca-flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin: 6px 0 14px;
+    }
+    .pdca-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      color: #0f172a;
+      background: #fff;
+      border: 1px solid rgba(17, 24, 39, 0.08);
+      box-shadow: 0 8px 20px rgba(15,23,42,0.08);
+    }
+    .pdca-arrow {
+      color: var(--muted);
+      font-weight: 700;
+      padding: 0 6px;
+    }
+    .pdca-pill.plan { background: var(--accent-soft); color: var(--accent); border-color: rgba(37, 99, 235, 0.25); }
+    .pdca-pill.do { background: var(--primary-soft); color: var(--primary-dark); border-color: rgba(228, 93, 30, 0.25); }
+    .pdca-pill.check { background: #e0f2fe; color: #075985; border-color: rgba(7, 89, 133, 0.22); }
+    .pdca-pill.act { background: #fef9c3; color: #92400e; border-color: rgba(146, 64, 14, 0.25); }
+    .pdca-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .pdca-step {
+      position: relative;
+      padding: 14px 14px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(17, 24, 39, 0.08);
+      background: #fff;
+      box-shadow: 0 10px 26px rgba(15,23,42,0.1);
+    }
+    .pdca-step h4 {
+      margin: 6px 0 8px;
+      font-size: 1.05rem;
+    }
+    .pdca-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      background: rgba(17, 24, 39, 0.05);
+    }
+    .pdca-badge span {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.85rem;
+      box-shadow: 0 8px 18px rgba(15,23,42,0.1);
+    }
+    .pdca-step ul {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+    .pdca-step.plan { border-color: rgba(37, 99, 235, 0.25); box-shadow: 0 10px 28px rgba(37,99,235,0.12); }
+    .pdca-step.plan span { background: #2563eb; }
+    .pdca-step.do { border-color: rgba(228, 93, 30, 0.25); box-shadow: 0 10px 28px rgba(228,93,30,0.12); }
+    .pdca-step.do span { background: #e45d1e; }
+    .pdca-step.check { border-color: rgba(6, 95, 70, 0.25); box-shadow: 0 10px 28px rgba(6,95,70,0.12); }
+    .pdca-step.check span { background: #0f766e; }
+    .pdca-step.act { border-color: rgba(146, 64, 14, 0.25); box-shadow: 0 10px 28px rgba(146,64,14,0.12); }
+    .pdca-step.act span { background: #b45309; }
+
     .page-break {
       page-break-before: always;
       margin-top: 30px;
@@ -3490,6 +3605,59 @@
       <li><strong>Check</strong> : suivi des KPI, tests, rétrospectives.</li>
       <li><strong>Act</strong> : ajustement du backlog, des processus internes, mise à jour des templates.</li>
     </ul>
+
+    <div class="pdca-visual">
+      <div class="pdca-loop">
+        <div class="pdca-chip">Boucle PDCA</div>
+        <p class="pdca-loop-text">Une boucle courte et réutilisable après chaque sprint ou livraison pour installer l'amélioration continue.</p>
+      </div>
+
+      <div class="pdca-flow" aria-hidden="true">
+        <div class="pdca-pill plan">Plan</div>
+        <div class="pdca-arrow">→</div>
+        <div class="pdca-pill do">Do</div>
+        <div class="pdca-arrow">→</div>
+        <div class="pdca-pill check">Check</div>
+        <div class="pdca-arrow">→</div>
+        <div class="pdca-pill act">Act</div>
+        <div class="pdca-arrow">↺</div>
+      </div>
+
+      <div class="pdca-grid">
+        <div class="pdca-step plan">
+          <div class="pdca-badge"><span>P</span>Plan</div>
+          <h4>Planifier</h4>
+          <ul>
+            <li>Aligner objectifs, périmètre et indicateurs de succès (KPI, seuils de qualité).</li>
+            <li>Planifier les sprints, ressources et risques, puis alimenter le backlog priorisé.</li>
+          </ul>
+        </div>
+        <div class="pdca-step do">
+          <div class="pdca-badge"><span>D</span>Do</div>
+          <h4>Réaliser</h4>
+          <ul>
+            <li>Construire les incréments (développement, paramétrage, livraisons intermédiaires).</li>
+            <li>Mettre en place le monitoring (burndown, avancement) et tracer les décisions.</li>
+          </ul>
+        </div>
+        <div class="pdca-step check">
+          <div class="pdca-badge"><span>C</span>Check</div>
+          <h4>Contrôler</h4>
+          <ul>
+            <li>Mesurer les KPI cibles, passer les tests (fonctionnels, techniques) et consolider les RETEX.</li>
+            <li>Analyser les écarts : dette technique, satisfaction utilisateurs, qualité documentaire.</li>
+          </ul>
+        </div>
+        <div class="pdca-step act">
+          <div class="pdca-badge"><span>A</span>Act</div>
+          <h4>Agir</h4>
+          <ul>
+            <li>Ajuster le backlog, les processus et les seuils de contrôle sur la base des enseignements.</li>
+            <li>Mettre à jour les templates PMO / référentiels pour ancrer les nouvelles pratiques.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     <!-- 9. CONCLUSION -->
     <div class="page-break"></div>
