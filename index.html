@@ -1117,7 +1117,152 @@
     .swot-opportunites { border-top: 4px solid #2563eb; }
     .swot-menaces { border-top: 4px solid #ef4444; }
 
-    /* Gantt simplifié */
+    /* Gantt avancé */
+    .gantt-board {
+      margin: 14px 0 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(15,23,42,0.08);
+      overflow: hidden;
+    }
+    .gantt-grid {
+      display: grid;
+      grid-template-columns: 190px repeat(32, minmax(0, 1fr));
+      align-items: center;
+      gap: 0;
+    }
+    .gantt-header {
+      background: linear-gradient(120deg, rgba(255,122,60,0.06), rgba(37,99,235,0.06));
+      border-bottom: 1px solid var(--border);
+      padding: 10px 12px 6px;
+    }
+    .gantt-month {
+      font-size: 0.78rem;
+      text-align: center;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      padding-bottom: 6px;
+      border-right: 1px dashed rgba(15,23,42,0.08);
+    }
+    .gantt-axis-label {
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding-left: 6px;
+    }
+    .gantt-row {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      background: #fff;
+    }
+    .gantt-row:last-child { border-bottom: none; }
+    .gantt-label {
+      display: grid;
+      gap: 4px;
+    }
+    .gantt-label strong { font-size: 0.95rem; }
+    .gantt-label small {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    .gantt-lane {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(32, minmax(0, 1fr));
+      gap: 4px;
+      padding: 6px 8px;
+      border: 1px dashed rgba(15,23,42,0.08);
+      border-radius: 12px;
+      background-image: linear-gradient(to right, rgba(15,23,42,0.06) 1px, transparent 1px);
+      background-size: calc(100% / 32) 100%;
+    }
+    .gantt-bar {
+      position: relative;
+      grid-row: 1;
+      grid-column: var(--start) / span var(--duration);
+      height: 32px;
+      border-radius: 10px;
+      background: linear-gradient(120deg, rgba(255,122,60,0.9), rgba(37,99,235,0.92));
+      box-shadow: 0 10px 22px rgba(37,99,235,0.18);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+    }
+    .gantt-bar::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.6);
+      pointer-events: none;
+    }
+    .gantt-bar[data-tone="blue"] { background: linear-gradient(120deg, #0ea5e9, #2563eb); box-shadow: 0 10px 22px rgba(14,165,233,0.26); }
+    .gantt-bar[data-tone="green"] { background: linear-gradient(120deg, #22c55e, #16a34a); box-shadow: 0 10px 22px rgba(34,197,94,0.22); }
+    .gantt-bar[data-tone="purple"] { background: linear-gradient(120deg, #a855f7, #7c3aed); box-shadow: 0 10px 22px rgba(168,85,247,0.2); }
+    .gantt-bar[data-tone="orange"] { background: linear-gradient(120deg, #f97316, #ea580c); box-shadow: 0 10px 22px rgba(234,88,12,0.22); }
+    .gantt-bar[data-tone="neutral"] { background: linear-gradient(120deg, #6b7280, #4b5563); box-shadow: 0 10px 22px rgba(75,85,99,0.22); }
+    .gantt-marker {
+      grid-row: 1;
+      grid-column: var(--position);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      pointer-events: none;
+    }
+    .gantt-marker::before {
+      content: "";
+      width: 3px;
+      height: 44px;
+      background: var(--primary);
+      border-radius: 999px;
+      box-shadow: 0 0 0 5px rgba(255,122,60,0.18);
+    }
+    .gantt-marker span {
+      position: absolute;
+      top: 46px;
+      background: rgba(255,122,60,0.08);
+      color: var(--secondary);
+      border: 1px solid rgba(255,122,60,0.22);
+      border-radius: 8px;
+      padding: 3px 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .gantt-legend {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 10px 14px 16px;
+      background: #f8fafc;
+      border-top: 1px solid var(--border);
+    }
+    .gantt-legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: #fff;
+      border: 1px solid var(--border);
+      font-weight: 700;
+      color: var(--secondary);
+    }
+    .gantt-legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(120deg, #ff7a3c, #2563eb);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+    }
+
+    /* Gantt simplifié (annexes) */
     .gantt-table th,
     .gantt-table td {
       font-size: 0.85rem;
@@ -2822,79 +2967,93 @@
     </div>
 
     <!-- GANTT VISUEL -->
-    <h4>6.9.1 bis – Gantt du projet (visuel simplifié)</h4>
-    <table class="gantt-table">
-      <thead>
-        <tr>
-          <th>Phase</th>
-          <th>Période</th>
-          <th>Durée</th>
-          <th>Représentation Gantt</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Cadrage & besoins</td>
-          <td>02/05 → 24/05</td>
-          <td>3 semaines</td>
-          <td>
-            <div class="gantt-bar-track">
-              <div class="gantt-bar-fill" style="width:18%;"></div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Conception fonctionnelle</td>
-          <td>27/05 → 14/06</td>
-          <td>2,5 semaines</td>
-          <td>
-            <div class="gantt-bar-track">
-              <div class="gantt-bar-fill" style="width:22%;"></div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Développement</td>
-          <td>17/06 → 27/09</td>
-          <td>14 semaines</td>
-          <td>
-            <div class="gantt-bar-track">
-              <div class="gantt-bar-fill" style="width:68%;"></div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Tests & débogage</td>
-          <td>30/09 → 18/10</td>
-          <td>3 semaines</td>
-          <td>
-            <div class="gantt-bar-track">
-              <div class="gantt-bar-fill" style="width:28%;"></div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Recette utilisateur</td>
-          <td>21/10 → 08/11</td>
-          <td>3 semaines</td>
-          <td>
-            <div class="gantt-bar-track">
-              <div class="gantt-bar-fill" style="width:24%;"></div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Mise en production</td>
-          <td>09/12 → 13/12</td>
-          <td>1 semaine</td>
-          <td>
-            <div class="gantt-bar-track">
-              <div class="gantt-bar-fill" style="width:10%;"></div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <h4>6.9.1 bis – Gantt du projet (visuel réaliste)</h4>
+    <p>Lecture sur 32 semaines (mai → décembre) avec positionnement précis des phases et jalons clés.</p>
+    <div class="gantt-board">
+      <div class="gantt-header gantt-grid">
+        <div class="gantt-axis-label">Phases projet (semaines 1 → 32)</div>
+        <div class="gantt-month" style="grid-column: span 4;">Mai</div>
+        <div class="gantt-month" style="grid-column: span 4;">Juin</div>
+        <div class="gantt-month" style="grid-column: span 4;">Juillet</div>
+        <div class="gantt-month" style="grid-column: span 4;">Août</div>
+        <div class="gantt-month" style="grid-column: span 4;">Sept.</div>
+        <div class="gantt-month" style="grid-column: span 4;">Oct.</div>
+        <div class="gantt-month" style="grid-column: span 4;">Nov.</div>
+        <div class="gantt-month" style="grid-column: span 4;">Déc.</div>
+      </div>
+
+      <div class="gantt-row">
+        <div class="gantt-label">
+          <strong>Cadrage & besoins</strong>
+          <small>02/05 → 24/05 · 3 semaines</small>
+        </div>
+        <div class="gantt-lane">
+          <div class="gantt-bar" data-tone="blue" style="--start:1; --duration:3;">Kick-off & ateliers</div>
+          <div class="gantt-marker" style="--position:4;"><span>CDC validé</span></div>
+        </div>
+      </div>
+
+      <div class="gantt-row">
+        <div class="gantt-label">
+          <strong>Conception fonctionnelle</strong>
+          <small>27/05 → 14/06 · 2,5 semaines</small>
+        </div>
+        <div class="gantt-lane">
+          <div class="gantt-bar" data-tone="purple" style="--start:4; --duration:3;">Parcours UX + maquettes</div>
+          <div class="gantt-marker" style="--position:6;"><span>Prototype approuvé</span></div>
+        </div>
+      </div>
+
+      <div class="gantt-row">
+        <div class="gantt-label">
+          <strong>Développement</strong>
+          <small>17/06 → 27/09 · 14 semaines</small>
+        </div>
+        <div class="gantt-lane">
+          <div class="gantt-bar" data-tone="green" style="--start:7; --duration:14;">Build agile (10 sprints)</div>
+          <div class="gantt-marker" style="--position:15;"><span>MVP livré</span></div>
+        </div>
+      </div>
+
+      <div class="gantt-row">
+        <div class="gantt-label">
+          <strong>Tests & débogage</strong>
+          <small>30/09 → 18/10 · 3 semaines</small>
+        </div>
+        <div class="gantt-lane">
+          <div class="gantt-bar" data-tone="orange" style="--start:20; --duration:3;">Campagne QA + hardening</div>
+        </div>
+      </div>
+
+      <div class="gantt-row">
+        <div class="gantt-label">
+          <strong>Recette utilisateur</strong>
+          <small>21/10 → 08/11 · 3 semaines</small>
+        </div>
+        <div class="gantt-lane">
+          <div class="gantt-bar" data-tone="blue" style="--start:22; --duration:3;">UAT + PV de recette</div>
+          <div class="gantt-marker" style="--position:25;"><span>PV signé</span></div>
+        </div>
+      </div>
+
+      <div class="gantt-row">
+        <div class="gantt-label">
+          <strong>Mise en production</strong>
+          <small>09/12 → 13/12 · 1 semaine</small>
+        </div>
+        <div class="gantt-lane">
+          <div class="gantt-bar" data-tone="neutral" style="--start:30; --duration:1;">Go live</div>
+          <div class="gantt-marker" style="--position:30;"><span>Release</span></div>
+        </div>
+      </div>
+
+      <div class="gantt-legend">
+        <div class="gantt-legend-item"><span class="gantt-legend-dot"></span> Vue semaine par semaine</div>
+        <div class="gantt-legend-item"><span class="gantt-legend-dot" style="background: linear-gradient(120deg,#22c55e,#16a34a);"></span> Sprints agiles</div>
+        <div class="gantt-legend-item"><span class="gantt-legend-dot" style="background: linear-gradient(120deg,#f97316,#ea580c);"></span> Périodes de test</div>
+        <div class="gantt-legend-item"><span class="gantt-legend-dot" style="background: linear-gradient(120deg,#6b7280,#4b5563);"></span> Jalons de mise en prod</div>
+      </div>
+    </div>
 
     <!-- BUDGET + GRAPHIQUES -->
     <h4>6.9.2 Budget prévisionnel & visualisations</h4>
