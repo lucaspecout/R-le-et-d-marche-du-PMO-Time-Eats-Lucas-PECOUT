@@ -3057,6 +3057,7 @@
 
     <!-- BUDGET + GRAPHIQUES -->
     <h4>6.9.2 Budget prévisionnel & visualisations</h4>
+    <p>Budget validé à 150 k€ réparti selon le tableau corrigé ci-dessous.</p>
     <table>
       <thead>
         <tr>
@@ -3071,49 +3072,74 @@
         <tr><td>Tests et recette</td><td>10</td></tr>
         <tr><td>Infrastructure (hébergement)</td><td>5</td></tr>
         <tr><td>Divers</td><td>5</td></tr>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td><strong>150</strong></td>
+        </tr>
       </tbody>
     </table>
 
     <div class="grid grid-2">
-      <div class="card">
-        <div class="card-header">
-          Répartition budgétaire (donut)
-          <span class="badge">150 k€</span>
+        <div class="card">
+          <div class="card-header">
+            Répartition budgétaire (donut)
+            <span class="badge">150 k€</span>
+          </div>
+          <div class="kpi-donut" style="width:120px;height:120px;font-size:0.9rem;background: conic-gradient(#0ea5e9 0 27%, #22c55e 27% 80%, #a855f7 80% 87%, #f97316 87% 94%, #facc15 94% 100%);">
+            <span>100%</span>
+          </div>
+          <p class="note">
+          Donut illustratif : ESN ≈ 53 %, internes ≈ 27 %, UX/tests ≈ 13 %, autres postes ≈ 7 %.
+          </p>
         </div>
-        <div class="kpi-donut" style="width:120px;height:120px;font-size:0.9rem;background: conic-gradient(#0ea5e9 0 27%, #22c55e 27% 80%, #a855f7 80% 87%, #f97316 87% 94%, #facc15 94% 100%);">
-          <span>100%</span>
+        <div class="card">
+          <div class="card-header">
+            Barres de budget par poste
+          </div>
+          <div class="kpi-bar">
+            <div class="kpi-bar-label">Prestataire ESN (80 k€)</div>
+            <div class="kpi-bar-track">
+              <div class="kpi-bar-fill" style="width:53%; background:linear-gradient(90deg,#22c55e,#16a34a);"></div>
+            </div>
+            <div class="kpi-bar-value">53%</div>
+          </div>
+          <div class="kpi-bar">
+            <div class="kpi-bar-label">Ressources internes (40 k€)</div>
+            <div class="kpi-bar-track">
+              <div class="kpi-bar-fill" style="width:27%; background:linear-gradient(90deg,#0ea5e9,#38bdf8);"></div>
+            </div>
+            <div class="kpi-bar-value">27%</div>
+          </div>
+          <div class="kpi-bar">
+            <div class="kpi-bar-label">UX / Design / Maquettage (10 k€)</div>
+            <div class="kpi-bar-track">
+              <div class="kpi-bar-fill" style="width:7%; background:linear-gradient(90deg,#a855f7,#c084fc);"></div>
+            </div>
+            <div class="kpi-bar-value">7%</div>
+          </div>
+          <div class="kpi-bar">
+            <div class="kpi-bar-label">Tests et recette (10 k€)</div>
+            <div class="kpi-bar-track">
+              <div class="kpi-bar-fill" style="width:7%; background:linear-gradient(90deg,#f97316,#fb923c);"></div>
+            </div>
+            <div class="kpi-bar-value">7%</div>
+          </div>
+          <div class="kpi-bar">
+            <div class="kpi-bar-label">Infrastructure (hébergement) (5 k€)</div>
+            <div class="kpi-bar-track">
+              <div class="kpi-bar-fill" style="width:3%; background:linear-gradient(90deg,#facc15,#eab308);"></div>
+            </div>
+            <div class="kpi-bar-value">3%</div>
+          </div>
+          <div class="kpi-bar">
+            <div class="kpi-bar-label">Divers (5 k€)</div>
+            <div class="kpi-bar-track">
+              <div class="kpi-bar-fill" style="width:3%; background:linear-gradient(90deg,#9ca3af,#6b7280);"></div>
+            </div>
+            <div class="kpi-bar-value">3%</div>
+          </div>
         </div>
-        <p class="note">
-          Donut illustratif : ESN ≈ 53 %, internes ≈ 27 %, autres postes ≈ 20 %.
-        </p>
       </div>
-      <div class="card">
-        <div class="card-header">
-          Barres de budget par poste
-        </div>
-        <div class="kpi-bar">
-          <div class="kpi-bar-label">Prestataire ESN (80 k€)</div>
-          <div class="kpi-bar-track">
-            <div class="kpi-bar-fill" style="width:80%; background:linear-gradient(90deg,#22c55e,#16a34a);"></div>
-          </div>
-          <div class="kpi-bar-value">53%</div>
-        </div>
-        <div class="kpi-bar">
-          <div class="kpi-bar-label">Ressources internes (40 k€)</div>
-          <div class="kpi-bar-track">
-            <div class="kpi-bar-fill" style="width:40%; background:linear-gradient(90deg,#0ea5e9,#38bdf8);"></div>
-          </div>
-          <div class="kpi-bar-value">27%</div>
-        </div>
-        <div class="kpi-bar">
-          <div class="kpi-bar-label">Autres postes (30 k€)</div>
-          <div class="kpi-bar-track">
-            <div class="kpi-bar-fill" style="width:30%; background:linear-gradient(90deg,#f97316,#f59e0b);"></div>
-          </div>
-          <div class="kpi-bar-value">20%</div>
-        </div>
-      </div>
-    </div>
 
     <h4>6.9.3 Plan de gestion des risques</h4>
     <p>
