@@ -1964,7 +1964,10 @@
     <h3>5.2 Référentiel documentaire des projets</h3>
     <p>
       Le PMO a établi un référentiel documentaire standardisé pour garantir la cohérence des
-      pratiques de gestion de projet et faciliter la capitalisation.
+      pratiques de gestion de projet et faciliter la capitalisation. Les modèles « état de l’art »
+      (charte, CdC/backlog, budget, planning/WBS, risques, plan de com, plan de tests, PV, rapport
+      de clôture) sont fournis prêts à l’emploi en annexes 11.1 à 11.7 et reprennent la charte
+      graphique Time’Eats.
     </p>
     <table>
       <thead>
@@ -2026,11 +2029,12 @@
         </tr>
       </tbody>
     </table>
-
     <h3>5.3 Grille de priorisation stratégique des projets</h3>
     <p>
       Pour prioriser les projets, la DSI utilise une grille multicritère basée sur :
-      l’importance stratégique, la rentabilité, la maîtrise des risques et la charge.
+      l’importance stratégique, la rentabilité, la maîtrise des risques et la charge. Un critère
+      supplémentaire « Conformité / Réglementaire » bascule automatiquement en Must lorsqu’une
+      exigence légale ou sécurité l’impose.
     </p>
     <table>
       <thead>
@@ -2058,7 +2062,13 @@
           <td>Maîtrise des risques</td>
           <td>Capacité à maîtriser les risques techniques, humains, délais</td>
           <td>20 %</td>
-          <td>Could</td>
+          <td>Should</td>
+        </tr>
+        <tr>
+          <td>Conformité / Réglementaire</td>
+          <td>Obligation légale, sécurité ou conformité contractuelle</td>
+          <td>Auto-Must</td>
+          <td>Must</td>
         </tr>
         <tr>
           <td>Charge de travail (inverse)</td>
@@ -2069,8 +2079,40 @@
       </tbody>
     </table>
     <p>
-      <strong>Formule :</strong> Score global = (Importance × 0,4) + (Rentabilité × 0,3) + (Risques × 0,2) + (Charge inversée × 0,1)
+      <strong>Formule :</strong> Score global = (Importance × 0,4) + (Rentabilité × 0,3) + (Risques × 0,2) + (Charge inversée × 0,1).
+      Les hypothèses de notation sont tracées et sourcées ci-dessous pour rendre l’arbitrage auditable.
     </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Projet</th>
+          <th>Hypothèses chiffrées</th>
+          <th>ROI / Charge</th>
+          <th>Décision</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>App mobile client</td>
+          <td>+6 % CA en 12 mois, budget 150 k€, charge PO 12 j.h/mois, dépendance ESN couverte</td>
+          <td>ROI en 18 mois – Capacité disponible</td>
+          <td>Must (score 86/100)</td>
+        </tr>
+        <tr>
+          <td>Refonte CRM</td>
+          <td>Churn réduit de 15 %, budget 210 k€, dépendance API tierce facturée 25 k€</td>
+          <td>ROI en 24 mois si dépendance levée</td>
+          <td>Should (score 72/100)</td>
+        </tr>
+        <tr>
+          <td>RGPD Datacenter</td>
+          <td>Audit légal obligatoire, coût 90 k€, pénalité potentielle 4 % du CA évitée</td>
+          <td>Projet réglementaire</td>
+          <td>Auto-Must (hors scoring)</td>
+        </tr>
+      </tbody>
+    </table>
 
     <h3>5.4 Calcul du score global et priorisation</h3>
     <table>
@@ -2081,7 +2123,8 @@
           <th>Rent.</th>
           <th>Risq.</th>
           <th>Charge (JH)</th>
-          <th>Note Charge*</n          <th>Score global</th>
+          <th>Note Charge*</th>
+          <th>Score global</th>
         </tr>
       </thead>
       <tbody>
@@ -3520,6 +3563,53 @@
       </tbody>
     </table>
 
+    <h4>Matrice exigences ↔ cas de test</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>ID Exigence</th>
+          <th>Description</th>
+          <th>Cas de test associés</th>
+          <th>Statut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>REQ-01</td>
+          <td>Passer commande et payer en moins de 2 minutes</td>
+          <td>TC-01 parcours commande, TC-02 paiement 3-D Secure</td>
+          <td>Validé</td>
+        </tr>
+        <tr>
+          <td>REQ-02</td>
+          <td>Consulter l’historique et répéter une commande</td>
+          <td>TC-05 historique, TC-06 reorder</td>
+          <td>Validé</td>
+        </tr>
+        <tr>
+          <td>REQ-03</td>
+          <td>Notifications push en temps réel</td>
+          <td>TC-08 push commande, TC-09 relance</td>
+          <td>En cours</td>
+        </tr>
+        <tr>
+          <td>REQ-04</td>
+          <td>Disponibilité applicative ≥ 99,5 %</td>
+          <td>TC-15 test charge, TC-16 monitoring</td>
+          <td>Prévu</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Extrait du plan de test exhaustif (120 cas au total)</h4>
+    <ul>
+      <li>TC-01 à TC-20 : Parcours fonctionnels (commande, paiement, suivi, support).</li>
+      <li>TC-21 à TC-50 : Tests techniques (performance, montée en charge, crash-free rate).</li>
+      <li>TC-51 à TC-80 : Sécurité et conformité (authentification, RGPD, 3-D Secure).</li>
+      <li>TC-81 à TC-100 : Intégrations SI (API catalogue, CRM, paiement partenaire).</li>
+      <li>TC-101 à TC-120 : UAT / acceptation métier avec données anonymisées.</li>
+    </ul>
+
     <h3>8.2 Document de clôture (PV de recette)</h3>
     <div class="card">
       <div class="card-header">Procès-Verbal de Recette – Application mobile client</div>
@@ -3533,6 +3623,17 @@
         <li>2 anomalies mineures identifiées, planifiées pour correction.</li>
       </ul>
       <p><strong>Décision :</strong> Accepté avec réserves mineures.</p>
+      <table>
+        <thead>
+          <tr><th>Rôle</th><th>Nom / Signature</th><th>Date</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Sponsor / MOA</td><td>__________________</td><td>__/__/____</td></tr>
+          <tr><td>PMO</td><td>__________________</td><td>__/__/____</td></tr>
+          <tr><td>DSI / MOE</td><td>__________________</td><td>__/__/____</td></tr>
+          <tr><td>Client métier</td><td>__________________</td><td>__/__/____</td></tr>
+        </tbody>
+      </table>
     </div>
 
     <h3>8.3 Capitalisation de l’expérience</h3>
@@ -3571,6 +3672,38 @@
         </tr>
       </tbody>
     </table>
+    <p>Les actions sont tracées avec responsables, échéances et statut pour garantir la mise en œuvre :</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Action RETEX</th>
+          <th>Owner</th>
+          <th>Échéance</th>
+          <th>Statut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ajouter checklist sécurité dans le template de PV</td>
+          <td>PMO</td>
+          <td>15/07</td>
+          <td>En cours</td>
+        </tr>
+        <tr>
+          <td>Créer script d’anonymisation pour UAT</td>
+          <td>DSI</td>
+          <td>10/07</td>
+          <td>Ouvert</td>
+        </tr>
+        <tr>
+          <td>Former support niveau 1 sur le backlog</td>
+          <td>PO</td>
+          <td>05/07</td>
+          <td>Planifié</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">Chaque template versionné porte un numéro (ex. Charte v1.0 → v1.1 après RETEX) et les mises à jour sont publiées dans le référentiel documentaire.</p>
 
     <h3>8.4 Intégration de la boucle PDCA</h3>
     <p>
@@ -3898,7 +4031,83 @@
       </tbody>
     </table>
 
-    <h3>Annexe 11.4 – Modèle de Gantt projet (tableau)</h3>
+    <h3>Annexe 11.4 – Modèle de cahier des charges / backlog tracé</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>User story</th>
+          <th>Priorité</th>
+          <th>Critères d’acceptation</th>
+          <th>Tests associés</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>En tant que client, je passe commande et paie en ligne</td>
+          <td>Must</td>
+          <td>Parcours &lt; 2 min, paiement 3-D Secure, mail de confirmation</td>
+          <td>TC-01, TC-02, TC-03</td>
+        </tr>
+        <tr>
+          <td>En tant que client, je suis ma livraison en temps réel</td>
+          <td>Should</td>
+          <td>Refresh auto, ETA &lt; 30 s, push en cas de retard</td>
+          <td>TC-10, TC-11</td>
+        </tr>
+        <tr>
+          <td>En tant que support, je gère les incidents</td>
+          <td>Should</td>
+          <td>Création ticket &lt; 30 s, SLA affichés, export CSV</td>
+          <td>TC-40, TC-41</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Annexe 11.5 – WBS et jalons instanciés</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>WBS</th>
+          <th>Lot</th>
+          <th>Livrable</th>
+          <th>Échéance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1.0</td>
+          <td>Cadrage</td>
+          <td>Charte signée, backlog initial</td>
+          <td>S+3</td>
+        </tr>
+        <tr>
+          <td>2.0</td>
+          <td>Design & Archi</td>
+          <td>Maquettes validées, cible infra</td>
+          <td>S+7</td>
+        </tr>
+        <tr>
+          <td>3.0</td>
+          <td>Build</td>
+          <td>MVP prêt, APIs sécurisées</td>
+          <td>S+16</td>
+        </tr>
+        <tr>
+          <td>4.0</td>
+          <td>Tests & Recette</td>
+          <td>Plan de test exécuté, PV signé</td>
+          <td>S+20</td>
+        </tr>
+        <tr>
+          <td>5.0</td>
+          <td>Déploiement</td>
+          <td>Runbook + plan com</td>
+          <td>S+22</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Annexe 11.6 – Modèle de Gantt projet (tableau)</h3>
     <table class="gantt-table">
       <thead>
         <tr>
@@ -3924,7 +4133,7 @@
       </tbody>
     </table>
 
-    <h3>Annexe 11.5 – Tableau de bord général du projet</h3>
+    <h3>Annexe 11.7 – Tableau de bord général du projet</h3>
     <div class="project-dashboard">
       <div class="project-dash-header">
         <div>
