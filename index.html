@@ -3724,56 +3724,58 @@
     <h3>Annexe 11.1 – Modèle de charte projet</h3>
     <table>
       <tbody>
-        <tr><th>Nom du projet</th><td>Application mobile client Time’Eats</td></tr>
+        <tr><th colspan="2">Identité et finalité</th></tr>
+        <tr><td>Nom du projet</td><td>Application mobile client Time’Eats</td></tr>
+        <tr><td>Commanditaire</td><td>Direction commerciale (sponsor : CCO) – aligné sur la stratégie 2025 « fidélisation & récurrence ».</td></tr>
         <tr>
-          <th>Contexte</th>
-          <td>
-            Time’Eats veut digitaliser la relation client pour accélérer la prise de commande, réduire les appels
-            au support et offrir une expérience cohérente avec la marque. Le projet répond à l’objectif stratégique
-            2025 de croissance par la fidélisation et la satisfaction client.
-          </td>
+          <td>Finalité</td>
+          <td>Digitaliser la relation client pour fluidifier la prise de commande, réduire la charge du support et renforcer l’image premium.</td>
         </tr>
+
+        <tr><th colspan="2">Objectifs SMART et KPI</th></tr>
         <tr>
-          <th>Objectifs</th>
+          <td>Objectifs</td>
           <td>
             <ul>
-              <li>Livrer l’application en &lt; 8 mois avec un taux de jalons respectés ≥ 90 %.</li>
-              <li>Atteindre ≥ 80 % de satisfaction utilisateur à 3 mois post-lancement.</li>
-              <li>Respecter le budget de 150 k€ tout en garantissant 0 bug critique en production.</li>
+              <li>Livrer une version MVP en 8 mois avec ≥ 90 % des jalons respectés.</li>
+              <li>Atteindre 80 % de satisfaction utilisateur (CSAT) à 3 mois post-lancement.</li>
+              <li>Limiter les tickets critiques à 0 en production sur les 30 premiers jours.</li>
+              <li>Respecter un budget cible de 150 k€ (dont 20 % de réserve de risque).</li>
             </ul>
           </td>
         </tr>
         <tr>
-          <th>Périmètre IN</th>
-          <td>Recherche de prestataires, commande, paiement sécurisé, suivi en temps réel, historique et notation.</td>
+          <td>Indicateurs de suivi</td>
+          <td>Burndown des sprints, taux d’adoption (comptes actifs / téléchargements), NPS, vélocité moyenne, consommation budget vs. baseline.</td>
         </tr>
+
+        <tr><th colspan="2">Périmètre et livrables</th></tr>
+        <tr><td>Périmètre IN</td><td>Catalogue, commande, paiement sécurisé, suivi en temps réel, historique, notation, notifications push, support in-app.</td></tr>
+        <tr><td>Périmètre OUT</td><td>Logistique physique, application fournisseurs/partenaires, data science avancée (phase ultérieure).</td></tr>
+        <tr><td>Livrables</td><td>Backlog priorisé, maquettes validées, appli mobile iOS/Android, APIs sécurisées, documentation d’exploitation, kit de communication de lancement.</td></tr>
+
+        <tr><th colspan="2">Gouvernance et rôles</th></tr>
+        <tr><td>RACI</td><td>MOA (Responsable), PMO (Support), MOE/ESN (Exécution), RSSI (Consulté), Marketing & Support (Consultés/Informés).</td></tr>
+        <tr><td>Instances</td><td>Daily dev, comité projet hebdo (PMO/PO/ESN), comité de pilotage mensuel (sponsor, PMO, DSI), comité sécurité à chaque release majeure.</td></tr>
+
+        <tr><th colspan="2">Planning macro</th></tr>
         <tr>
-          <th>Périmètre OUT</th>
-          <td>Logistique/livraison physique, application partenaire fournisseurs (projet séparé).</td>
+          <td>Jalons clés</td>
+          <td>Cadrage & business case (mai), design & architecture (juin), MVP (septembre), sécurisation & perf (octobre), pilotes (novembre), GoLive (décembre).</td>
         </tr>
+        <tr><td>Mode de delivery</td><td>Sprints de 3 semaines, revues systématiques, mise en production progressive (feature flags) et rétro à chaque incrément.</td></tr>
+
+        <tr><th colspan="2">Budget, risques et hypothèses</th></tr>
+        <tr><td>Budget</td><td>150 k€ : 80 k€ ESN, 40 k€ internes, 30 k€ licences & réserve (20 % buffer sur risques critiques).</td></tr>
         <tr>
-          <th>Parties prenantes</th>
-          <td>MOA (Direction commerciale), MOE (DSI + ESN), PMO, RSSI, UX, clients pilotes.</td>
+          <td>Risques majeurs</td>
+          <td>Validation UX tardive, dépendance ESN sur composants critiques, conformité RGPD (données de paiement), intégration paiement 3-D Secure.</td>
         </tr>
-        <tr>
-          <th>Budget prévisionnel</th>
-          <td>150 k€ (80 k€ prestataire, 40 k€ ressources internes, 30 k€ buffer et licences).</td>
-        </tr>
-        <tr>
-          <th>Planning macro</th>
-          <td>
-            Mai à Décembre (8 mois) en sprints de 3 semaines : cadrage (mai), design/architecture (juin),
-            MVP (septembre), industrialisation et sécurité (octobre), pilotes (novembre), mise en production (décembre).
-          </td>
-        </tr>
-        <tr>
-          <th>Risques majeurs</th>
-          <td>UX non validée à temps, dépendance ESN sur composants critiques, conformité RGPD et sécurité des données.</td>
-        </tr>
-        <tr>
-          <th>Critères de succès</th>
-          <td>Satisfaction ≥ 80 %, budget ≤ 100 %, délais ≤ 8 mois, 0 incident critique, documentation 100 % à jour.</td>
-        </tr>
+        <tr><td>Hypothèses</td><td>Disponibilité sponsor 2 h/semaine, ressources UX internes, environnement de pré-production stable, données de test anonymisées.</td></tr>
+
+        <tr><th colspan="2">Critères de succès et validation</th></tr>
+        <tr><td>Critères d’acceptation</td><td>CSAT ≥ 80 %, MTTR &lt; 1 h, taux de crash &lt; 0,5 %, budget ≤ baseline, SLA support respecté, documentation à jour (100 % livrables versionnées).</td></tr>
+        <tr><td>Clôture</td><td>PV de recette signé, transfert RUN/Support (checklist d’exploitation validée), bilan projet et RETEX partagés au CoDir.</td></tr>
       </tbody>
     </table>
 
