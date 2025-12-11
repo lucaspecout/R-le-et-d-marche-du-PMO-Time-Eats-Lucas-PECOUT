@@ -387,6 +387,150 @@
     .status-card strong { color: var(--secondary); }
     .status-card small { color: var(--muted); }
 
+    /* Charte projet */
+    .charter {
+      margin: 16px 0 20px;
+      padding: 16px 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, #fff, #fff7f2);
+      box-shadow: 0 18px 36px rgba(17,24,39,0.08);
+      display: grid;
+      gap: 14px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin: 0 0 4px;
+    }
+
+    .charter-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .charter-lead {
+      margin: 6px 0 10px;
+      color: var(--secondary);
+      max-width: 740px;
+    }
+
+    .charter-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(17,24,39,0.12);
+      background: rgba(17,24,39,0.02);
+      color: var(--secondary);
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .meta-chip.accent { background: var(--accent-soft); color: var(--accent); border-color: rgba(37,99,235,0.3); }
+
+    .charter-scorecard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      min-width: 280px;
+    }
+
+    .score-item {
+      padding: 12px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: #ffffff;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+    }
+
+    .score-label { font-weight: 700; color: var(--secondary); font-size: 0.9rem; }
+    .score-value { font-size: 1.1rem; font-weight: 800; color: #111827; }
+    .score-sub { color: var(--muted); font-size: 0.85rem; margin-top: 2px; }
+
+    .charter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 10px;
+    }
+
+    .charter-card {
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: #ffffff;
+      box-shadow: 0 12px 24px rgba(17,24,39,0.05);
+      display: grid;
+      gap: 6px;
+    }
+
+    .charter-label { font-weight: 800; color: var(--secondary); font-size: 0.95rem; }
+
+    .charter-list {
+      list-style: none;
+      padding: 0;
+      margin: 4px 0 0;
+      display: grid;
+      gap: 6px;
+    }
+
+    .charter-list li {
+      position: relative;
+      padding-left: 22px;
+      color: #111827;
+    }
+
+    .charter-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--primary);
+      font-weight: 900;
+    }
+
+    .charter-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #ffedd5, #e0ecff);
+      color: var(--secondary);
+      font-weight: 700;
+      width: fit-content;
+    }
+
+    .charter-split {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+    }
+
+    .charter-footer {
+      padding: 10px 12px;
+      border-radius: var(--radius-md);
+      border: 1px dashed var(--border);
+      background: #f9fafb;
+      color: var(--secondary);
+      font-size: 0.9rem;
+    }
+
     @media (max-width: 720px) {
       .immersive-section { padding: 20px; }
       .immersive-title { font-size: 1.3rem; }
@@ -2320,69 +2464,118 @@
       </tbody>
     </table>
 
-    <h3>6.5 Charte projet — Application mobile client</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Élément</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Nom du projet</td>
-          <td>Application mobile client Time’Eats</td>
-        </tr>
-        <tr>
-          <td>Objectif général</td>
-          <td>Proposer une expérience mobile simple et intuitive pour commander et suivre des prestations de restauration</td>
-        </tr>
-        <tr>
-          <td>Bénéfices attendus</td>
-          <td>+20 % nouveaux clients / +15 % fidélisation / Amélioration image de marque</td>
-        </tr>
-        <tr>
-          <td>Périmètre inclus</td>
-          <td>Recherche prestataires, commande, paiement, suivi en temps réel, notation</td>
-        </tr>
-        <tr>
-          <td>Périmètre exclu</td>
-          <td>Gestion de livraison physique, application fournisseur (projet séparé)</td>
-        </tr>
-        <tr>
-          <td>Livrables majeurs</td>
-          <td>App iOS, App Android, docs techniques, PV recette, formation support</td>
-        </tr>
-        <tr>
-          <td>Budget validé</td>
-          <td>150 k€ (dont 80 k€ prestataire, 40 k€ interne)</td>
-        </tr>
-        <tr>
-          <td>Durée & jalons</td>
-          <td>Mai → Décembre soit 8 mois (SCRUM — sprints 3 semaines)</td>
-        </tr>
-        <tr>
-          <td>Ressources</td>
-          <td>Chef projet, développeurs internes, ESN, UX, RSSI</td>
-        </tr>
-        <tr>
-          <td>Risques majeurs</td>
-          <td>UX non validée, dépendance ESN, sécurité des données</td>
-        </tr>
-        <tr>
-          <td>Parties prenantes clés</td>
-          <td>Direction commerciale, PMO, DSI, clients pilotes</td>
-        </tr>
-        <tr>
-          <td>Critères de succès</td>
-          <td>Satisfaction ≥ 80 %, 0 bug critique, budget ≤ 100 %, délais ≤ 8 mois</td>
-        </tr>
-      </tbody>
-    </table>
-    <p class="note">
-      Version 1.0 — Date : 12/2025 — Rédacteur : PMO Time’Eats. Cette charte sert de référence contractuelle
-      entre la DSI et la Direction, et engage l’ensemble des parties prenantes.
-    </p>
+    <div class="charter">
+      <div class="charter-header">
+        <div>
+          <p class="eyebrow">Charte projet</p>
+          <h3>6.5 Charte projet — Application mobile client</h3>
+          <p class="charter-lead">
+            Document contractuel qui fixe les engagements, le cadre et la gouvernance du projet « Application mobile client Time’Eats ».
+            Il sécurise les livrables, les moyens et les critères de réussite partagés entre DSI, métier et partenaires.
+          </p>
+          <div class="charter-meta">
+            <span class="meta-chip">Version 1.0</span>
+            <span class="meta-chip">Date : 12/2025</span>
+            <span class="meta-chip accent">Rédacteur : PMO Time’Eats</span>
+          </div>
+        </div>
+        <div class="charter-scorecard">
+          <div class="score-item">
+            <div class="score-label">Nom du projet</div>
+            <div class="score-value">Application mobile client</div>
+            <div class="score-sub">Time’Eats — iOS & Android</div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">Budget validé</div>
+            <div class="score-value">150 k€</div>
+            <div class="score-sub">80 k€ prestataire / 40 k€ interne</div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">Cadre de temps</div>
+            <div class="score-value">8 mois</div>
+            <div class="score-sub">Mai → Décembre — sprints de 3 semaines</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="charter-grid">
+        <div class="charter-card">
+          <div class="charter-label">Objectif général</div>
+          <p>Proposer une expérience mobile simple et intuitive pour commander et suivre des prestations de restauration.</p>
+          <div class="charter-pill">Expérience mobile premium</div>
+        </div>
+
+        <div class="charter-card">
+          <div class="charter-label">Bénéfices attendus</div>
+          <ul class="charter-list">
+            <li>+20 % de nouveaux clients et +15 % de fidélisation.</li>
+            <li>Image de marque renforcée et expérience cohérente sur mobile.</li>
+            <li>Réduction des frictions de commande et du recours au support.</li>
+          </ul>
+        </div>
+
+        <div class="charter-card">
+          <div class="charter-label">Périmètre fonctionnel</div>
+          <div class="charter-split">
+            <div>
+              <div class="charter-pill">Inclus</div>
+              <ul class="charter-list">
+                <li>Recherche prestataires, commande, paiement sécurisé.</li>
+                <li>Suivi en temps réel, notifications, notation des prestations.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="charter-pill">Exclus</div>
+              <ul class="charter-list">
+                <li>Gestion logistique de livraison physique.</li>
+                <li>Application fournisseur (périmètre traité par un autre projet).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="charter-card">
+          <div class="charter-label">Livrables majeurs</div>
+          <ul class="charter-list">
+            <li>Applications iOS et Android prêtes pour publication store.</li>
+            <li>Documentation technique et guides d’exploitation.</li>
+            <li>PV de recette, formation support et kit de lancement.</li>
+          </ul>
+        </div>
+
+        <div class="charter-card">
+          <div class="charter-label">Gouvernance & ressources</div>
+          <ul class="charter-list">
+            <li>Chef de projet, UX/UI, développeurs internes, ESN, RSSI.</li>
+            <li>Direction commerciale, PMO et DSI comme sponsors clés.</li>
+            <li>Clients pilotes impliqués pour les revues de sprint.</li>
+          </ul>
+        </div>
+
+        <div class="charter-card">
+          <div class="charter-label">Risques majeurs et réponses</div>
+          <ul class="charter-list">
+            <li>UX non validée : prototypes testés auprès d’un panel pilote.</li>
+            <li>Dépendance à l’ESN : jalons de transfert de compétences planifiés.</li>
+            <li>Sécurité des données : validation RSSI, MFA et audits RGPD.</li>
+          </ul>
+        </div>
+
+        <div class="charter-card">
+          <div class="charter-label">Critères de succès</div>
+          <ul class="charter-list">
+            <li>Satisfaction utilisateurs ≥ 80 % et 0 bug critique en production.</li>
+            <li>Respect budget ≤ 100 % et respect des délais ≤ 8 mois.</li>
+            <li>Taux de jalons et couverture documentaire ≥ 90 %.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="charter-footer">
+        Cette charte engage l’ensemble des parties prenantes et constitue la référence de gouvernance pour arbitrer les évolutions,
+        sécuriser les ressources et valider la mise en production.
+      </div>
+    </div>
 
     <h3>6.6 Backlog produit initial</h3>
     <table>
