@@ -912,6 +912,115 @@
       margin: 14px 0;
     }
 
+    .pv-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 8px;
+      margin: 8px 0 4px;
+    }
+
+    .pv-meta-item {
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      padding: 8px 10px;
+      background: #f9fafb;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
+    }
+
+    .pv-label {
+      display: block;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2px;
+      font-weight: 700;
+    }
+
+    .pv-value {
+      font-weight: 800;
+      color: var(--secondary);
+    }
+
+    .pv-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px;
+      margin: 10px 0 6px;
+    }
+
+    .pv-summary-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      background: #ffffff;
+      box-shadow: 0 10px 22px rgba(15,23,42,0.06);
+      display: grid;
+      gap: 6px;
+    }
+
+    .pv-summary-card h4 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .pv-summary-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #111827;
+    }
+
+    .signature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .signature-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      background: linear-gradient(135deg, #fff, #f8fafc);
+      box-shadow: 0 12px 26px rgba(15,23,42,0.08);
+      display: grid;
+      gap: 4px;
+    }
+
+    .signature-role {
+      font-weight: 700;
+      color: var(--secondary);
+    }
+
+    .signature-name {
+      font-weight: 800;
+      color: #111827;
+    }
+
+    .signature-date {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .signature-note {
+      font-size: 0.86rem;
+      color: var(--secondary);
+    }
+
+    .stamp {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: #ecfdf3;
+      color: #15803d;
+      border: 1px solid rgba(22,163,74,0.3);
+      font-weight: 700;
+      width: fit-content;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
+    }
+
     .card-header {
       font-weight: 600;
       color: var(--secondary);
@@ -2040,6 +2149,14 @@
           <div class="template-meta">
             <span class="chip"><span class="chip-dot"></span>Annexe 11.9</span>
             <span class="chip">Change</span>
+          </div>
+        </a>
+        <a class="template-card" href="#annexe-11-11">
+          <div class="template-title">Procès-verbal de recette</div>
+          <div class="template-ref">Validation, signatures, réserves</div>
+          <div class="template-meta">
+            <span class="chip"><span class="chip-dot"></span>Annexe 11.11</span>
+            <span class="chip">Clôture</span>
           </div>
         </a>
       </div>
@@ -3753,27 +3870,78 @@
     <h3>8.2 Document de clôture (PV de recette)</h3>
     <div class="card">
       <div class="card-header">Procès-Verbal de Recette – Application mobile client</div>
-      <p><strong>Projet :</strong> Application mobile client</p>
-      <p><strong>Date :</strong> 28 novembre</p>
-      <p><strong>Participants :</strong> Responsable MOA, Chef de projet, Équipe technique, Utilisateurs clés</p>
-      <p><strong>Résumé des tests :</strong></p>
-      <ul>
-        <li>20 scénarios fonctionnels testés (recherche, commande, suivi, notation),</li>
-        <li>tests techniques de performance et sécurité OK,</li>
-        <li>2 anomalies mineures identifiées, planifiées pour correction.</li>
-      </ul>
-      <p><strong>Décision :</strong> Accepté avec réserves mineures.</p>
-      <table>
-        <thead>
-          <tr><th>Rôle</th><th>Nom / Signature</th><th>Date</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Sponsor / MOA</td><td>__________________</td><td>__/__/____</td></tr>
-          <tr><td>PMO</td><td>__________________</td><td>__/__/____</td></tr>
-          <tr><td>DSI / MOE</td><td>__________________</td><td>__/__/____</td></tr>
-          <tr><td>Client métier</td><td>__________________</td><td>__/__/____</td></tr>
-        </tbody>
-      </table>
+      <div class="pv-meta-grid">
+        <div class="pv-meta-item">
+          <span class="pv-label">Projet</span>
+          <span class="pv-value">Application mobile client</span>
+        </div>
+        <div class="pv-meta-item">
+          <span class="pv-label">Date du PV</span>
+          <span class="pv-value">12 mars 2025</span>
+        </div>
+        <div class="pv-meta-item">
+          <span class="pv-label">Version</span>
+          <span class="pv-value">PV v1.0</span>
+        </div>
+        <div class="pv-meta-item">
+          <span class="pv-label">Lieu</span>
+          <span class="pv-value">Rennes – Salle Newton (visio + présentiel)</span>
+        </div>
+        <div class="pv-meta-item">
+          <span class="pv-label">Périmètre</span>
+          <span class="pv-value">Livraison mobile 1.4.0 + API commande</span>
+        </div>
+        <div class="pv-meta-item">
+          <span class="pv-label">Référence template</span>
+          <span class="pv-value"><a class="inline-anchor" href="#annexe-11-11">Annexe 11.11</a></span>
+        </div>
+      </div>
+
+      <div class="pv-summary-grid">
+        <div class="pv-summary-card">
+          <h4>Participants</h4>
+          <ul>
+            <li>Responsable MOA, Chef de projet, PMO</li>
+            <li>Équipe technique, RSSI, utilisateurs clés</li>
+          </ul>
+        </div>
+        <div class="pv-summary-card">
+          <h4>Résumé des tests</h4>
+          <ul>
+            <li>20 scénarios fonctionnels exécutés (recherche, commande, suivi, notation)</li>
+            <li>Tests de performance et sécurité conformes</li>
+            <li>2 anomalies mineures planifiées pour correction (S24)</li>
+          </ul>
+        </div>
+        <div class="pv-summary-card">
+          <h4>Décision</h4>
+          <p class="signature-note"><strong>Accepté avec réserves mineures</strong> (mise en production autorisée dès correction des tickets #2145 et #2149).</p>
+          <span class="stamp">PV signé – 12/03/2025</span>
+        </div>
+      </div>
+
+      <div class="signature-grid">
+        <div class="signature-card">
+          <span class="signature-role">Sponsor / MOA</span>
+          <span class="signature-name">Marie Le Goff</span>
+          <span class="signature-date">Signé électroniquement le 12/03/2025</span>
+        </div>
+        <div class="signature-card">
+          <span class="signature-role">PMO</span>
+          <span class="signature-name">Lucas Pécout</span>
+          <span class="signature-date">Signé électroniquement le 12/03/2025</span>
+        </div>
+        <div class="signature-card">
+          <span class="signature-role">DSI / MOE</span>
+          <span class="signature-name">Julien Caradec</span>
+          <span class="signature-date">Signé électroniquement le 12/03/2025</span>
+        </div>
+        <div class="signature-card">
+          <span class="signature-role">Client métier</span>
+          <span class="signature-name">Claire Dubreuil</span>
+          <span class="signature-date">Signé électroniquement le 12/03/2025</span>
+        </div>
+      </div>
     </div>
 
     <h3>8.3 Capitalisation de l’expérience</h3>
@@ -4473,6 +4641,29 @@
           <td>≥ 65 % à fin T2</td>
           <td>Product marketing manager</td>
         </tr>
+      </tbody>
+    </table>
+
+    <h3 id="annexe-11-11">Annexe 11.11 – Template de procès-verbal de recette</h3>
+    <p class="note">Modèle prêt-à-remplir aligné sur la section 8.2. Il inclut les champs clés (périmètre, décision, signatures datées) pour une validation formelle.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Champ</th>
+          <th>Contenu attendu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Projet</td><td>[Nom du projet et version livrée]</td></tr>
+        <tr><td>Date du PV</td><td>[JJ/MM/AAAA]</td></tr>
+        <tr><td>Version</td><td>[PV vX.Y]</td></tr>
+        <tr><td>Lieu</td><td>[Salle / visio / site]</td></tr>
+        <tr><td>Périmètre</td><td>[Modules ou features concernés]</td></tr>
+        <tr><td>Participants</td><td>[Rôles + noms des personnes présentes]</td></tr>
+        <tr><td>Résumé des tests</td><td>[Synthèse des scénarios, résultats, anomalies et plan de correction]</td></tr>
+        <tr><td>Décision</td><td>[Accepté / Accepté avec réserves / Refusé] + conditions éventuelles</td></tr>
+        <tr><td>Signatures et dates</td><td>[Sponsor / MOA], [PMO], [DSI / MOE], [Client métier] — signatures et dates obligatoires</td></tr>
+        <tr><td>Référence</td><td>Documenter le lien vers ce template (Annexe 11.11) et la section 8.2</td></tr>
       </tbody>
     </table>
 
