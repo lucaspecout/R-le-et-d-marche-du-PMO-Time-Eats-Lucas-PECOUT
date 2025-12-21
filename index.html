@@ -466,6 +466,48 @@
       text-decoration: none;
     }
 
+    .template-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin: 10px 0 6px;
+    }
+
+    .template-card {
+      display: grid;
+      gap: 6px;
+      padding: 12px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: var(--secondary);
+      text-decoration: none;
+      box-shadow: 0 12px 26px rgba(17,24,39,0.06);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .template-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(17,24,39,0.1);
+    }
+
+    .template-title {
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .template-ref {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .template-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
     .charter-scorecard {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1867,9 +1909,14 @@
           <div class="kpi-bar-fill" style="width:94%;"></div>
           <div class="kpi-bar-target" style="left:95%;"></div>
         </div>
-        <div class="kpi-bar-value">94%</div>
+      <div class="kpi-bar-value">94%</div>
       </div>
       <div class="note">Ce mini-dashboard est présenté à chaque comité de direction SI.</div>
+    </div>
+    <div class="cta-row">
+      <span class="chip"><span class="chip-dot"></span>Template SMART</span>
+      <a class="meta-chip accent" href="#annexe-11-10">Voir le modèle complet (Annexe 11.10)</a>
+      <span class="note">À utiliser pour décliner les objectifs par partie prenante.</span>
     </div>
 
     <h3>5.2 Référentiel documentaire des projets</h3>
@@ -1940,6 +1987,63 @@
         </tr>
       </tbody>
     </table>
+    <div class="card">
+      <div class="card-header">
+        Templates prêts à l’emploi
+        <span class="badge">Référentiel documentaire</span>
+      </div>
+      <p class="note">Accès direct aux modèles versionnés pour diffusion auprès des chefs de projet.</p>
+      <div class="template-grid">
+        <a class="template-card" href="#annexe-11-1">
+          <div class="template-title">Charte projet</div>
+          <div class="template-ref">Cadrage complet et gouvernance</div>
+          <div class="template-meta">
+            <span class="chip"><span class="chip-dot"></span>Annexe 11.1</span>
+            <span class="chip">Kick-off</span>
+          </div>
+        </a>
+        <a class="template-card" href="#annexe-11-4">
+          <div class="template-title">Cahier des charges / backlog</div>
+          <div class="template-ref">Traçabilité besoins → stories</div>
+          <div class="template-meta">
+            <span class="chip"><span class="chip-dot"></span>Annexe 11.4</span>
+            <span class="chip">Build</span>
+          </div>
+        </a>
+        <a class="template-card" href="#annexe-11-3">
+          <div class="template-title">Matrice des risques</div>
+          <div class="template-ref">Analyse et plans de mitigation</div>
+          <div class="template-meta">
+            <span class="chip"><span class="chip-dot"></span>Annexe 11.3</span>
+            <span class="chip">Pilotage</span>
+          </div>
+        </a>
+        <a class="template-card" href="#annexe-11-5">
+          <div class="template-title">WBS & jalons</div>
+          <div class="template-ref">Structuration lots + charges</div>
+          <div class="template-meta">
+            <span class="chip"><span class="chip-dot"></span>Annexe 11.5</span>
+            <span class="chip">Planification</span>
+          </div>
+        </a>
+        <a class="template-card" href="#annexe-11-7">
+          <div class="template-title">Tableau de bord projet</div>
+          <div class="template-ref">Suivi KPI, risques, planning</div>
+          <div class="template-meta">
+            <span class="chip"><span class="chip-dot"></span>Annexe 11.7</span>
+            <span class="chip">Reporting</span>
+          </div>
+        </a>
+        <a class="template-card" href="#annexe-11-9">
+          <div class="template-title">Plan de communication</div>
+          <div class="template-ref">Messages, canaux, fréquences</div>
+          <div class="template-meta">
+            <span class="chip"><span class="chip-dot"></span>Annexe 11.9</span>
+            <span class="chip">Change</span>
+          </div>
+        </a>
+      </div>
+    </div>
     <h3>5.3 Grille de priorisation stratégique des projets</h3>
     <p>
       Pour prioriser les projets, la DSI utilise une grille multicritère basée sur :
@@ -2652,8 +2756,22 @@
           <td>Taux de couverture documentaire</td>
           <td>100 %</td>
         </tr>
+        <tr>
+          <td>Atteindre 65 % d’utilisateurs actifs hebdomadaires à M+2</td>
+          <td>Taux d’utilisateurs actifs hebdomadaires</td>
+          <td>≥ 65 % à M+2 après lancement</td>
+        </tr>
+        <tr>
+          <td>Réduire de 25 % les tickets support liés au parcours commande en 3 mois</td>
+          <td>Nombre mensuel de tickets « commande »</td>
+          <td>-25 % vs baseline avant S+12</td>
+        </tr>
       </tbody>
     </table>
+    <div class="cta-row">
+      <span class="chip"><span class="chip-dot"></span>Référence modèle</span>
+      <a class="meta-chip accent" href="#annexe-11-10">Consulter le modèle SMART détaillé (Annexe 11.10)</a>
+    </div>
 
     <div class="charter">
       <div class="charter-header">
