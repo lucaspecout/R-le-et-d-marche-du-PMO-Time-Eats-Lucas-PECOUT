@@ -440,9 +440,31 @@
       color: var(--secondary);
       font-weight: 700;
       font-size: 0.85rem;
+      text-decoration: none;
+      transition: box-shadow 180ms ease, transform 180ms ease;
     }
 
     .meta-chip.accent { background: var(--accent-soft); color: var(--accent); border-color: rgba(37,99,235,0.3); }
+
+    .meta-chip:hover {
+      box-shadow: 0 8px 22px rgba(37,99,235,0.18);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .inline-anchor {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(37,99,235,0.3);
+      transition: color 180ms ease, border-color 180ms ease;
+    }
+
+    .inline-anchor:hover {
+      color: var(--primary-dark);
+      border-color: rgba(228,93,30,0.5);
+      text-decoration: none;
+    }
 
     .charter-scorecard {
       display: grid;
@@ -1574,6 +1596,7 @@
       </div>
     </div>
 
+
     <!-- Mini dashboard de couverture -->
     <div class="kpi-grid">
       <div class="kpi-card motion-surface animate" data-anim-delay="0.08">
@@ -2645,7 +2668,7 @@
             <span class="meta-chip">Version 1.0</span>
             <span class="meta-chip">Date : 12/2025</span>
             <span class="meta-chip accent">Rédacteur : PMO Time’Eats</span>
-            <span class="meta-chip accent">Réf. modèle : Annexe 11.1</span>
+            <a class="meta-chip accent" href="#annexe-11-1">Réf. modèle : Annexe 11.1</a>
           </div>
         </div>
         <div class="charter-scorecard">
@@ -2747,7 +2770,7 @@
     </div>
 
     <h3>6.6 Backlog produit initial</h3>
-    <p class="note">Gabarit rempli à partir du modèle de l’annexe 11.4 (cahier des charges / backlog tracé).</p>
+    <p class="note">Gabarit rempli à partir du modèle de l’<a class="inline-anchor" href="#annexe-11-4">annexe 11.4</a> (cahier des charges / backlog tracé).</p>
     <table>
       <thead>
         <tr>
@@ -2780,7 +2803,7 @@
 
     <!-- SWOT VISUEL -->
     <h3>6.7 Analyse SWOT (visuel)</h3>
-    <p class="note">Instanciation du modèle SWOT décrit à l’annexe 11.2.</p>
+    <p class="note">Instanciation du modèle SWOT décrit à l’<a class="inline-anchor" href="#annexe-11-2">annexe 11.2</a>.</p>
     <div class="swot-grid">
       <div class="swot-cell swot-forces">
         <div class="swot-title">Forces</div>
@@ -2817,7 +2840,7 @@
     </div>
 
     <h3>6.8 Matrice des risques</h3>
-    <p class="note">Matrice instanciée en suivant le template de l’annexe 11.3 (probabilité × impact).</p>
+    <p class="note">Matrice instanciée en suivant le template de l’<a class="inline-anchor" href="#annexe-11-3">annexe 11.3</a> (probabilité × impact).</p>
     <table>
       <thead>
         <tr>
@@ -2964,7 +2987,7 @@
     </div>
 
     <h4>6.9.1 WBS synthétique (niveaux livrables)</h4>
-    <p>Décomposition du projet App mobile client en lots structurants avec charges et jalons exprimés. Référence : modèle de WBS de l’annexe 11.5.</p>
+    <p>Décomposition du projet App mobile client en lots structurants avec charges et jalons exprimés. Référence : modèle de WBS de l’<a class="inline-anchor" href="#annexe-11-5">annexe 11.5</a>.</p>
     <div class="wbs-grid">
       <div class="wbs-card">
         <div class="wbs-title">Lot 1 – Cadrage <span class="wbs-badge">2,5 sem.</span></div>
@@ -2995,7 +3018,7 @@
 
     <!-- GANTT VISUEL -->
     <h4>6.9.1 bis – Gantt du projet (visuel réaliste)</h4>
-    <p>Lecture sur 32 semaines (mai → décembre) avec positionnement précis des phases et jalons clés. Template aligné sur le modèle de l’annexe 11.6.</p>
+    <p>Lecture sur 32 semaines (mai → décembre) avec positionnement précis des phases et jalons clés. Template aligné sur le modèle de l’<a class="inline-anchor" href="#annexe-11-6">annexe 11.6</a>.</p>
     <div class="gantt-board">
       <div class="gantt-header gantt-grid">
         <div class="gantt-axis-label">Phases projet (semaines 1 → 32)</div>
@@ -3211,6 +3234,7 @@
         </tr>
       </tbody>
     </table>
+    <p class="note">Version vierge prête à diffuser en <a class="inline-anchor" href="#annexe-11-9">annexe 11.9</a>.</p>
 
     <h4>6.9.5 Parallélisation des tâches et gestion multi-projets</h4>
     <p>
@@ -3316,7 +3340,7 @@
         </tbody>
       </table>
       <p class="note">
-        Le modèle complet du tableau de bord général du projet est détaillé en annexe 11.7 pour être directement cloné.
+        Le modèle complet du tableau de bord général du projet est détaillé en <a class="inline-anchor" href="#annexe-11-7">annexe 11.7</a> pour être directement cloné.
       </p>
     </div>
 
@@ -3370,7 +3394,7 @@
       </tbody>
     </table>
     <p class="note">
-      R = Responsible, A = Accountable, C = Consulted, I = Informed.
+      R = Responsible, A = Accountable, C = Consulted, I = Informed. Modèle générique à cloner en <a class="inline-anchor" href="#annexe-11-8">annexe 11.8</a>.
     </p>
 
     <!-- 7. METHODES -->
@@ -3765,7 +3789,7 @@
     <div class="page-break"></div>
     <h2 id="section-11-modeles">11. Annexes – Modèles de documents PMO</h2>
 
-    <h3>Annexe 11.1 – Modèle de charte projet</h3>
+    <h3 id="annexe-11-1">Annexe 11.1 – Modèle de charte projet</h3>
     <div class="charter">
       <div class="charter-header">
         <div>
@@ -3897,7 +3921,7 @@
       </div>
     </div>
 
-    <h3>Annexe 11.2 – Modèle d’analyse SWOT</h3>
+    <h3 id="annexe-11-2">Annexe 11.2 – Modèle d’analyse SWOT</h3>
     <p class="note">Grille de base pour remplir les forces/faiblesses/opportunités/menaces. Voir l’exemple instancié en 6.7.</p>
     <div class="swot-grid">
       <div class="swot-cell swot-forces">
@@ -3918,7 +3942,7 @@
       </div>
     </div>
 
-    <h3>Annexe 11.3 – Modèle de matrice des risques</h3>
+    <h3 id="annexe-11-3">Annexe 11.3 – Modèle de matrice des risques</h3>
     <p class="note">Template vierge pour prioriser les risques (référence utilisée dans la section 6.8).</p>
     <table>
       <thead>
@@ -3945,7 +3969,7 @@
       </tbody>
     </table>
 
-    <h3>Annexe 11.4 – Modèle de cahier des charges / backlog tracé</h3>
+    <h3 id="annexe-11-4">Annexe 11.4 – Modèle de cahier des charges / backlog tracé</h3>
     <p class="note">Modèle vierge à utiliser pour tracer user stories et critères d’acceptation. Référence de mise en œuvre : section 6.6.</p>
     <table>
       <thead>
@@ -3978,7 +4002,7 @@
       </tbody>
     </table>
 
-    <h3>Annexe 11.5 – WBS et jalons instanciés</h3>
+    <h3 id="annexe-11-5">Annexe 11.5 – WBS et jalons instanciés</h3>
     <p class="note">Structure générique pour détailler les lots et livrables. Voir l’exemple rempli section 6.9.</p>
     <table>
       <thead>
@@ -4017,7 +4041,7 @@
       </tbody>
     </table>
 
-    <h3>Annexe 11.6 – Modèle de Gantt projet (tableau)</h3>
+    <h3 id="annexe-11-6">Annexe 11.6 – Modèle de Gantt projet (tableau)</h3>
     <p class="note">Utiliser ce tableau pour tracer les phases principales et la progression. Exemple instancié : section 6.9.1 bis.</p>
     <table class="gantt-table">
       <thead>
@@ -4044,7 +4068,7 @@
       </tbody>
     </table>
 
-    <h3>Annexe 11.7 – Tableau de bord général du projet</h3>
+    <h3 id="annexe-11-7">Annexe 11.7 – Tableau de bord général du projet</h3>
     <p class="note">Catégorie : tableau de bord du projet. Éléments clés suivis : avancement, budget, risques, qualité, satisfaction client et relation métier, actions prioritaires. Remplacer chaque valeur par les données du projet.</p>
     <div class="project-dashboard">
       <div class="project-dash-header">
@@ -4130,6 +4154,81 @@
         </div>
       </div>
     </div>
+
+    <h3 id="annexe-11-8">Annexe 11.8 – Modèle de matrice RACI</h3>
+    <p class="note">Trame à adapter selon le projet. Référence pratique : section 6.9.7 sur la répartition des responsabilités.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Livrables / Activités</th>
+          <th>R</th>
+          <th>A</th>
+          <th>C</th>
+          <th>I</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>[Livrable ou activité]</td>
+          <td>[Rôle responsable]</td>
+          <td>[Rôle accountable]</td>
+          <td>[Rôles consultés]</td>
+          <td>[Rôles informés]</td>
+        </tr>
+        <tr>
+          <td>[Exemple : Backlog produit]</td>
+          <td>[Chef de projet]</td>
+          <td>[Sponsor / PMO]</td>
+          <td>[MOA, UX]</td>
+          <td>[Équipe support]</td>
+        </tr>
+        <tr>
+          <td>[Exemple : Recette]</td>
+          <td>[MOA]</td>
+          <td>[Chef de projet]</td>
+          <td>[Tech lead, QA]</td>
+          <td>[Parties prenantes clés]</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">R = Responsible, A = Accountable, C = Consulted, I = Informed. Dupliquer les lignes pour couvrir tout le périmètre.</p>
+
+    <h3 id="annexe-11-9">Annexe 11.9 – Plan de communication type</h3>
+    <p class="note">Matrice prête à l’emploi pour formaliser les rituels et destinataires. Elle complète la vue opérationnelle décrite en section 6.9.4.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Public cible</th>
+          <th>Canal / support</th>
+          <th>Fréquence</th>
+          <th>Message / livrable</th>
+          <th>Responsable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>[Équipe projet]</td>
+          <td>[Daily meeting]</td>
+          <td>[Quotidien]</td>
+          <td>[Points d’avancement, blocages]</td>
+          <td>[Scrum Master]</td>
+        </tr>
+        <tr>
+          <td>[Comité de pilotage]</td>
+          <td>[Réunion / compte rendu]</td>
+          <td>[Toutes les X semaines]</td>
+          <td>[Décisions, arbitrages, risques]</td>
+          <td>[Chef de projet / PMO]</td>
+        </tr>
+        <tr>
+          <td>[Utilisateurs finaux]</td>
+          <td>[Newsletter / release note]</td>
+          <td>[Mensuel ou à chaque release]</td>
+          <td>[Nouveautés, dates clés]</td>
+          <td>[Produit / Communication]</td>
+        </tr>
+      </tbody>
+    </table>
 
   </main>
 </div>
